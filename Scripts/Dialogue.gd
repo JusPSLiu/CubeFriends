@@ -10,6 +10,9 @@ extends CanvasLayer
 @export var CutsceneAnimator : AnimationPlayer
 @export var CutsceneThings : Node2D
 @export var properCamera : Camera2D
+@export var NextLevel : String
+@export var Fader : AnimationPlayer
+@export var MusicFader : AnimationPlayer
 
 @export_multiline var dialogue : Array[String]
 
@@ -52,7 +55,7 @@ func setSpeaker(speaker):
 		CutsceneAnimator.play(String.chr(currentDialogue+65))
 
 func changeCurrentDialogue(index):
-	if (index < dialogue.size()):
+	if (index < dialogue.size() and dialogue[index] != "/"):
 		#tell process that it's loading in
 		loadingIn = true
 		#reset the visibility
@@ -61,11 +64,17 @@ func changeCurrentDialogue(index):
 		text.text = dialogue[index].substr(1)
 		setSpeaker(dialogue[index].substr(0,1))
 	else:
+		if (index == dialogue.size()-1 and dialogue[index] == "/"):
+			Fader.play("FadeOut")
+			MusicFader.play("FadeOut")
+			await Fader.animation_finished
+			get_tree().change_scene_to_file("res://Scenes/Levels/"+NextLevel)
 		speaking = false
 		SpeakerImage.hide()
 		dialogueAnimator.play("CloseDialogue")
 		await dialogueAnimator.animation_finished
 		player.process_mode = Node.PROCESS_MODE_INHERIT
+		player.enable_children()
 		properCamera.make_current()
 		player.visible = true
 		CutsceneThings.visible = false
@@ -87,3 +96,11 @@ func start_dialogue():
 	SpeakerImage.show()
 	changeCurrentDialogue(currentDialogue)
 	currentDialogue += 1
+
+
+func _on_end_area_entered(area):
+	player.disable_children()
+	show()
+	if (!speaking):
+		if (area.is_in_group("player")):
+			start_dialogue()

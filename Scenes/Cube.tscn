@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amibf"]
 size = Vector2(64, 64)
 
-[node name="Cube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteL")]
+[node name="Cube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteL") groups=["player"]]
 collision_mask = 3
 script = ExtResource("1_q1wqg")
 casteR = NodePath("RayCastR")

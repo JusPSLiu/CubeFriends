@@ -9,6 +9,7 @@ signal jumpsound
 
 var id = 0
 var coyoteTime : float = 0.1
+var disabled = false
 
 const JUMP_VELOCITY = -800.0
 
@@ -24,9 +25,9 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		if (coyoteTime > 0):
 			coyoteTime -= delta
-
+	
 	# Handle jump.
-	if Input.is_action_just_pressed(thisJumpLetter) and coyoteTime>0:
+	if Input.is_action_just_pressed(thisJumpLetter) and coyoteTime>0 and !disabled:
 		velocity.y = JUMP_VELOCITY
 		emit_signal("jumpsound")
 	# move and slide
@@ -50,3 +51,9 @@ func _physics_process(delta):
 			if (!casteL.is_colliding()):
 				i_am_stuck = 0
 				emit_signal("unstuck", 2, id)
+
+func disable():
+	disabled = true
+
+func enable():
+	disabled = false

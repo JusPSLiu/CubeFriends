@@ -118,6 +118,7 @@ libraries = {
 autoplay = "FadeIn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="LeftRect" type="ColorRect" parent="CanvasLayer"]
 offset_top = 736.0

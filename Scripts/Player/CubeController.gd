@@ -87,3 +87,16 @@ func child_unstuck(type, id):
 
 func jump_sound():
 	jumpPlayer.play()
+
+func disable_children():
+	for cube in cubes:
+		cube.disable()
+	stuck = 3
+	velocity.x = move_toward(velocity.x, 0, SPEED)
+	move_and_slide()
+
+func enable_children():
+	for cube in cubes:
+		cube.enable()
+	stuck = 0
+	reposition(0)
