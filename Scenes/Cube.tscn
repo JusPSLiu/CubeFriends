@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://coraifaj74muf"]
+
+[ext_resource type="Script" path="res://Scripts/Player/ChildCube.gd" id="1_q1wqg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amibf"]
+size = Vector2(64, 64)
+
+[node name="Cube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteL")]
+collision_mask = 3
+script = ExtResource("1_q1wqg")
+casteR = NodePath("RayCastR")
+casteL = NodePath("RayCastL")
+
+[node name="CubeCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_amibf")
+
+[node name="RayCastR" type="RayCast2D" parent="."]
+position = Vector2(16, 30)
+target_position = Vector2(17, 0)
+collision_mask = 2
+
+[node name="RayCastL" type="RayCast2D" parent="."]
+position = Vector2(-17, 30)
+target_position = Vector2(-17, 0)
+collision_mask = 2
