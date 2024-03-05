@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+Singleton="*res://Scripts/Singleton.gd"
+
 [display]
 
 window/size/viewport_width=1280

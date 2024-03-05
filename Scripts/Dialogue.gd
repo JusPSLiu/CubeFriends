@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var LevelNumber : int
 @export var dialogueSounds : AudioStreamPlayer
 @export var text : Label
 @export var lettersPerSecond : float
@@ -65,10 +66,7 @@ func changeCurrentDialogue(index):
 		setSpeaker(dialogue[index].substr(0,1))
 	else:
 		if (index == dialogue.size()-1 and dialogue[index] == "/"):
-			Fader.play("FadeOut")
-			MusicFader.play("FadeOut")
-			await Fader.animation_finished
-			get_tree().change_scene_to_file("res://Scenes/Levels/"+NextLevel)
+			toNextLevel()
 		speaking = false
 		SpeakerImage.hide()
 		dialogueAnimator.play("CloseDialogue")
@@ -84,15 +82,17 @@ func _input(event : InputEvent):
 	if (speaking):
 		if ((event is InputEventKey and event.is_action_released("ui_accept")) or (event is InputEventMouseButton and event.is_action_pressed("clicky"))):
 			if (loadingIn):
-				textCurrentlyDisplayed = text.visible_characters * 0.4
+				if (Singleton.enabledTextSkip):
+					textCurrentlyDisplayed = text.visible_characters * 0.4
 			else:
 				changeCurrentDialogue(currentDialogue)
 				currentDialogue += 1
 
 func start_dialogue():
-	speaking = true
+	loadingIn = true
 	dialogueAnimator.play("LoadDialogue")
 	await dialogueAnimator.animation_finished
+	speaking = true
 	SpeakerImage.show()
 	changeCurrentDialogue(currentDialogue)
 	currentDialogue += 1
@@ -104,3 +104,13 @@ func _on_end_area_entered(area):
 	if (!speaking):
 		if (area.is_in_group("player")):
 			start_dialogue()
+
+func toNextLevel():
+	if (Singleton.unlockedLevel <= LevelNumber):
+		Singleton.unlockedLevel = LevelNumber+1
+		Singleton.give_free_cookies()
+	Singleton.currentLevel = LevelNumber+1
+	Fader.play("FadeOut")
+	MusicFader.play("FadeOut")
+	await Fader.animation_finished
+	get_tree().change_scene_to_file("res://Scenes/Levels/"+NextLevel)
