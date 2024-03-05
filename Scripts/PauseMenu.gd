@@ -46,6 +46,8 @@ func _on_sound_slider_value_changed(value):
 
 
 func _on_exit_pressed():
+	#save sound settings, so give out cookies here
+	Singleton.give_free_cookies()
 	MusicFader.play("FadeOut")
 	Fader.play("FadeOut")
 	buttonSoundPlayer.play()

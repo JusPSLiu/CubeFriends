@@ -1,0 +1,719 @@
+[gd_scene load_steps=35 format=3 uid="uid://bfebpp40aard6"]
+
+[ext_resource type="Shader" path="res://Art/Backgrounds/scrolling.gdshader" id="1_el44s"]
+[ext_resource type="Texture2D" uid="uid://5hs7mtn8crqx" path="res://Art/Backgrounds/motionlines.png" id="2_0d2xi"]
+[ext_resource type="Texture2D" uid="uid://bnaj7mbq7st4" path="res://Art/Tilesets/redTiles.png" id="3_3pe8x"]
+[ext_resource type="Texture2D" uid="uid://0bdatr1lvgy2" path="res://Art/Tilesets/darkenTiles.png" id="5_gm2mn"]
+[ext_resource type="FontFile" uid="uid://d2esgt82wfu1x" path="res://Art/Fonts/hasting-dee-quickest.regular.otf" id="6_xtcvt"]
+[ext_resource type="Script" path="res://Scripts/Player/CubeController.gd" id="7_tdekb"]
+[ext_resource type="AudioStream" uid="uid://lin15kie5m2k" path="res://Sounds/jump.wav" id="8_ugvqj"]
+[ext_resource type="PackedScene" uid="uid://coraifaj74muf" path="res://Scenes/Cube.tscn" id="9_6j1xu"]
+[ext_resource type="Texture2D" uid="uid://1p3376112nki" path="res://Art/Cubes/RedCube.png" id="10_0fqib"]
+[ext_resource type="Texture2D" uid="uid://cyiid8f2l1ujp" path="res://Art/Cubes/GreenCube.png" id="11_fb1g4"]
+[ext_resource type="Texture2D" uid="uid://ikwv2uwe6h8l" path="res://Art/Cubes/BlueCube.png" id="12_c7wxr"]
+[ext_resource type="Script" path="res://Scripts/Dialogue.gd" id="13_0vqto"]
+[ext_resource type="FontFile" uid="uid://blvljxujr15rm" path="res://Art/Fonts/born2bsporty-fs.regular.otf" id="14_37fuy"]
+[ext_resource type="AudioStream" uid="uid://dnd5ue2jwhfw4" path="res://Sounds/UI/red.wav" id="15_njhy3"]
+[ext_resource type="AudioStream" uid="uid://wbxg5yb5ryvc" path="res://Sounds/Music/OverworldTheme.ogg" id="16_7yu7g"]
+[ext_resource type="PackedScene" uid="uid://cqx28sd66x8xf" path="res://Scenes/ScreenFx/PauseMenu.tscn" id="17_h425x"]
+[ext_resource type="PackedScene" uid="uid://bm67c4ebptsl8" path="res://Scenes/ScreenFx/Fader.tscn" id="18_0xcrm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x5m0r"]
+shader = ExtResource("1_el44s")
+shader_parameter/direction = Vector2(0, 0.1)
+shader_parameter/transparency = Vector4(0, 0, 0, 0.1)
+shader_parameter/texture = ExtResource("2_0d2xi")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlcfs"]
+texture = ExtResource("3_3pe8x")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_bkui0"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_rlcfs")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uc0xe"]
+texture = ExtResource("5_gm2mn")
+texture_region_size = Vector2i(64, 64)
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5tiyo"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_uc0xe")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wah76"]
+size = Vector2(236, 255)
+
+[sub_resource type="Animation" id="Animation_rd1mk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Cutscene/CutsceneThings/Red:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1062, 544)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CutsceneCamera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1377, 368)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Background/motionlines:material:shader_parameter/direction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Background/motionlines:material:shader_parameter/transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector4(0, 0, 0, 0.1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Cutscene/CutsceneThings/Green:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(572, -789)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Cutscene/CutsceneThings/Blue:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(733, -320)]
+}
+
+[sub_resource type="Animation" id="Animation_v3wso"]
+resource_name = "StartUp"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CutsceneCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Vector2(641, -776), Vector2(641, -676)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueController/Dialogue")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_dialogue"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CutsceneCamera:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CutsceneCamera/ChapterName:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CutsceneCamera/ChapterName:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 2.1, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CutsceneCamera/ChapterName:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector2(-180, -51), Vector2(-180, -171)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Background/motionlines:material:shader_parameter/direction")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Background/motionlines:material:shader_parameter/transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector4(1, 1, 1, 0.2)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Cutscene/CutsceneThings/Red:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(702, -665)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Cutscene/CutsceneThings/Green:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(572, -789)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Cutscene/CutsceneThings/Blue:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(767, -194)]
+}
+
+[sub_resource type="Animation" id="Animation_qcwir"]
+resource_name = "B"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CutsceneCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(641, -676), Vector2(677.5, -515.5), Vector2(714, -355)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CutsceneCamera/ChapterName:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Background/motionlines:material:shader_parameter/direction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Background/motionlines:material:shader_parameter/transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector4(1, 1, 1, 0.2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Cutscene/CutsceneThings/Red:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(702, -665)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Cutscene/CutsceneThings/Green:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(572, -789)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fp2dv"]
+_data = {
+"B": SubResource("Animation_qcwir"),
+"RESET": SubResource("Animation_rd1mk"),
+"StartUp": SubResource("Animation_v3wso")
+}
+
+[sub_resource type="Animation" id="Animation_4yy6i"]
+resource_name = "CloseDialogue"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueController/Dialogue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueController/Dialogue/DialogueBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -289)]
+}
+
+[sub_resource type="Animation" id="Animation_xmrim"]
+resource_name = "LoadDialogue"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueController/Dialogue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueController/Dialogue/DialogueBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(0, -289), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0vjmx"]
+_data = {
+"CloseDialogue": SubResource("Animation_4yy6i"),
+"LoadDialogue": SubResource("Animation_xmrim")
+}
+
+[sub_resource type="Gradient" id="Gradient_5pxse"]
+colors = PackedColorArray(0, 0, 0, 0.705882, 0.262745, 0.254902, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6717o"]
+gradient = SubResource("Gradient_5pxse")
+width = 16
+
+[sub_resource type="Animation" id="Animation_xrnxx"]
+resource_name = "FadeOut"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-5.962, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iefyk"]
+_data = {
+"FadeOut": SubResource("Animation_xrnxx")
+}
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.741176, 0, 0.341176, 1)
+
+[node name="Sun" type="ColorRect" parent="Background/ColorRect"]
+layout_mode = 0
+offset_left = 862.0
+offset_top = 23.0
+offset_right = 918.0
+offset_bottom = 79.0
+color = Color(0.87451, 0.894118, 1, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Background/ColorRect/Sun"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 52.0
+offset_bottom = 52.0
+
+[node name="motionlines" type="TextureRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.207843)
+material = SubResource("ShaderMaterial_x5m0r")
+offset_right = 1280.0
+offset_bottom = 736.0
+texture = ExtResource("2_0d2xi")
+stretch_mode = 1
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_bkui0")
+format = 2
+layer_0/tile_data = PackedInt32Array(131073, 131072, 0, 196609, 131072, 1, 262145, 131072, 1, 327681, 131072, 1, 393217, 131072, 1, 458753, 131072, 1, 524289, 131072, 1, 196604, 65536, 0, 196605, 65536, 0, 196606, 65536, 0, 196607, 65536, 0, 131072, 65536, 0, 131067, 131072, 0, 131065, 65536, 0, 131066, 65536, 0, 131064, 0, 0, 196599, 65536, 0, 196600, 65536, 1, 196601, 65536, 1, 196602, 65536, 1, 196603, 65536, 1, 262135, 65536, 1, 327671, 65536, 1, 393207, 65536, 1, 458743, 65536, 1, 524279, 65536, 1, 589815, 65536, 1, 262136, 65536, 1, 327672, 65536, 1, 393208, 65536, 1, 458744, 65536, 1, 524280, 65536, 1, 589816, 65536, 1, 262137, 65536, 1, 327673, 65536, 1, 393209, 65536, 1, 458745, 65536, 1, 524281, 65536, 1, 589817, 65536, 1, 262138, 65536, 1, 327674, 65536, 1, 393210, 65536, 1, 458746, 65536, 1, 524282, 65536, 1, 589818, 65536, 1, 262139, 65536, 1, 327675, 65536, 1, 393211, 65536, 1, 458747, 65536, 1, 524283, 65536, 1, 589819, 65536, 1, 262140, 65536, 1, 327676, 65536, 1, 393212, 65536, 1, 458748, 65536, 1, 524284, 65536, 1, 589820, 65536, 1, 262141, 65536, 1, 327677, 65536, 1, 393213, 65536, 1, 458749, 65536, 1, 524285, 65536, 1, 589821, 65536, 1, 262142, 65536, 1, 327678, 65536, 1, 393214, 65536, 1, 458750, 65536, 1, 524286, 65536, 1, 589822, 65536, 1, 262143, 65536, 1, 327679, 65536, 1, 393215, 65536, 1, 458751, 65536, 1, 524287, 65536, 1, 589823, 65536, 1, 196608, 65536, 1, 262144, 65536, 1, 327680, 65536, 1, 393216, 65536, 1, 458752, 65536, 1, 524288, 65536, 1, 655351, 65536, 0, 655352, 65536, 0, 655353, 65536, 0, 655354, 65536, 0, 655355, 65536, 0, 655356, 65536, 0, 655357, 65536, 0, 655358, 65536, 0, 655359, 65536, 0, 589824, 65536, 0, 589825, 65536, 0, 589826, 65536, 0, 589827, 65536, 0, 589828, 65536, 0, 589829, 65536, 0, 589830, 65536, 0, 589831, 65536, 0, 589832, 65536, 0, 589833, 65536, 0, 589834, 65536, 0, 589835, 65536, 0, 589836, 65536, 0, 589837, 65536, 0, 589838, 65536, 0, 589839, 65536, 0, 589840, 65536, 0, 589841, 65536, 0, 589842, 65536, 0, 589843, 65536, 0, 589844, 65536, 0, 589845, 65536, 0, 720887, 65536, 1, 786423, 65536, 1, 851959, 65536, 1, 720888, 65536, 1, 786424, 65536, 1, 851960, 65536, 1, 720889, 65536, 1, 786425, 65536, 1, 851961, 65536, 1, 720890, 65536, 1, 786426, 65536, 1, 851962, 65536, 1, 720891, 65536, 1, 786427, 65536, 1, 851963, 65536, 1, 720892, 65536, 1, 786428, 65536, 1, 851964, 65536, 1, 720893, 65536, 1, 786429, 65536, 1, 851965, 65536, 1, 720894, 65536, 1, 786430, 65536, 1, 851966, 65536, 1, 720895, 65536, 1, 786431, 65536, 1, 851967, 65536, 1, 655360, 65536, 1, 720896, 65536, 1, 786432, 65536, 1, 655361, 65536, 1, 720897, 65536, 1, 786433, 65536, 1, 655362, 65536, 1, 720898, 65536, 1, 786434, 65536, 1, 655363, 65536, 1, 720899, 65536, 1, 786435, 65536, 1, 655364, 65536, 1, 720900, 65536, 1, 786436, 65536, 1, 655365, 65536, 1, 720901, 65536, 1, 786437, 65536, 1, 655366, 65536, 1, 720902, 65536, 1, 786438, 65536, 1, 655367, 65536, 1, 720903, 65536, 1, 786439, 65536, 1, 655368, 65536, 1, 720904, 65536, 1, 786440, 65536, 1, 655369, 65536, 1, 720905, 65536, 1, 786441, 65536, 1, 655370, 65536, 1, 720906, 65536, 1, 786442, 65536, 1, 655371, 65536, 1, 720907, 65536, 1, 786443, 65536, 1, 655372, 65536, 1, 720908, 65536, 1, 786444, 65536, 1, 655373, 65536, 1, 720909, 65536, 1, 786445, 65536, 1, 655374, 65536, 1, 720910, 65536, 1, 786446, 65536, 1, 655375, 65536, 1, 720911, 65536, 1, 786447, 65536, 1, 655376, 65536, 1, 720912, 65536, 1, 786448, 65536, 1, 655377, 65536, 1, 720913, 65536, 1, 786449, 65536, 1, 655378, 65536, 1, 720914, 65536, 1, 786450, 65536, 1, 655379, 65536, 1, 720915, 65536, 1, 786451, 65536, 1, 655380, 65536, 1, 720916, 65536, 1, 786452, 65536, 1, 655381, 65536, 1, 720917, 65536, 1, 786453, 65536, 1, 524310, 0, 0, 524311, 65536, 0, 524312, 65536, 0, 524313, 65536, 0, 524314, 65536, 0, 524315, 65536, 0, 589846, 65536, 1, 655382, 65536, 1, 720918, 65536, 1, 786454, 65536, 1, 589847, 65536, 1, 655383, 65536, 1, 720919, 65536, 1, 786455, 65536, 1, 589848, 65536, 1, 655384, 65536, 1, 720920, 65536, 1, 786456, 65536, 1, 589849, 65536, 1, 655385, 65536, 1, 720921, 65536, 1, 786457, 65536, 1, 589850, 65536, 1, 655386, 65536, 1, 720922, 65536, 1, 786458, 65536, 1, 589851, 65536, 1, 655387, 65536, 1, 720923, 65536, 1, 786459, 65536, 1)
+
+[node name="darkener" type="TileMap" parent="TileMap2"]
+modulate = Color(1, 1, 1, 0.494118)
+tile_set = SubResource("TileSet_5tiyo")
+format = 2
+layer_0/tile_data = PackedInt32Array(655359, 65536, 1, 720895, 65536, 2, 786431, 65536, 3, 589824, 65536, 1, 655360, 65536, 2, 720896, 65536, 3, 589825, 65536, 1, 655361, 65536, 2, 720897, 65536, 3, 589826, 65536, 1, 655362, 65536, 2, 720898, 65536, 3, 589827, 65536, 1, 655363, 65536, 2, 720899, 65536, 3, 589828, 65536, 1, 655364, 65536, 2, 720900, 65536, 3, 589829, 65536, 1, 655365, 65536, 2, 720901, 65536, 3, 589830, 65536, 1, 655366, 65536, 2, 720902, 65536, 3, 589831, 65536, 1, 655367, 65536, 2, 720903, 65536, 3, 589832, 65536, 1, 655368, 65536, 2, 720904, 65536, 3, 589833, 65536, 1, 655369, 65536, 2, 720905, 65536, 3, 589834, 65536, 1, 655370, 65536, 2, 720906, 65536, 3, 589835, 65536, 1, 655371, 65536, 2, 720907, 65536, 3, 589836, 65536, 1, 655372, 65536, 2, 720908, 65536, 3, 589837, 65536, 1, 655373, 65536, 2, 720909, 65536, 3, 589838, 65536, 1, 655374, 65536, 2, 720910, 65536, 3, 589839, 65536, 1, 655375, 65536, 2, 720911, 65536, 3, 589840, 65536, 1, 655376, 65536, 2, 720912, 65536, 3, 589841, 65536, 1, 655377, 65536, 2, 720913, 65536, 3, 589842, 65536, 1, 655378, 65536, 2, 720914, 65536, 3, 589843, 65536, 1, 655379, 65536, 2, 720915, 65536, 3, 655351, 65536, 1, 720887, 65536, 2, 786423, 65536, 3, 655352, 65536, 1, 720888, 65536, 2, 786424, 65536, 3, 655353, 65536, 1, 720889, 65536, 2, 786425, 65536, 3, 655354, 65536, 1, 720890, 65536, 2, 786426, 65536, 3, 655355, 65536, 1, 720891, 65536, 2, 786427, 65536, 3, 655356, 65536, 1, 720892, 65536, 2, 786428, 65536, 3, 655357, 65536, 1, 720893, 65536, 2, 786429, 65536, 3, 655358, 65536, 1, 720894, 65536, 2, 786430, 65536, 3, 851959, 65536, 3, 851960, 65536, 3, 851961, 65536, 3, 851962, 65536, 3, 851963, 65536, 3, 851964, 65536, 3, 851965, 65536, 3, 851966, 65536, 3, 851967, 65536, 3, 786432, 65536, 3, 786433, 65536, 3, 786434, 65536, 3, 786435, 65536, 3, 786436, 65536, 3, 786437, 65536, 3, 786438, 65536, 3, 786439, 65536, 3, 786440, 65536, 3, 786441, 65536, 3, 786442, 65536, 3, 786443, 65536, 3, 786444, 65536, 3, 786445, 65536, 3, 786446, 65536, 3, 786447, 65536, 3, 786448, 65536, 3, 786449, 65536, 3, 786450, 65536, 3, 786451, 65536, 3, 589844, 65536, 1, 655380, 65536, 2, 720916, 65536, 3, 589845, 65536, 1, 655381, 65536, 2, 720917, 65536, 3, 589846, 65536, 1, 655382, 65536, 2, 720918, 65536, 3, 589847, 65536, 1, 655383, 65536, 2, 720919, 65536, 3, 589848, 65536, 1, 655384, 65536, 2, 720920, 65536, 3, 589849, 65536, 1, 655385, 65536, 2, 720921, 65536, 3, 589850, 65536, 1, 655386, 65536, 2, 720922, 65536, 3, 589851, 65536, 1, 655387, 65536, 2, 720923, 65536, 3, 786452, 65536, 3, 786453, 65536, 3, 786454, 65536, 3, 786455, 65536, 3, 786456, 65536, 3, 786457, 65536, 3, 786458, 65536, 3, 786459, 65536, 3, 262135, 65536, 1, 327671, 65536, 2, 393207, 65536, 3, 458743, 65536, 3, 524279, 65536, 3, 589815, 65536, 3, 262136, 65536, 1, 327672, 65536, 2, 393208, 65536, 3, 458744, 65536, 3, 524280, 65536, 3, 589816, 65536, 3, 262137, 65536, 1, 327673, 65536, 2, 393209, 65536, 3, 458745, 65536, 3, 524281, 65536, 3, 589817, 65536, 3, 262138, 65536, 1, 327674, 65536, 2, 393210, 65536, 3, 458746, 65536, 3, 524282, 65536, 3, 589818, 65536, 3, 262139, 65536, 1, 327675, 65536, 2, 393211, 65536, 3, 458747, 65536, 3, 524283, 65536, 3, 589819, 65536, 3, 262140, 65536, 1, 327676, 65536, 2, 393212, 65536, 3, 458748, 65536, 3, 524284, 65536, 3, 589820, 65536, 3, 262141, 65536, 1, 327677, 65536, 2, 393213, 65536, 3, 458749, 65536, 3, 524285, 65536, 3, 589821, 65536, 3, 262142, 65536, 1, 327678, 65536, 2, 393214, 65536, 3, 458750, 65536, 3, 524286, 65536, 3, 589822, 65536, 3, 262143, 65536, 1, 327679, 65536, 2, 393215, 65536, 3, 458751, 65536, 3, 524287, 65536, 3, 589823, 65536, 3, 196608, 131072, 1, 262144, 131072, 2, 327680, 131072, 3, 393216, 131072, 3, 458752, 131072, 3, 524288, 131072, 3)
+
+[node name="CutsceneCamera" type="Camera2D" parent="."]
+position = Vector2(1377, 368)
+
+[node name="ChapterName" type="Label" parent="CutsceneCamera"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = -180.0
+offset_top = -171.0
+offset_right = 180.0
+offset_bottom = -101.0
+theme_override_fonts/font = ExtResource("6_xtcvt")
+theme_override_font_sizes/font_size = 70
+text = "Chapter 1"
+
+[node name="Subtitle" type="Label" parent="CutsceneCamera/ChapterName"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 76.0
+offset_right = 358.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("6_xtcvt")
+theme_override_font_sizes/font_size = 30
+text = "Off The Cartesian Plane"
+
+[node name="CubeController" type="CharacterBody2D" parent="." node_paths=PackedStringArray("cubes", "camera", "jumpPlayer")]
+process_mode = 4
+visible = false
+position = Vector2(763, 368)
+script = ExtResource("7_tdekb")
+cubes = [NodePath("RedCube"), NodePath("GreenCube"), NodePath("BlueCube")]
+camera = NodePath("Camera2D")
+camDistPx = -96
+jumpPlayer = NodePath("jumpPlayer")
+
+[node name="jumpPlayer" type="AudioStreamPlayer" parent="CubeController"]
+stream = ExtResource("8_ugvqj")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Sound"
+
+[node name="Camera2D" type="Camera2D" parent="CubeController"]
+limit_top = 0
+limit_bottom = 736
+
+[node name="RedCube" parent="CubeController" instance=ExtResource("9_6j1xu")]
+position = Vector2(0, 176)
+floor_stop_on_slope = false
+
+[node name="RedSprite" type="Sprite2D" parent="CubeController/RedCube"]
+texture = ExtResource("10_0fqib")
+
+[node name="GreenCube" parent="CubeController" instance=ExtResource("9_6j1xu")]
+position = Vector2(-96, 176)
+thisJumpLetter = "o"
+
+[node name="GreenSprite" type="Sprite2D" parent="CubeController/GreenCube"]
+texture = ExtResource("11_fb1g4")
+
+[node name="BlueCube" parent="CubeController" instance=ExtResource("9_6j1xu")]
+position = Vector2(-192, 176)
+thisJumpLetter = "i"
+
+[node name="BlueSprite" type="Sprite2D" parent="CubeController/BlueCube"]
+texture = ExtResource("12_c7wxr")
+
+[node name="EndArea" type="Area2D" parent="."]
+position = Vector2(2807, 310)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
+position = Vector2(-52, 29.5)
+shape = SubResource("RectangleShape2D_wah76")
+
+[node name="ExampleArea" type="Area2D" parent="."]
+position = Vector2(1799, 310)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExampleArea"]
+position = Vector2(-52, 29.5)
+shape = SubResource("RectangleShape2D_wah76")
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MusicPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_fp2dv")
+}
+autoplay = "StartUp"
+
+[node name="CutsceneThings" type="Node2D" parent="Cutscene"]
+
+[node name="Red" type="Sprite2D" parent="Cutscene/CutsceneThings"]
+position = Vector2(1062, 544)
+texture = ExtResource("10_0fqib")
+
+[node name="Green" type="Sprite2D" parent="Cutscene/CutsceneThings"]
+position = Vector2(572, -789)
+texture = ExtResource("11_fb1g4")
+
+[node name="Blue" type="Sprite2D" parent="Cutscene/CutsceneThings"]
+position = Vector2(733, -320)
+texture = ExtResource("12_c7wxr")
+
+[node name="CutsceneSounds" type="AudioStreamPlayer" parent="Cutscene"]
+volume_db = -10.0
+bus = &"Sound"
+
+[node name="DialogueController" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Cutscene")
+libraries = {
+"": SubResource("AnimationLibrary_0vjmx")
+}
+
+[node name="Dialogue" type="CanvasLayer" parent="DialogueController" node_paths=PackedStringArray("dialogueSounds", "text", "SpeakerImage", "player", "dialogueAnimator", "CutsceneAnimator", "CutsceneThings", "properCamera", "Fader", "MusicFader")]
+visible = false
+script = ExtResource("13_0vqto")
+LevelNumber = 1
+dialogueSounds = NodePath("DialogueSounds")
+text = NodePath("SpeakerImage/Label")
+lettersPerSecond = 40.0
+SpeakerImage = NodePath("SpeakerImage")
+player = NodePath("../../CubeController")
+dialogueAnimator = NodePath("..")
+CutsceneAnimator = NodePath("../../Cutscene")
+CutsceneThings = NodePath("../../Cutscene/CutsceneThings")
+properCamera = NodePath("../../CubeController/Camera2D")
+NextLevel = "../Screens/TitleScreen.tscn"
+Fader = NodePath("../../Fader")
+MusicFader = NodePath("../../MusicPlayer/MusicFader")
+dialogue = Array[String](["UI haven't finished this part yet.
+Go do something else.", "uOff to the title screen with you.", "/"])
+
+[node name="DialogueBox" type="ColorRect" parent="DialogueController/Dialogue"]
+offset_top = -289.0
+offset_right = 1280.0
+offset_bottom = -97.0
+color = Color(0, 0, 0, 0.705882)
+
+[node name="DialogueFade" type="TextureRect" parent="DialogueController/Dialogue/DialogueBox"]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 192.0
+offset_right = 1376.0
+offset_bottom = 1472.0
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_6717o")
+
+[node name="SpeakerImage" type="TextureRect" parent="DialogueController/Dialogue"]
+visible = false
+offset_left = 181.0
+offset_top = 32.0
+offset_right = 309.0
+offset_bottom = 160.0
+texture = ExtResource("10_0fqib")
+
+[node name="Label" type="Label" parent="DialogueController/Dialogue/SpeakerImage"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = -21.0
+offset_right = 854.0
+offset_bottom = 127.0
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("14_37fuy")
+theme_override_font_sizes/font_size = 48
+
+[node name="DialogueSounds" type="AudioStreamPlayer" parent="DialogueController/Dialogue"]
+stream = ExtResource("15_njhy3")
+bus = &"Sound"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("16_7yu7g")
+volume_db = -5.962
+autoplay = true
+bus = &"Music"
+
+[node name="MusicFader" type="AnimationPlayer" parent="MusicPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_iefyk")
+}
+
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("Fader", "MusicFader") instance=ExtResource("17_h425x")]
+Fader = NodePath("../Fader")
+MusicFader = NodePath("../MusicPlayer/MusicFader")
+
+[node name="Fader" parent="." instance=ExtResource("18_0xcrm")]
+
+[connection signal="body_entered" from="EndArea" to="DialogueController/Dialogue" method="_on_end_area_entered"]
+[connection signal="body_entered" from="ExampleArea" to="DialogueController/Dialogue" method="_on_end_area_entered"]

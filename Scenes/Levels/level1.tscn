@@ -2030,7 +2030,7 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_5pxse"]
-colors = PackedColorArray(0, 0, 0, 0.705882, 0.998089, 1, 0.202599, 0)
+colors = PackedColorArray(0, 0, 0, 0.705882, 0.262745, 0.254902, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_6717o"]
 gradient = SubResource("Gradient_5pxse")
@@ -2164,9 +2164,10 @@ layer_0/tile_data = PackedInt32Array(655359, 65536, 1, 720895, 65536, 2, 786431,
 position = Vector2(1377, 368)
 
 [node name="ChapterName" type="Label" parent="CutsceneCamera"]
-offset_left = -165.162
+modulate = Color(1, 1, 1, 0)
+offset_left = -200.0
 offset_top = -71.0
-offset_right = 194.838
+offset_right = 160.0
 offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("14_5c1rb")
 theme_override_font_sizes/font_size = 70

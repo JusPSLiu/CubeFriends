@@ -119,6 +119,7 @@ texture_hover = ExtResource("5_sbso7")
 
 [node name="ResumeButton" type="TextureButton" parent="PauseButton"]
 visible = false
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 96.0
 focus_mode = 0
