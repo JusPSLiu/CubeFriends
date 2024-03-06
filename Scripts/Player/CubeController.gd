@@ -18,10 +18,13 @@ var disabled = false
 func reposition(id:int):
 	var currloc = cubes[id].position.x
 	var curid = 0
+	var offset = (id*-1*cubeDist) - (currloc)
+	position.x -= offset
+	cubes[id].position.x += offset
 	if (!disabled):
 		for cube in cubes:
 			if (curid != id):
-				cube.position.x = currloc+((id-curid)*cubeDist)
+				cube.position.x = currloc+((id-curid)*cubeDist)+offset
 				cube.velocity.x = 0
 				# I am sick of the glitches so I'm forcing
 				# EVERY COLLISION to check if EACH CUBE is stuck
@@ -75,6 +78,8 @@ func _physics_process(delta):
 			velocity.x = SPEED
 		else:
 			velocity.x = 0
+	else:
+		velocity.x = 0
 	move_and_slide()
 
 func child_stuck(type, id):
@@ -100,9 +105,6 @@ func child_stuck(type, id):
 
 func child_unstuck(type, id):
 	reposition(id)
-	print("\nB4:")
-	print("R: "+str(rightBlockArray))
-	print("L: "+str(leftBlockArray))
 	if (type == 1):
 		rightBlockArray.erase(id)
 		resetRightArray()
@@ -114,9 +116,6 @@ func child_unstuck(type, id):
 		leftBlockArray.erase(id)
 		resetRightArray()
 		resetLeftArray()
-	print("DELETE TYPE: "+str(type))
-	print("R: "+str(rightBlockArray))
-	print("L: "+str(leftBlockArray))
 
 func resetRightArray():
 	if (rightBlockArray.size() == 0):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://q3nbo5x0f675"]
+[gd_scene load_steps=97 format=3 uid="uid://q3nbo5x0f675"]
 
 [ext_resource type="Texture2D" uid="uid://dcjat8v2bhujy" path="res://Art/Backgrounds/Pit.png" id="1_pdfs2"]
 [ext_resource type="FontFile" uid="uid://blvljxujr15rm" path="res://Art/Fonts/born2bsporty-fs.regular.otf" id="3_wagi1"]
@@ -747,7 +747,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.1, 0.6, 1.1),
 "transitions": PackedFloat32Array(2, 0.5, 1),
 "update": 0,
-"values": [Vector2(-96, 496), Vector2(208, -56), Vector2(512, -800)]
+"values": [Vector2(-96, 0), Vector2(240, -464), Vector2(576, -928)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -775,7 +775,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(2.5, 0.4, 1),
 "update": 0,
-"values": [Vector2(512, -800), Vector2(588.5, -55), Vector2(665, 498)]
+"values": [Vector2(576, -928), Vector2(620.5, -464), Vector2(665, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1358,9 +1358,43 @@ tracks/6/keys = {
 "values": [Vector2(-287, 352), Vector2(-224, 352)]
 }
 
+[sub_resource type="Animation" id="Animation_4bob7"]
+resource_name = "H"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(-96, 496), Vector2(464, 496), Vector2(1024, 496)]
+}
+
+[sub_resource type="Animation" id="Animation_xfp3u"]
+resource_name = "I"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1024, 496), Vector2(464, 496), Vector2(-96, 496)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fp2dv"]
 _data = {
 "B": SubResource("Animation_u50ai"),
+"H": SubResource("Animation_4bob7"),
+"I": SubResource("Animation_xfp3u"),
 "M": SubResource("Animation_krtyj"),
 "O": SubResource("Animation_y4vru"),
 "R": SubResource("Animation_twxai"),
@@ -1839,11 +1873,13 @@ color = Color(0.27451, 0.160784, 0, 1)
 motion_scale = Vector2(0.5, 0.5)
 
 [node name="Crack" type="TextureRect" parent="Background/ParallaxBackground/ParallaxLayer"]
-offset_left = 2577.0
-offset_top = -103.0
-offset_right = 3521.0
-offset_bottom = 620.0
+offset_left = 2774.0
+offset_top = -2.0
+offset_right = 3718.0
+offset_bottom = 614.0
 texture = ExtResource("1_pdfs2")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_a3mgf")
@@ -1921,7 +1957,7 @@ max_polyphony = 2
 bus = &"Sound"
 
 [node name="Camera2D" type="Camera2D" parent="CubeController"]
-position = Vector2(-96, 496)
+position = Vector2(665, 498)
 limit_top = 0
 limit_bottom = 736
 
@@ -1975,12 +2011,12 @@ one_shot = true
 explosiveness = 1.0
 direction = Vector2(0, -1)
 spread = 35.0
-gravity = Vector2(0, -1960)
+gravity = Vector2(0, 683.398)
 initial_velocity_min = 700.0
 initial_velocity_max = 700.0
 scale_amount_min = 10.0
 scale_amount_max = 20.0
-color = Color(0.121569, 0, 1, 1)
+color = Color(1, 0, 0.0392157, 1)
 
 [node name="Particontroller" type="AnimationPlayer" parent="Cutscene/CutsceneThings"]
 root_node = NodePath("../Blue")
@@ -2022,26 +2058,26 @@ bus = &"Sound"
 [node name="SpinnyBlade" type="AnimatedSprite2D" parent="."]
 position = Vector2(9500, 707)
 sprite_frames = SubResource("SpriteFrames_l3q0g")
+animation = &"bluedead"
 autoplay = "default"
-frame_progress = 0.330669
 
 [node name="SpinnyBlade4" type="AnimatedSprite2D" parent="SpinnyBlade"]
 position = Vector2(-155, -1)
 sprite_frames = SubResource("SpriteFrames_l3q0g")
+animation = &"bluedead"
 autoplay = "default"
-frame_progress = 0.330669
 
 [node name="SpinnyBlade2" type="AnimatedSprite2D" parent="SpinnyBlade"]
 position = Vector2(-112, 32)
 sprite_frames = SubResource("SpriteFrames_l3q0g")
+animation = &"bluedead"
 autoplay = "default"
-frame_progress = 0.330669
 
 [node name="SpinnyBlade3" type="AnimatedSprite2D" parent="SpinnyBlade"]
 position = Vector2(-240, 3)
 sprite_frames = SubResource("SpriteFrames_l3q0g")
+animation = &"bluedead"
 autoplay = "default"
-frame_progress = 0.330669
 
 [node name="DialogueController" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Cutscene")
@@ -2066,8 +2102,8 @@ NextLevel = "level2.tscn"
 Fader = NodePath("../../Fader")
 MusicFader = NodePath("../../MusicPlayer/AmbienceFader")
 dialogue = Array[String](["REverybody, stay calm.                    ", "rIf we're careful, we can make it through
-without any incident.", "BRed Cube. Buddy. Nothing's gonna happen.", "GI wouldn't be too sure of that.", "BCome on! That was only one time!", "RWe've only BEEN here one time!", "/", "RGuys, be very, very careful.
-Do not fall in the bottomless pit.", "BRed Cube. It's in the wall.", "RThat didn't stop Harold.", "BFair enough.", "/", "rOkay, we've made it to the end.", "RSo, how did they tell us to do go through
+without any incident.", "BRed Cube. Buddy. Nothing's gonna happen.", "GI wouldn't be too sure of that.", "BCome on! That was only one time!", "RWe've only BEEN here one time!", "/", "rGuys, be very, very careful.
+Do not fall in the bottomless pit.", "bRed Cube. It's in the wall.", "RThat didn't stop Harold.", "BFair enough.", "/", "rOkay, we've made it to the end.", "RSo, how did they tell us to do go through
 again?", "bRed Cube! Check this out!                                                            ", "ROh. Yeah that was it.", "RWell, are you ready, Green Cube?", "rHere we go!                          ", "/"])
 
 [node name="DialogueBox" type="ColorRect" parent="DialogueController/Dialogue"]

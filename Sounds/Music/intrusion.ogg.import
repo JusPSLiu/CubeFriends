@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/intrusion.ogg-bdbbf8c5899e488da4aaa23676bbf89
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

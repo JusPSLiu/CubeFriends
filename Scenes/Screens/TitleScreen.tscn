@@ -578,6 +578,7 @@ offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Chapter0" type="Button" parent="ChapterLayer/ChapterMenu/VBoxContainer"]
 custom_minimum_size = Vector2(660, 80)

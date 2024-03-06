@@ -114,11 +114,12 @@ func _on_area_entered(area, index):
 			start_dialogue()
 
 func toNextLevel():
-	if (Singleton.unlockedLevel <= LevelNumber):
-		Singleton.unlockedLevel = LevelNumber+1
-		Singleton.give_free_cookies()
-	Singleton.currentLevel = LevelNumber+1
-	Fader.play("FadeOut")
-	MusicFader.play("FadeOut")
-	await Fader.animation_finished
-	get_tree().change_scene_to_file("res://Scenes/Levels/"+NextLevel)
+	if (!Fader.is_playing()):
+		if (Singleton.unlockedLevel <= LevelNumber):
+			Singleton.unlockedLevel = LevelNumber+1
+			Singleton.give_free_cookies()
+		Singleton.currentLevel = LevelNumber+1
+		Fader.play("FadeOut")
+		MusicFader.play("FadeOut")
+		await Fader.animation_finished
+		get_tree().change_scene_to_file("res://Scenes/Levels/"+NextLevel)

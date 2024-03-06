@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var casteR2 : RayCast2D
 @export var casteL : RayCast2D
 @export var casteL2 : RayCast2D
-@export var Lable : Label
 signal help_stuck
 signal unstuck
 signal jumpsound
@@ -36,7 +35,6 @@ func _physics_process(delta):
 	# move and slide
 	move_and_slide()
 	
-	Lable.text = "stuckType: "+str(i_am_stuck)
 	if (i_am_stuck == 0):
 		if (rightSideColliding()):
 			#right collision == 1, left collision == 2
