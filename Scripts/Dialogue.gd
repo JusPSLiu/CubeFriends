@@ -105,6 +105,14 @@ func _on_end_area_entered(area):
 		if (area.is_in_group("player")):
 			start_dialogue()
 
+func _on_area_entered(area, index):
+	player.disable_children()
+	show()
+	currentDialogue = index
+	if (!speaking):
+		if (area.is_in_group("player")):
+			start_dialogue()
+
 func toNextLevel():
 	if (Singleton.unlockedLevel <= LevelNumber):
 		Singleton.unlockedLevel = LevelNumber+1

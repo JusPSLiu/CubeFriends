@@ -2,7 +2,10 @@ extends CharacterBody2D
 
 @export var thisJumpLetter = 'p'
 @export var casteR : RayCast2D
+@export var casteR2 : RayCast2D
 @export var casteL : RayCast2D
+@export var casteL2 : RayCast2D
+@export var Lable : Label
 signal help_stuck
 signal unstuck
 signal jumpsound
@@ -33,23 +36,45 @@ func _physics_process(delta):
 	# move and slide
 	move_and_slide()
 	
+	Lable.text = "stuckType: "+str(i_am_stuck)
 	if (i_am_stuck == 0):
-		if (casteR.is_colliding()):
+		if (rightSideColliding()):
 			#right collision == 1, left collision == 2
 			i_am_stuck = 1
 			emit_signal("help_stuck", 1, id)
-		elif (casteL.is_colliding()):
+		elif (leftSideColliding()):
 			#left collision == 2
 			i_am_stuck = 2
 			emit_signal("help_stuck", 2, id)
 	else:
 		if (i_am_stuck == 1):
-			if (!casteR.is_colliding()):
+			#if only the right side is stuck rn
+			#right collision == 1
+			if (!rightSideColliding()):
 				i_am_stuck = 0
 				emit_signal("unstuck", 1, id)
-		else:
-			if (!casteL.is_colliding()):
+			elif (leftSideColliding()):
+				i_am_stuck = 3
+				emit_signal("help_stuck", 2, id)
+		elif (i_am_stuck == 2):
+			#if only the left side is stuck rn
+			#left collision == 2
+			if (!leftSideColliding()):
 				i_am_stuck = 0
+				emit_signal("unstuck", 2, id)
+			elif (rightSideColliding()):
+				i_am_stuck = 3
+				emit_signal("help_stuck", 1, id)
+		else:
+			if (!rightSideColliding()):
+				if (!leftSideColliding()):
+					i_am_stuck = 0
+					emit_signal("unstuck", 3, id)
+				else:
+					i_am_stuck = 2
+					emit_signal("unstuck", 1, id)
+			elif (!leftSideColliding()):
+				i_am_stuck = 1
 				emit_signal("unstuck", 2, id)
 
 func disable():
@@ -57,3 +82,12 @@ func disable():
 
 func enable():
 	disabled = false
+
+func rightSideColliding() -> bool:
+	return (casteR.is_colliding() or casteR2.is_colliding())
+
+func leftSideColliding() -> bool:
+	return (casteL.is_colliding() or casteL2.is_colliding())
+
+func checkIfStuck() -> int:
+	return i_am_stuck

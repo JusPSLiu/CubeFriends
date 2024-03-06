@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx3ucg2p0uikk"]
+
+[ext_resource type="Script" path="res://Scripts/AreaTrigger.gd" id="1_qepw8"]
+[ext_resource type="Texture2D" uid="uid://snldw3tptx40" path="res://Art/coin.png" id="2_4lrhy"]
+[ext_resource type="AudioStream" uid="uid://dxx5ehq3sdbmk" path="res://Sounds/collectcoin.ogg" id="3_8lvu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urrq"]
+size = Vector2(67.5, 70.375)
+
+[node name="Coin" type="Area2D" node_paths=PackedStringArray("coinSprite", "coinSound")]
+position = Vector2(5838, 206)
+script = ExtResource("1_qepw8")
+coinID = 0
+coinSprite = NodePath("CoinSprite")
+coinSound = NodePath("CoinSound")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 15)
+shape = SubResource("RectangleShape2D_0urrq")
+
+[node name="CoinSprite" type="Sprite2D" parent="."]
+position = Vector2(1, 33)
+texture = ExtResource("2_4lrhy")
+
+[node name="CoinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8lvu0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bawhbhakk6q0"]
+[gd_scene load_steps=30 format=3 uid="uid://bawhbhakk6q0"]
 
 [ext_resource type="PackedScene" uid="uid://bm67c4ebptsl8" path="res://Scenes/ScreenFx/Fader.tscn" id="1_6rpfu"]
 [ext_resource type="Texture2D" uid="uid://d4cpbx2vv5obg" path="res://Art/Backgrounds/TitleBackground.png" id="1_euucd"]
@@ -13,6 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://bnm2ttgn32mdp" path="res://Art/UI/SelectClic.png" id="10_7llqk"]
 [ext_resource type="Texture2D" uid="uid://bsj2v5fckydp0" path="res://Art/UI/SelectHov.png" id="11_hx0bq"]
 [ext_resource type="FontFile" uid="uid://d2esgt82wfu1x" path="res://Art/Fonts/hasting-dee-quickest.regular.otf" id="13_clkk6"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="13_pilj7"]
+[ext_resource type="Texture2D" uid="uid://bfa3ila75qrsc" path="res://Art/UI/Pause/gear.png" id="18_jmguy"]
+[ext_resource type="Texture2D" uid="uid://bkimf272sdcmv" path="res://Art/UI/Pause/gearClic.png" id="19_h633f"]
+[ext_resource type="Texture2D" uid="uid://bmmiiqigag568" path="res://Art/UI/Pause/gearHov.png" id="20_xte7y"]
+[ext_resource type="Texture2D" uid="uid://dtafyefesc7ef" path="res://Art/coinGot.png" id="21_v6h6q"]
+[ext_resource type="Texture2D" uid="uid://bkvw3u2o0ptrr" path="res://Art/UI/Pause/play.png" id="21_wa2vu"]
+[ext_resource type="Script" path="res://Scripts/CoinDisplayScript.gd" id="22_e118r"]
+[ext_resource type="Texture2D" uid="uid://7pr8c0sntenf" path="res://Art/UI/Pause/playClic.png" id="22_o5d6v"]
+[ext_resource type="Texture2D" uid="uid://c6r4w8isaslit" path="res://Art/UI/Pause/playHov.png" id="23_oraf8"]
 
 [sub_resource type="Animation" id="Animation_caa3g"]
 resource_name = "ShowTitle"
@@ -174,45 +183,29 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(471, 737), Vector2(471, 564)]
 }
-
-[sub_resource type="Animation" id="Animation_uayom"]
-resource_name = "select"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ChapterMenu:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ChapterMenu:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SettingsMenu/PauseButton:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2.4, 2.75),
+"transitions": PackedFloat32Array(0.3, 1),
 "update": 0,
-"values": [Vector2(0, 736), Vector2(0, 0)]
+"values": [Vector2(1164, -128), Vector2(1164, 20)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ChapterMenu:process_mode")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SettingsMenu/PauseButton:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.55, 2.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [4, 0]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_j6p33"]
@@ -221,7 +214,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ChapterMenu:visible")
+tracks/0/path = NodePath("ChapterLayer/ChapterMenu:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -233,7 +226,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ChapterMenu:position")
+tracks/1/path = NodePath("ChapterLayer/ChapterMenu:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -245,7 +238,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ChapterMenu:process_mode")
+tracks/2/path = NodePath("ChapterLayer/ChapterMenu:process_mode")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -253,6 +246,46 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_uayom"]
+resource_name = "select"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChapterLayer/ChapterMenu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChapterLayer/ChapterMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 736), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChapterLayer/ChapterMenu:process_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wcorq"]
@@ -301,6 +334,7 @@ _data = {
 }
 
 [node name="TitleScene" type="ColorRect" node_paths=PackedStringArray("musicFader", "Fader", "TitleAnimator", "buttonSound", "ChapterButtons", "BackToTitle")]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -312,8 +346,8 @@ musicFader = NodePath("MusicPlayer/MusicController")
 Fader = NodePath("Fader")
 TitleAnimator = NodePath("TitleAnimator")
 buttonSound = NodePath("PlayButton/ButtonSound")
-ChapterButtons = [NodePath("ChapterMenu/VBoxContainer/Chapter0"), NodePath("ChapterMenu/VBoxContainer/Chapter1"), NodePath("ChapterMenu/VBoxContainer/Chapter2"), NodePath("ChapterMenu/VBoxContainer/Chapter3"), NodePath("ChapterMenu/VBoxContainer/Chapter4")]
-BackToTitle = NodePath("ChapterMenu/Return")
+ChapterButtons = [NodePath("ChapterLayer/ChapterMenu/VBoxContainer/Chapter0"), NodePath("ChapterLayer/ChapterMenu/VBoxContainer/Chapter1"), NodePath("ChapterLayer/ChapterMenu/VBoxContainer/Chapter2"), NodePath("ChapterLayer/ChapterMenu/VBoxContainer/Chapter3"), NodePath("ChapterLayer/ChapterMenu/VBoxContainer/Chapter4")]
+BackToTitle = NodePath("ChapterLayer/ChapterMenu/Return")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -402,10 +436,114 @@ libraries = {
 }
 autoplay = "musicIn"
 
-[node name="ChapterMenu" type="ColorRect" parent="."]
-process_mode = 4
+[node name="SettingsMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("buttonSoundPlayer", "menu", "ResumeButton", "soundSlider", "musicSlider", "Fader")]
+process_mode = 3
+script = ExtResource("13_pilj7")
+buttonSoundPlayer = NodePath("ButtonSound")
+menu = NodePath("ColorRect")
+ResumeButton = NodePath("PauseButton/ResumeButton")
+soundSlider = NodePath("ColorRect/VBoxContainer/SoundSlider")
+musicSlider = NodePath("ColorRect/VBoxContainer/MusicSlider")
+Fader = NodePath("../Fader")
+
+[node name="ColorRect" type="ColorRect" parent="SettingsMenu"]
 visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.756863)
+
+[node name="Label" type="Label" parent="SettingsMenu/ColorRect"]
+layout_mode = 0
+offset_top = 97.0
+offset_right = 1280.0
+offset_bottom = 262.0
+theme_override_fonts/font = ExtResource("13_clkk6")
+theme_override_font_sizes/font_size = 120
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu/ColorRect"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = 262.0
+offset_right = -314.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="MusicLabel" type="Label" parent="SettingsMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_clkk6")
+theme_override_font_sizes/font_size = 27
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="SettingsMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.05
+
+[node name="HSeparator" type="HSeparator" parent="SettingsMenu/ColorRect/VBoxContainer"]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsMenu/ColorRect/VBoxContainer"]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 2
+
+[node name="SoundLabel" type="Label" parent="SettingsMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_clkk6")
+theme_override_font_sizes/font_size = 27
+text = "Sound Volume"
+horizontal_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="SettingsMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.05
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="SettingsMenu"]
+stream = ExtResource("8_q2wdo")
+bus = &"Sound"
+
+[node name="PauseButton" type="TextureButton" parent="SettingsMenu"]
+offset_left = 1164.0
+offset_top = -128.0
+offset_right = 1260.0
+offset_bottom = -32.0
+focus_mode = 0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("18_jmguy")
+texture_pressed = ExtResource("19_h633f")
+texture_hover = ExtResource("20_xte7y")
+
+[node name="ResumeButton" type="TextureButton" parent="SettingsMenu/PauseButton"]
+visible = false
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("21_wa2vu")
+texture_pressed = ExtResource("22_o5d6v")
+texture_hover = ExtResource("23_oraf8")
+flip_h = true
+
+[node name="ChapterLayer" type="CanvasLayer" parent="."]
+
+[node name="ChapterMenu" type="ColorRect" parent="ChapterLayer"]
+process_mode = 4
+z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -415,7 +553,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.596078, 0.286275, 0, 1)
 
-[node name="Label" type="Label" parent="ChapterMenu"]
+[node name="Label" type="Label" parent="ChapterLayer/ChapterMenu"]
 layout_mode = 0
 offset_left = 53.0
 offset_top = 55.0
@@ -426,57 +564,168 @@ theme_override_fonts/font = ExtResource("13_clkk6")
 theme_override_font_sizes/font_size = 150
 text = "Chapter Select"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ChapterMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ChapterLayer/ChapterMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -330.0
-offset_top = -50.0
-offset_right = 330.0
-offset_bottom = 50.0
+offset_left = -506.0
+offset_top = -220.0
+offset_right = 378.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Chapter0" type="Button" parent="ChapterMenu/VBoxContainer"]
+[node name="Chapter0" type="Button" parent="ChapterLayer/ChapterMenu/VBoxContainer"]
 custom_minimum_size = Vector2(660, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("13_clkk6")
 theme_override_font_sizes/font_size = 50
 text = "Chapter 0; The Invitation"
 
-[node name="Chapter1" type="Button" parent="ChapterMenu/VBoxContainer"]
+[node name="Chapter1" type="Button" parent="ChapterLayer/ChapterMenu/VBoxContainer"]
 custom_minimum_size = Vector2(660, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("13_clkk6")
 theme_override_font_sizes/font_size = 50
 text = "Chapter 1; Off the Cartesian Plane"
 
-[node name="Chapter2" type="Button" parent="ChapterMenu/VBoxContainer"]
+[node name="CoinBackground" type="ColorRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter1"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 9.0
+offset_right = 1025.0
+offset_bottom = 70.0
+color = Color(0.243137, 0.137255, 0, 0.815686)
+
+[node name="Coindisplay0" type="TextureRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter1/CoinBackground"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 54.0
+offset_bottom = 51.0
+texture = ExtResource("21_v6h6q")
+script = ExtResource("22_e118r")
+
+[node name="Coindisplay1" type="TextureRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter1/CoinBackground"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 11.0
+offset_right = 114.0
+offset_bottom = 51.0
+texture = ExtResource("21_v6h6q")
+script = ExtResource("22_e118r")
+id = 1
+
+[node name="Chapter2" type="Button" parent="ChapterLayer/ChapterMenu/VBoxContainer"]
 custom_minimum_size = Vector2(660, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("13_clkk6")
 theme_override_font_sizes/font_size = 50
 text = "Chapter 2; The Intrusion"
 
-[node name="Chapter3" type="Button" parent="ChapterMenu/VBoxContainer"]
+[node name="CoinBackground2" type="ColorRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter2"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 9.0
+offset_right = 1025.0
+offset_bottom = 70.0
+color = Color(0.243137, 0.137255, 0, 0.815686)
+
+[node name="Coindisplay2" type="TextureRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter2/CoinBackground2"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 54.0
+offset_bottom = 51.0
+texture = ExtResource("21_v6h6q")
+script = ExtResource("22_e118r")
+id = 2
+
+[node name="Coindisplay3" type="TextureRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter2/CoinBackground2"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 11.0
+offset_right = 114.0
+offset_bottom = 51.0
+texture = ExtResource("21_v6h6q")
+script = ExtResource("22_e118r")
+id = 3
+
+[node name="Chapter3" type="Button" parent="ChapterLayer/ChapterMenu/VBoxContainer"]
 custom_minimum_size = Vector2(660, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("13_clkk6")
 theme_override_font_sizes/font_size = 50
 text = "Chapter 3; Red Cube Alone"
 
-[node name="Chapter4" type="Button" parent="ChapterMenu/VBoxContainer"]
+[node name="CoinBackground3" type="ColorRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter3"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 9.0
+offset_right = 1025.0
+offset_bottom = 70.0
+color = Color(0.243137, 0.137255, 0, 0.815686)
+
+[node name="Coindisplay4" type="TextureRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter3/CoinBackground3"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 54.0
+offset_bottom = 51.0
+texture = ExtResource("21_v6h6q")
+script = ExtResource("22_e118r")
+id = 4
+
+[node name="Coindisplay5" type="TextureRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter3/CoinBackground3"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 11.0
+offset_right = 114.0
+offset_bottom = 51.0
+texture = ExtResource("21_v6h6q")
+script = ExtResource("22_e118r")
+id = 5
+
+[node name="Chapter4" type="Button" parent="ChapterLayer/ChapterMenu/VBoxContainer"]
 custom_minimum_size = Vector2(660, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("13_clkk6")
 theme_override_font_sizes/font_size = 50
 text = "Chapter 4; The Destructor"
 
-[node name="Return" type="Button" parent="ChapterMenu"]
+[node name="CoinBackground4" type="ColorRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter4"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 9.0
+offset_right = 1025.0
+offset_bottom = 70.0
+color = Color(0.243137, 0.137255, 0, 0.815686)
+
+[node name="Coindisplay6" type="TextureRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter4/CoinBackground4"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 54.0
+offset_bottom = 51.0
+texture = ExtResource("21_v6h6q")
+script = ExtResource("22_e118r")
+id = 6
+
+[node name="Coindisplay7" type="TextureRect" parent="ChapterLayer/ChapterMenu/VBoxContainer/Chapter4/CoinBackground4"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 11.0
+offset_right = 114.0
+offset_bottom = 51.0
+texture = ExtResource("21_v6h6q")
+script = ExtResource("22_e118r")
+id = 7
+
+[node name="Return" type="Button" parent="ChapterLayer/ChapterMenu"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -491,9 +740,13 @@ text = "Back to Title"
 
 [connection signal="pressed" from="PlayButton" to="." method="playButtonPressed"]
 [connection signal="pressed" from="ChapterSelectButton" to="." method="_on_chapter_select_button_pressed"]
-[connection signal="pressed" from="ChapterMenu/VBoxContainer/Chapter0" to="." method="_on_chapter_pressed" binds= [1]]
-[connection signal="pressed" from="ChapterMenu/VBoxContainer/Chapter1" to="." method="_on_chapter_pressed" binds= [2]]
-[connection signal="pressed" from="ChapterMenu/VBoxContainer/Chapter2" to="." method="_on_chapter_pressed" binds= [3]]
-[connection signal="pressed" from="ChapterMenu/VBoxContainer/Chapter3" to="." method="_on_chapter_pressed" binds= [4]]
-[connection signal="pressed" from="ChapterMenu/VBoxContainer/Chapter4" to="." method="_on_chapter_pressed" binds= [5]]
-[connection signal="pressed" from="ChapterMenu/Return" to="." method="_on_chapter_return_pressed"]
+[connection signal="value_changed" from="SettingsMenu/ColorRect/VBoxContainer/MusicSlider" to="SettingsMenu" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/ColorRect/VBoxContainer/SoundSlider" to="SettingsMenu" method="_on_sound_slider_value_changed"]
+[connection signal="pressed" from="SettingsMenu/PauseButton" to="SettingsMenu" method="togglePauseFall"]
+[connection signal="pressed" from="SettingsMenu/PauseButton/ResumeButton" to="SettingsMenu" method="togglePauseFall"]
+[connection signal="pressed" from="ChapterLayer/ChapterMenu/VBoxContainer/Chapter0" to="." method="_on_chapter_pressed" binds= [1]]
+[connection signal="pressed" from="ChapterLayer/ChapterMenu/VBoxContainer/Chapter1" to="." method="_on_chapter_pressed" binds= [2]]
+[connection signal="pressed" from="ChapterLayer/ChapterMenu/VBoxContainer/Chapter2" to="." method="_on_chapter_pressed" binds= [3]]
+[connection signal="pressed" from="ChapterLayer/ChapterMenu/VBoxContainer/Chapter3" to="." method="_on_chapter_pressed" binds= [4]]
+[connection signal="pressed" from="ChapterLayer/ChapterMenu/VBoxContainer/Chapter4" to="." method="_on_chapter_pressed" binds= [5]]
+[connection signal="pressed" from="ChapterLayer/ChapterMenu/Return" to="." method="_on_chapter_return_pressed"]

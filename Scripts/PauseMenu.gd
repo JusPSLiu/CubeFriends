@@ -7,6 +7,7 @@ extends CanvasLayer
 @export var musicSlider : HSlider
 @export var Fader : AnimationPlayer
 @export var MusicFader : AnimationPlayer
+@export var esc_to_pause : bool = true
 var disablePausing : bool = true
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +26,7 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and !event.is_echo():
-		if (event.keycode == KEY_ESCAPE):
+		if (event.keycode == KEY_ESCAPE and esc_to_pause):
 			if event.pressed:
 				togglePauseFall();
 
