@@ -1314,7 +1314,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-5.962, -80.0]
+"values": [-7.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iefyk"]
@@ -1536,10 +1536,9 @@ This is quite an interesting place.", "RGuys, we don't know anything about this 
 We need to carefully look around to see if we
 can find the temple.", "BYeah, I guess anything that has to do with
 Harold could be dangerous.", "GHow did you forget about that, anyway, Blue
-Cube?", "BIt's not like I can remember everything all the
-time!", "RJust remember, stick together no matter what.", "/", "gWoah that coin looks so shiny.      
+Cube?", "BIt's not like I can remember everything!", "RJust remember, stick together no matter what.", "/", "gWoah that coin looks so shiny.      
 Let's grab it!", "rBut we need to be careful. It looks like
-we would have to split up to get it.", "BIt'll be fine.", "GWe won't be THAT far apart.", "RAlright, you win. We can get the key if you want.", "/", "BWell, this looks like a building.", "gI don't think this looks like the temple Harold
+we would have to split up to get it.", "BIt'll be fine.", "GWe won't be THAT far apart.", "RAlright, you win. We can get the coin if you want.", "/", "BWell, this looks like a building.", "gI don't think this looks like the temple Harold
 described...", "GBut at least it's something.", "ROkay, we can take a short peek, but this time we
 have to stay VERY close together.", "GI'm good with that.", "BFine.", "RJust to be sure you don't do anything rash, 
 I'M staying in front again.", "GFine by me.", "rSo, let's head in.", "/"])
@@ -1584,7 +1583,7 @@ bus = &"Sound"
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("19_5ol6i")
-volume_db = -5.962
+volume_db = -7.0
 autoplay = true
 bus = &"Music"
 

@@ -726,6 +726,35 @@ texture = ExtResource("21_v6h6q")
 script = ExtResource("22_e118r")
 id = 7
 
+[node name="SkipLevels" type="CheckButton" parent="ChapterLayer/ChapterMenu"]
+offset_left = 914.0
+offset_top = 638.0
+offset_right = 958.0
+offset_bottom = 662.0
+focus_mode = 0
+
+[node name="Label" type="Label" parent="ChapterLayer/ChapterMenu/SkipLevels"]
+layout_mode = 0
+offset_left = -134.0
+offset_top = 4.0
+offset_right = 378.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("13_clkk6")
+theme_override_font_sizes/font_size = 19
+text = "Show All Levels"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ChapterLayer/ChapterMenu/SkipLevels"]
+layout_mode = 0
+offset_left = -144.0
+offset_top = 26.0
+offset_right = 368.0
+offset_bottom = 38.0
+theme_override_fonts/font = ExtResource("13_clkk6")
+theme_override_font_sizes/font_size = 11
+text = "(in case somebody doesn't allow cookie save data)"
+horizontal_alignment = 1
+
 [node name="Return" type="Button" parent="ChapterLayer/ChapterMenu"]
 layout_mode = 1
 anchors_preset = 2
@@ -750,4 +779,5 @@ text = "Back to Title"
 [connection signal="pressed" from="ChapterLayer/ChapterMenu/VBoxContainer/Chapter2" to="." method="_on_chapter_pressed" binds= [3]]
 [connection signal="pressed" from="ChapterLayer/ChapterMenu/VBoxContainer/Chapter3" to="." method="_on_chapter_pressed" binds= [4]]
 [connection signal="pressed" from="ChapterLayer/ChapterMenu/VBoxContainer/Chapter4" to="." method="_on_chapter_pressed" binds= [5]]
+[connection signal="toggled" from="ChapterLayer/ChapterMenu/SkipLevels" to="." method="_on_skip_levels_toggled"]
 [connection signal="pressed" from="ChapterLayer/ChapterMenu/Return" to="." method="_on_chapter_return_pressed"]

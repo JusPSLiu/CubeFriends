@@ -6,6 +6,7 @@ extends ColorRect
 @export var buttonSound : AudioStreamPlayer
 @export var ChapterButtons : Array[Button]
 @export var BackToTitle : Button
+@export var maxLvl : int = 3
 
 var waiting : bool = false
 
@@ -49,3 +50,14 @@ func _on_chapter_pressed(arg):
 		Fader.play("FadeOut")
 		await Fader.animation_finished
 		get_tree().change_scene_to_file("res://Scenes/Levels/level"+str(arg)+".tscn")
+
+
+func _on_skip_levels_toggled(toggled_on):
+	if (toggled_on):
+		for i in range(ChapterButtons.size()):
+			if (i < maxLvl):
+				ChapterButtons[i].show()
+	else:
+		for i in range(ChapterButtons.size()):
+			if (i >= Singleton.unlockedLevel):
+				ChapterButtons[i].hide()

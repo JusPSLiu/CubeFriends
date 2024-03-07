@@ -80,7 +80,7 @@ func changeCurrentDialogue(index):
 
 func _input(event : InputEvent):
 	if (speaking):
-		if ((event is InputEventKey and event.is_action_released("ui_accept")) or (event is InputEventMouseButton and event.is_action_pressed("clicky"))):
+		if ((event is InputEventKey and event.is_action_released("ui_accept")) or (event is InputEventMouseButton and event.is_action_released("clicky") and (event.position.x < 1144 or event.position.y > 136))):
 			if (loadingIn):
 				if (Singleton.enabledTextSkip):
 					textCurrentlyDisplayed = text.visible_characters * 0.4
