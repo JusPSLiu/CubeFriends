@@ -9,6 +9,7 @@ func _on_body_entered(body):
 		if (active and body.is_in_group("player")):
 			player.power_up()
 			visible = false
+			active = false
 			sound.play()
 			await sound.finished
 			for child in get_children():

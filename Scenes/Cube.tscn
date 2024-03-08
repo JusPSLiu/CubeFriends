@@ -7,7 +7,7 @@ custom_solver_bias = 1.0
 size = Vector2(60, 62)
 
 [node name="Cube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteR2", "casteL", "casteL2", "collider") groups=["player"]]
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_q1wqg")
 casteR = NodePath("RayCastR")
 casteR2 = NodePath("RayCastRTop")

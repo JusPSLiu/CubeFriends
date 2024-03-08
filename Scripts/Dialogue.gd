@@ -50,10 +50,18 @@ func setSpeaker(speaker):
 			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/BlueCube.png")
 			dialogueSounds.set_stream(load("res://Sounds/UI/Blue.wav"))
 			dialogueSounds.play()
+		'n':
+			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/NMECube.png")
+			dialogueSounds.set_stream(load("res://Sounds/UI/impostorBlue.wav"))
+			dialogueSounds.play()
 		_:
 			SpeakerImage.texture = load("res://Art/Cubes/HoloCube1.png")
 	if (speaker == speaker.to_lower()):
-		CutsceneAnimator.play(String.chr(currentDialogue+65))
+		if (currentDialogue > 61):
+			CutsceneAnimator.play(str(currentDialogue))
+		else:
+			#I thought this system was clever until i ran out of chars lol
+			CutsceneAnimator.play(String.chr(currentDialogue+65))
 
 func changeCurrentDialogue(index):
 	if (index < dialogue.size() and dialogue[index] != "/"):
@@ -106,11 +114,11 @@ func _on_end_area_entered(area):
 			start_dialogue()
 
 func _on_area_entered(area, index):
-	player.disable_children()
-	show()
-	currentDialogue = index
 	if (!speaking):
 		if (area.is_in_group("player")):
+			player.disable_children()
+			show()
+			currentDialogue = index
 			start_dialogue()
 
 func toNextLevel():

@@ -1,26 +1,26 @@
-[gd_scene load_steps=43 format=3 uid="uid://d12dpgape0x1i"]
+[gd_scene load_steps=43 format=3 uid="uid://dfdfhrtx7wrbt"]
 
-[ext_resource type="FontFile" uid="uid://blvljxujr15rm" path="res://Art/Fonts/born2bsporty-fs.regular.otf" id="3_qx2e8"]
-[ext_resource type="Texture2D" uid="uid://yects5t4ya4e" path="res://Art/Tilesets/dirtTiles.png" id="9_3kvsl"]
-[ext_resource type="Texture2D" uid="uid://s06lqild8067" path="res://Art/Tilesets/grassTiles.png" id="10_8cqty"]
-[ext_resource type="Texture2D" uid="uid://cta0l2binitxg" path="res://Art/Tilesets/rockTiles.png" id="11_aolk7"]
-[ext_resource type="Texture2D" uid="uid://bbr1kseblj2w5" path="res://Art/Tilesets/woodTiles.png" id="12_8f3n8"]
-[ext_resource type="Texture2D" uid="uid://0bdatr1lvgy2" path="res://Art/Tilesets/darkenTiles.png" id="13_bam8c"]
-[ext_resource type="FontFile" uid="uid://d2esgt82wfu1x" path="res://Art/Fonts/hasting-dee-quickest.regular.otf" id="14_7kc2k"]
-[ext_resource type="Script" path="res://Scripts/Player/CubeController.gd" id="15_g384l"]
-[ext_resource type="AudioStream" uid="uid://bd5emq141sjg1" path="res://Sounds/Music/finalbossfinal.ogg" id="16_ctlf0"]
-[ext_resource type="AudioStream" uid="uid://lin15kie5m2k" path="res://Sounds/jump.wav" id="16_gwiba"]
-[ext_resource type="PackedScene" uid="uid://coraifaj74muf" path="res://Scenes/Cube.tscn" id="17_5kbig"]
-[ext_resource type="Texture2D" uid="uid://1p3376112nki" path="res://Art/Cubes/RedCube.png" id="18_svdsi"]
-[ext_resource type="Texture2D" uid="uid://cyiid8f2l1ujp" path="res://Art/Cubes/GreenCube.png" id="19_wsbgy"]
-[ext_resource type="Texture2D" uid="uid://ikwv2uwe6h8l" path="res://Art/Cubes/BlueCube.png" id="20_gxpw6"]
-[ext_resource type="Script" path="res://Scripts/Dialogue.gd" id="25_8flgi"]
-[ext_resource type="AudioStream" uid="uid://dnd5ue2jwhfw4" path="res://Sounds/UI/red.wav" id="26_fafdr"]
-[ext_resource type="PackedScene" uid="uid://cqx28sd66x8xf" path="res://Scenes/ScreenFx/PauseMenu.tscn" id="28_rd2rs"]
-[ext_resource type="PackedScene" uid="uid://bm67c4ebptsl8" path="res://Scenes/ScreenFx/Fader.tscn" id="29_qwuq0"]
+[ext_resource type="Texture2D" uid="uid://yects5t4ya4e" path="res://Art/Tilesets/dirtTiles.png" id="1_lxv31"]
+[ext_resource type="Texture2D" uid="uid://s06lqild8067" path="res://Art/Tilesets/grassTiles.png" id="2_ksc51"]
+[ext_resource type="Texture2D" uid="uid://cta0l2binitxg" path="res://Art/Tilesets/rockTiles.png" id="3_yxm37"]
+[ext_resource type="Texture2D" uid="uid://bbr1kseblj2w5" path="res://Art/Tilesets/woodTiles.png" id="4_borw7"]
+[ext_resource type="Texture2D" uid="uid://0bdatr1lvgy2" path="res://Art/Tilesets/darkenTiles.png" id="5_t6n7c"]
+[ext_resource type="FontFile" uid="uid://d2esgt82wfu1x" path="res://Art/Fonts/hasting-dee-quickest.regular.otf" id="6_lctuo"]
+[ext_resource type="Script" path="res://Scripts/Player/CubeController.gd" id="7_ro643"]
+[ext_resource type="AudioStream" uid="uid://lin15kie5m2k" path="res://Sounds/jump.wav" id="8_jqs8b"]
+[ext_resource type="PackedScene" uid="uid://coraifaj74muf" path="res://Scenes/Cube.tscn" id="9_iet3q"]
+[ext_resource type="Texture2D" uid="uid://1p3376112nki" path="res://Art/Cubes/RedCube.png" id="10_m7w0y"]
+[ext_resource type="Texture2D" uid="uid://cyiid8f2l1ujp" path="res://Art/Cubes/GreenCube.png" id="11_epbmn"]
+[ext_resource type="Texture2D" uid="uid://ikwv2uwe6h8l" path="res://Art/Cubes/BlueCube.png" id="12_vfmk6"]
+[ext_resource type="Script" path="res://Scripts/Dialogue.gd" id="13_cb5yo"]
+[ext_resource type="FontFile" uid="uid://blvljxujr15rm" path="res://Art/Fonts/born2bsporty-fs.regular.otf" id="14_o0vwl"]
+[ext_resource type="AudioStream" uid="uid://dnd5ue2jwhfw4" path="res://Sounds/UI/red.wav" id="15_6n6xl"]
+[ext_resource type="AudioStream" uid="uid://baj6ny2gg08xs" path="res://Sounds/Music/Abberation.ogg" id="16_wsll1"]
+[ext_resource type="PackedScene" uid="uid://cqx28sd66x8xf" path="res://Scenes/ScreenFx/PauseMenu.tscn" id="17_rk72j"]
+[ext_resource type="PackedScene" uid="uid://bm67c4ebptsl8" path="res://Scenes/ScreenFx/Fader.tscn" id="18_rp7qa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3htky"]
-texture = ExtResource("9_3kvsl")
+texture = ExtResource("1_lxv31")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -129,7 +129,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_331ph"]
 resource_name = "Grass"
-texture = ExtResource("10_8cqty")
+texture = ExtResource("2_ksc51")
 texture_region_size = Vector2i(64, 64)
 use_texture_padding = false
 0:0/0 = 0
@@ -234,7 +234,7 @@ use_texture_padding = false
 0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8esld"]
-texture = ExtResource("11_aolk7")
+texture = ExtResource("3_yxm37")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -342,7 +342,7 @@ texture_region_size = Vector2i(64, 64)
 2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lifbe"]
-texture = ExtResource("12_8f3n8")
+texture = ExtResource("4_borw7")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -458,7 +458,7 @@ sources/2 = SubResource("TileSetAtlasSource_8esld")
 sources/3 = SubResource("TileSetAtlasSource_lifbe")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jbx1h"]
-texture = ExtResource("10_8cqty")
+texture = ExtResource("2_ksc51")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -488,7 +488,7 @@ texture_region_size = Vector2i(64, 64)
 2:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkg4c"]
-texture = ExtResource("9_3kvsl")
+texture = ExtResource("1_lxv31")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -518,7 +518,7 @@ texture_region_size = Vector2i(64, 64)
 2:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8yrf4"]
-texture = ExtResource("11_aolk7")
+texture = ExtResource("3_yxm37")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -548,7 +548,7 @@ texture_region_size = Vector2i(64, 64)
 2:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rhfr"]
-texture = ExtResource("12_8f3n8")
+texture = ExtResource("4_borw7")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -585,7 +585,7 @@ sources/3 = SubResource("TileSetAtlasSource_8yrf4")
 sources/4 = SubResource("TileSetAtlasSource_2rhfr")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uc0xe"]
-texture = ExtResource("13_bam8c")
+texture = ExtResource("5_t6n7c")
 texture_region_size = Vector2i(64, 64)
 0:1/0 = 0
 1:1/0 = 0
@@ -924,7 +924,7 @@ offset_left = -187.494
 offset_top = -71.0
 offset_right = 172.506
 offset_bottom = -1.0
-theme_override_fonts/font = ExtResource("14_7kc2k")
+theme_override_fonts/font = ExtResource("6_lctuo")
 theme_override_font_sizes/font_size = 70
 text = "Chapter 0"
 
@@ -934,7 +934,7 @@ offset_left = 73.0
 offset_top = 76.0
 offset_right = 289.0
 offset_bottom = 106.0
-theme_override_fonts/font = ExtResource("14_7kc2k")
+theme_override_fonts/font = ExtResource("6_lctuo")
 theme_override_font_sizes/font_size = 30
 text = "The Invitation"
 
@@ -942,14 +942,14 @@ text = "The Invitation"
 process_mode = 4
 visible = false
 position = Vector2(763, 368)
-script = ExtResource("15_g384l")
+script = ExtResource("7_ro643")
 cubes = [NodePath("RedCube"), NodePath("GreenCube"), NodePath("BlueCube")]
 camera = NodePath("Camera2D")
 camDistPx = -96
 jumpPlayer = NodePath("jumpPlayer")
 
 [node name="jumpPlayer" type="AudioStreamPlayer" parent="CubeController"]
-stream = ExtResource("16_gwiba")
+stream = ExtResource("8_jqs8b")
 volume_db = -10.0
 max_polyphony = 2
 bus = &"Sound"
@@ -958,24 +958,24 @@ bus = &"Sound"
 limit_top = 0
 limit_bottom = 736
 
-[node name="RedCube" parent="CubeController" instance=ExtResource("17_5kbig")]
+[node name="RedCube" parent="CubeController" instance=ExtResource("9_iet3q")]
 position = Vector2(0, 176)
 floor_stop_on_slope = false
 
 [node name="RedSprite" type="Sprite2D" parent="CubeController/RedCube"]
-texture = ExtResource("18_svdsi")
+texture = ExtResource("10_m7w0y")
 
-[node name="GreenCube" parent="CubeController" instance=ExtResource("17_5kbig")]
+[node name="GreenCube" parent="CubeController" instance=ExtResource("9_iet3q")]
 position = Vector2(-96, 176)
 
 [node name="GreenSprite" type="Sprite2D" parent="CubeController/GreenCube"]
-texture = ExtResource("19_wsbgy")
+texture = ExtResource("11_epbmn")
 
-[node name="BlueCube" parent="CubeController" instance=ExtResource("17_5kbig")]
+[node name="BlueCube" parent="CubeController" instance=ExtResource("9_iet3q")]
 position = Vector2(-192, 176)
 
 [node name="BlueSprite" type="Sprite2D" parent="CubeController/BlueCube"]
-texture = ExtResource("20_gxpw6")
+texture = ExtResource("12_vfmk6")
 
 [node name="EndArea" type="Area2D" parent="."]
 position = Vector2(2807, 310)
@@ -1002,15 +1002,15 @@ autoplay = "StartUp"
 
 [node name="Red" type="Sprite2D" parent="Cutscene/CutsceneThings"]
 position = Vector2(1062, 544)
-texture = ExtResource("18_svdsi")
+texture = ExtResource("10_m7w0y")
 
 [node name="Green" type="Sprite2D" parent="Cutscene/CutsceneThings"]
 position = Vector2(667, 544)
-texture = ExtResource("19_wsbgy")
+texture = ExtResource("11_epbmn")
 
 [node name="Blue" type="Sprite2D" parent="Cutscene/CutsceneThings"]
 position = Vector2(512, 544)
-texture = ExtResource("20_gxpw6")
+texture = ExtResource("12_vfmk6")
 
 [node name="CutsceneSounds" type="AudioStreamPlayer" parent="Cutscene"]
 volume_db = -10.0
@@ -1024,7 +1024,7 @@ libraries = {
 
 [node name="Dialogue" type="CanvasLayer" parent="DialogueController" node_paths=PackedStringArray("dialogueSounds", "text", "SpeakerImage", "player", "dialogueAnimator", "CutsceneAnimator", "CutsceneThings", "properCamera", "Fader", "MusicFader")]
 visible = false
-script = ExtResource("25_8flgi")
+script = ExtResource("13_cb5yo")
 dialogueSounds = NodePath("DialogueSounds")
 text = NodePath("SpeakerImage/Label")
 lettersPerSecond = 40.0
@@ -1037,7 +1037,14 @@ properCamera = NodePath("../../CubeController/Camera2D")
 NextLevel = "../Screens/TitleScreen.tscn"
 Fader = NodePath("../../Fader")
 MusicFader = NodePath("../../MusicPlayer/MusicFader")
-dialogue = Array[String](["rDialogue", "/"])
+dialogue = Array[String](["RI can't believe...", "RThey're actually...", "RHow did I let this...", "/s", "HRed Block, are you there?", "HRed Block do you read me?", "/s", "RDAMN IT! I COULD'VE SAVED THEM!", "RI JUST LET MY GUARD DOWN FOR A SECOND,
+and then...", "RIf it weren't for me, they would still be here.", "/s", "RWhat can I...", "/s", "R...", "RThey didn't deserve this. The way they treated me... and in return I just...", "RNo.           
+They can't be gone...        
+Not completely...", "RThat Destructor, when it saw me, it didn't
+attack.", "RCould that have been them?            
+Or... whatever's left...?", "/s", "RHeh. Green Cube would've liked this.", "R...", "/s", "RI told them...", "RBut when it really mattered...
+I did nothing...", "RWhat kind of a friend am I?", "/s", "HRed Prism, Red Square Prism...
+Are you out there?", "HWhat am I even doing...", "RI... I'm here.", "H(thudding noises)", "RHubert? Oh no did the Destructor...", "HNo! No. I was just a little surprised, is all.", "ROh. That's, good to hear.", ""])
 
 [node name="DialogueBox" type="ColorRect" parent="DialogueController/Dialogue"]
 offset_top = -289.0
@@ -1060,7 +1067,7 @@ offset_left = 181.0
 offset_top = 32.0
 offset_right = 309.0
 offset_bottom = 160.0
-texture = ExtResource("18_svdsi")
+texture = ExtResource("10_m7w0y")
 
 [node name="Label" type="Label" parent="DialogueController/Dialogue/SpeakerImage"]
 layout_mode = 0
@@ -1069,16 +1076,16 @@ offset_top = -21.0
 offset_right = 854.0
 offset_bottom = 127.0
 theme_override_constants/line_spacing = -4
-theme_override_fonts/font = ExtResource("3_qx2e8")
+theme_override_fonts/font = ExtResource("14_o0vwl")
 theme_override_font_sizes/font_size = 48
 
 [node name="DialogueSounds" type="AudioStreamPlayer" parent="DialogueController/Dialogue"]
-stream = ExtResource("26_fafdr")
+stream = ExtResource("15_6n6xl")
 bus = &"Sound"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("16_ctlf0")
+stream = ExtResource("16_wsll1")
 autoplay = true
 bus = &"Music"
 
@@ -1087,11 +1094,11 @@ libraries = {
 "": SubResource("AnimationLibrary_iefyk")
 }
 
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("Fader", "MusicFader") instance=ExtResource("28_rd2rs")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("Fader", "MusicFader") instance=ExtResource("17_rk72j")]
 Fader = NodePath("../Fader")
 MusicFader = NodePath("../MusicPlayer/MusicFader")
 
-[node name="Fader" parent="." instance=ExtResource("29_qwuq0")]
+[node name="Fader" parent="." instance=ExtResource("18_rp7qa")]
 
 [connection signal="body_entered" from="EndArea" to="DialogueController/Dialogue" method="_on_end_area_entered"]
 [connection signal="body_entered" from="ExampleArea" to="DialogueController/Dialogue" method="_on_end_area_entered"]

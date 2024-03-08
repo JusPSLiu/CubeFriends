@@ -15,7 +15,6 @@ func _ready():
 		currentLevel = unlockedLevel
 		if currentLevel > numLevels:
 			currentLevel = numLevels
-		print(currentLevel)
 		
 		#get the textskip, sound volume, and music volume now
 		enabledTextSkip = data["skp"]

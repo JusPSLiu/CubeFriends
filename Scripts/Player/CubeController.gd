@@ -14,6 +14,7 @@ var PowerBoom = preload("res://Scenes/boom_sprite.tscn")
 var timeBtwnSounds : float = 0.0
 var leftBlockArray : Array[int]
 var rightBlockArray : Array[int]
+var moving_back_for_cutscene : bool = false
 var stuck = 0
 var disabled = false
 
@@ -66,9 +67,9 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	elif (stuck == 1):
+	elif (stuck == 1 || moving_back_for_cutscene):
 		#stuck type 1 is right side blocked
-		if (direction < 0):
+		if (direction < 0 || moving_back_for_cutscene):
 			velocity.x = -SPEED
 		else:
 			velocity.x = 0
@@ -95,6 +96,9 @@ func child_stuck(type, id):
 		if (!rightBlockArray.has(id)):
 			rightBlockArray.append(id)
 	elif (stuck == 2):
+		if (moving_back_for_cutscene):
+			moving_back_for_cutscene = false
+			stuck = 3
 		if (!leftBlockArray.has(id)):
 			leftBlockArray.append(id)
 	else:
@@ -196,3 +200,11 @@ func depower(index:int):
 		reposition(0)
 		#reset the physics things
 		set_cube_array_controls()
+
+func back_up(direction : int):
+	var lastcube : int = cubes.size()-1
+	if (!cubes[lastcube].leftSideColliding()):
+		moving_back_for_cutscene = true
+
+func force_jump(index:int):
+	cubes[index].force_jump()

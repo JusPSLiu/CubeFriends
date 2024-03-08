@@ -1581,7 +1581,7 @@ bus = &"Sound"
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("19_5ol6i")
-volume_db = -80.0
+volume_db = -7.0
 autoplay = true
 bus = &"Music"
 

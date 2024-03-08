@@ -23,7 +23,7 @@ animations = [{
 }]
 
 [node name="HoloCube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteR2", "casteL", "casteL2", "collider", "BoomSprite") groups=["holocube", "player"]]
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_ppgbc")
 casteR = NodePath("RayCastR")
 casteR2 = NodePath("RayCastRTop")

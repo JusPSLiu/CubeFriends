@@ -111,3 +111,8 @@ func checkIfStuck() -> int:
 
 func hit_nme():
 	emit_signal("depower", id)
+
+func force_jump():
+	if (is_on_floor()):
+		velocity.y = JUMP_VELOCITY
+		emit_signal("jumpsound")
