@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvp5kif7js136"]
+
+[ext_resource type="Script" path="res://Scripts/Pwrup.gd" id="1_son0x"]
+[ext_resource type="Texture2D" uid="uid://d4c0sf8aia4yo" path="res://Art/pwrup.png" id="2_u33io"]
+[ext_resource type="AudioStream" uid="uid://dpiq4la4nlhei" path="res://Sounds/pwrup.wav" id="3_bfqf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urrq"]
+size = Vector2(67.5, 70.375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w58m"]
+atlas = ExtResource("2_u33io")
+region = Rect2(0, 0, 37, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q56k"]
+atlas = ExtResource("2_u33io")
+region = Rect2(37, 0, 37, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdjgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w58m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q56k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Pwrup" type="Area2D" node_paths=PackedStringArray("sound")]
+position = Vector2(519, 536)
+script = ExtResource("1_son0x")
+sound = NodePath("PwrupSound")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0urrq")
+
+[node name="PwrupSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qdjgp")
+autoplay = "default"
+frame_progress = 0.494556
+
+[node name="PwrupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bfqf3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

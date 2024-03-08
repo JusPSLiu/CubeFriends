@@ -727,6 +727,7 @@ script = ExtResource("22_e118r")
 id = 7
 
 [node name="SkipLevels" type="CheckButton" parent="ChapterLayer/ChapterMenu"]
+layout_mode = 0
 offset_left = 914.0
 offset_top = 638.0
 offset_right = 958.0

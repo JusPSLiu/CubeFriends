@@ -1447,14 +1447,12 @@ texture = ExtResource("11_2dyvu")
 [node name="RedCube" parent="CubeController" instance=ExtResource("10_eiy42")]
 position = Vector2(-128, 176)
 floor_stop_on_slope = false
-thisJumpLetter = "o"
 
 [node name="RedSprite" type="Sprite2D" parent="CubeController/RedCube"]
 texture = ExtResource("12_erseu")
 
 [node name="GreenCube" parent="CubeController" instance=ExtResource("10_eiy42")]
 position = Vector2(-256, 176)
-thisJumpLetter = "i"
 
 [node name="GreenSprite" type="Sprite2D" parent="CubeController/GreenCube"]
 texture = ExtResource("13_l51td")
@@ -1583,7 +1581,7 @@ bus = &"Sound"
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("19_5ol6i")
-volume_db = -7.0
+volume_db = -80.0
 autoplay = true
 bus = &"Music"
 

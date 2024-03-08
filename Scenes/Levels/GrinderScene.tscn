@@ -1970,14 +1970,12 @@ texture = ExtResource("17_t5cah")
 
 [node name="GreenCube" parent="CubeController" instance=ExtResource("16_rvpvo")]
 position = Vector2(-96, 176)
-thisJumpLetter = "o"
 
 [node name="GreenSprite" type="Sprite2D" parent="CubeController/GreenCube"]
 texture = ExtResource("18_1o62n")
 
 [node name="BlueCube" parent="CubeController" instance=ExtResource("16_rvpvo")]
 position = Vector2(-192, 176)
-thisJumpLetter = "i"
 
 [node name="BlueSprite" type="Sprite2D" parent="CubeController/BlueCube"]
 texture = ExtResource("19_nxg06")

@@ -7,9 +7,11 @@ const SPEED = 300.0
 @export var camDistPx : int = 0
 @export var cubeDist : int = 96
 @export var jumpPlayer : AudioStreamPlayer
+
+var PowerCube = preload("res://Scenes/PowerCube.tscn")
+var PowerBoom = preload("res://Scenes/boom_sprite.tscn")
+
 var timeBtwnSounds : float = 0.0
-
-
 var leftBlockArray : Array[int]
 var rightBlockArray : Array[int]
 var stuck = 0
@@ -47,13 +49,11 @@ func reposition(id:int):
 	camera.position.x = cubes[0].position.x + camDistPx
 
 func _ready():
-	var id=0
 	for cube in cubes:
-		cube.id = id
 		cube.connect("help_stuck", child_stuck)
 		cube.connect("unstuck", child_unstuck)
 		cube.connect("jumpsound", jump_sound)
-		id+=1
+	set_cube_array_controls()
 	reposition(0)
 
 func _physics_process(delta):
@@ -149,3 +149,50 @@ func enable_children():
 	stuck = 0
 	disabled = false
 	reposition(0)
+
+func set_cube_array_controls():
+	for index in range(cubes.size()):
+		cubes[index].thisJumpLetter = str(index)
+		cubes[index].id = index
+
+
+func power_up():
+	var newCube = PowerCube.instantiate()
+	#reposition everything
+	newCube.position = cubes[0].position
+	newCube.position.x += cubeDist
+	camDistPx -= cubeDist
+	#connect it
+	newCube.connect("help_stuck", child_stuck)
+	newCube.connect("unstuck", child_unstuck)
+	newCube.connect("jumpsound", jump_sound)
+	newCube.connect("depower", depower)
+	#add it to the cubes
+	call_deferred("add_child", newCube)
+	cubes.insert(0,newCube)
+	#reset the physics things
+	reposition(0)
+	set_cube_array_controls()
+
+func depower(index:int):
+	#failsafe
+	if (index >= 0 && index < cubes.size()):
+		#check if stucc
+		if (leftBlockArray.has(index)):
+			leftBlockArray.erase(index)
+			resetLeftArray()
+		if (rightBlockArray.has(index)):
+			rightBlockArray.erase(index)
+			resetRightArray()
+		#put bomb in place
+		var boom = PowerBoom.instantiate()
+		boom.position = cubes[index].position + position
+		boom.linear_velocity = cubes[index].velocity + velocity
+		get_parent().add_child(boom)
+		#reposition everything
+		remove_child(cubes[index])
+		cubes.remove_at(index)
+		camDistPx += cubeDist
+		reposition(0)
+		#reset the physics things
+		set_cube_array_controls()

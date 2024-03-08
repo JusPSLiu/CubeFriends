@@ -39,15 +39,15 @@ func _process(delta):
 func setSpeaker(speaker):
 	match(speaker.to_lower()):
 		'r':
-			SpeakerImage.texture = load("res://Art/Cubes/RedCube.png")
+			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/RedCube.png")
 			dialogueSounds.set_stream(load("res://Sounds/UI/red.wav"))
 			dialogueSounds.play()
 		'g':
-			SpeakerImage.texture = load("res://Art/Cubes/GreenCube.png")
+			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/GreenCube.png")
 			dialogueSounds.set_stream(load("res://Sounds/UI/Green.wav"))
 			dialogueSounds.play()
 		'b':
-			SpeakerImage.texture = load("res://Art/Cubes/BlueCube.png")
+			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/BlueCube.png")
 			dialogueSounds.set_stream(load("res://Sounds/UI/Blue.wav"))
 			dialogueSounds.play()
 		_:
