@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://byk3req437rbo"]
+[gd_scene load_steps=7 format=3 uid="uid://byk3req437rbo"]
 
 [ext_resource type="Script" path="res://Scripts/Player/ChildCube.gd" id="1_ppgbc"]
 [ext_resource type="Texture2D" uid="uid://css01gj5wel4" path="res://Art/Cubes/HoloCube1.png" id="2_xov5q"]
 [ext_resource type="Texture2D" uid="uid://dy08l4jc3y15m" path="res://Art/Cubes/HoloCube2.png" id="3_yvtha"]
+[ext_resource type="Texture2D" uid="uid://caoor8tovd0c" path="res://Art/Cubes/light.png" id="4_wv07p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amibf"]
 custom_solver_bias = 1.0
@@ -22,7 +23,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="HoloCube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteR2", "casteL", "casteL2", "collider", "BoomSprite") groups=["holocube", "player"]]
+[node name="HoloCube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteR2", "casteL", "casteL2", "collider") groups=["holocube", "player"]]
 collision_mask = 2
 script = ExtResource("1_ppgbc")
 casteR = NodePath("RayCastR")
@@ -30,7 +31,6 @@ casteR2 = NodePath("RayCastRTop")
 casteL = NodePath("RayCastL")
 casteL2 = NodePath("RayCastLTop")
 collider = NodePath("CubeCollisionShape")
-BoomSprite = NodePath("")
 
 [node name="CubeCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -63,3 +63,8 @@ hit_from_inside = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dikba")
 autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2.29329, 2.47986)
+color = Color(0, 0.819608, 0.972549, 1)
+texture = ExtResource("4_wv07p")

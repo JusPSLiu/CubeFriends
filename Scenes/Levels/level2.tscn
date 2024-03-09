@@ -1565,6 +1565,7 @@ offset_bottom = 160.0
 texture = ExtResource("12_erseu")
 
 [node name="Label" type="Label" parent="DialogueController/Dialogue/SpeakerImage"]
+texture_filter = 2
 layout_mode = 0
 offset_left = 153.0
 offset_top = -21.0

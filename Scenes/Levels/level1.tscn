@@ -2165,6 +2165,7 @@ position = Vector2(1377, 368)
 
 [node name="ChapterName" type="Label" parent="CutsceneCamera"]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 1
 offset_left = -200.0
 offset_top = -71.0
 offset_right = 160.0
@@ -2212,14 +2213,12 @@ texture = ExtResource("3_fux8q")
 
 [node name="GreenCube" parent="CubeController" instance=ExtResource("4_4fmdq")]
 position = Vector2(-96, 176)
-thisJumpLetter = "o"
 
 [node name="GreenSprite" type="Sprite2D" parent="CubeController/GreenCube"]
 texture = ExtResource("5_4eoeo")
 
 [node name="BlueCube" parent="CubeController" instance=ExtResource("4_4fmdq")]
 position = Vector2(-192, 176)
-thisJumpLetter = "i"
 
 [node name="BlueSprite" type="Sprite2D" parent="CubeController/BlueCube"]
 texture = ExtResource("7_nebgq")
@@ -2373,6 +2372,7 @@ offset_bottom = 160.0
 texture = ExtResource("3_fux8q")
 
 [node name="Label" type="Label" parent="DialogueController/Dialogue/SpeakerImage"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 153.0
 offset_top = -21.0
