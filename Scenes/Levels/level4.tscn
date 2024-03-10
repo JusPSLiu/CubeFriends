@@ -817,7 +817,6 @@ libraries = {
 }
 
 [node name="Dialogue" type="CanvasLayer" parent="DialogueController" node_paths=PackedStringArray("dialogueSounds", "text", "SpeakerImage", "player", "dialogueAnimator", "CutsceneAnimator", "CutsceneThings", "properCamera", "Fader", "MusicFader")]
-visible = false
 script = ExtResource("13_cb5yo")
 dialogueSounds = NodePath("DialogueSounds")
 text = NodePath("SpeakerImage/Label")
@@ -832,9 +831,11 @@ NextLevel = "../Screens/TitleScreen.tscn"
 Fader = NodePath("../../Fader")
 MusicFader = NodePath("../../MusicPlayer/MusicFader")
 humanthere = false
-dialogue = Array[String](["RI can't believe...", "RThey're actually...", "RHow did I let this...", "/ALRIGHT So that's it for the game so far.
+dialogue = Array[String](["RI can't believe...", "RThey're actually...", "RHow did I let this...", "lALRIGHT So that's it for the game so far.
 Yes I've been speaking through the
-holograms this whole time.", "HRed Block, are you there?", "HRed Block do you read me?", "R.....              ", "/s", "RDAMN IT! I COULD'VE SAVED THEM!", "RI JUST LET MY GUARD DOWN FOR A SECOND,
+holograms this whole time.", "lI'm definitely not going to finish this game
+before the jam ends, but what does
+everybody think of it so far?", "//~", "HRed Block, are you there?", "HRed Block do you read me?", "R.....              ", "/s", "RDAMN IT! I COULD'VE SAVED THEM!", "RI JUST LET MY GUARD DOWN FOR A SECOND,
 and then...", "RIf I weren't so weak, they would still be here...", "/s", "RWhat can I...", "R...", "/s", "RThey didn't deserve this. The
 way they treated me... and in
 return I just...", "RNo.           
@@ -847,12 +848,11 @@ Are you out there?", "HWhat am I even doing...", "RI... I'm here.", "H(thudding 
 you would work.", "RWhat do you mean?", "TIt concentrates power, specifically
 that of the solidified battle holograms of the-", "SAnyway, that power can actually harm it.
 That's the one thing that it knows it's weak to.", "SThat's why...
-Why it didn't kill you when it attacked.", "R...            ", ""])
+Why it didn't kill you when it attacked.", "R...            "])
 
 [node name="DialogueBox" type="ColorRect" parent="DialogueController/Dialogue"]
-offset_top = -289.0
 offset_right = 1280.0
-offset_bottom = -97.0
+offset_bottom = 192.0
 color = Color(0, 0, 0, 0.705882)
 
 [node name="DialogueFade" type="TextureRect" parent="DialogueController/Dialogue/DialogueBox"]

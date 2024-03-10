@@ -113,12 +113,11 @@ func setSpeaker(speaker):
 		if (currentDialogue > 61):
 			CutsceneAnimator.play(str(currentDialogue))
 		else:
-			print_debug(str(currentDialogue)+": "+String.chr(currentDialogue+65))
 			#I thought this system was clever until i ran out of chars lol
 			CutsceneAnimator.play(String.chr(currentDialogue+65))
 
 func changeCurrentDialogue(index):
-	if (index < dialogue.size() and dialogue[index] != "/"):
+	if (index < dialogue.size() and dialogue[index] != "/" and dialogue[index] != "//~"):
 		#tell process that it's loading in
 		loadingIn = true
 		#reset the visibility
@@ -127,7 +126,7 @@ func changeCurrentDialogue(index):
 		text.text = dialogue[index].substr(1)
 		setSpeaker(dialogue[index].substr(0,1))
 	else:
-		if (index == dialogue.size()-1 and dialogue[index] == "/"):
+		if (index == dialogue.size()-1 and dialogue[index] == "/") or (index < dialogue.size() and dialogue[index] == "//~"):
 			toNextLevel()
 		speaking = false
 		SpeakerImage.hide()

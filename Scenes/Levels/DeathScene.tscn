@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://dobmp70jo7lwj"]
+[gd_scene load_steps=125 format=3 uid="uid://dobmp70jo7lwj"]
 
 [ext_resource type="Texture2D" uid="uid://dcjat8v2bhujy" path="res://Art/Backgrounds/Pit.png" id="1_kp8y6"]
 [ext_resource type="Texture2D" uid="uid://p2sxntb1ufiv" path="res://Art/Tilesets/woodonTiles.png" id="1_tny3l"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/Dialogue.gd" id="24_286ku"]
 [ext_resource type="FontFile" uid="uid://blvljxujr15rm" path="res://Art/Fonts/born2bsporty-fs.regular.otf" id="25_tlse7"]
 [ext_resource type="AudioStream" uid="uid://dnd5ue2jwhfw4" path="res://Sounds/UI/red.wav" id="26_wvggt"]
+[ext_resource type="AudioStream" uid="uid://cq2gumgfxneya" path="res://Sounds/Music/intrusion.ogg" id="27_rxacv"]
 [ext_resource type="PackedScene" uid="uid://cqx28sd66x8xf" path="res://Scenes/ScreenFx/PauseMenu.tscn" id="28_cuwdk"]
 [ext_resource type="PackedScene" uid="uid://bm67c4ebptsl8" path="res://Scenes/ScreenFx/Fader.tscn" id="29_xki7v"]
 [ext_resource type="Texture2D" uid="uid://caoor8tovd0c" path="res://Art/Cubes/light.png" id="29_xy6bb"]
@@ -1526,7 +1527,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:playing")
+tracks/1/path = NodePath("../RegularMusicPlayer:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1538,7 +1539,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_asjbk"]
 resource_name = "89"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1578,7 +1578,7 @@ tracks/2/keys = {
 tracks/3/type = "animation"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MusicFader")
+tracks/3/path = NodePath("../RegularMusicPlayer/MusicAnimationPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1852,9 +1852,81 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_wd2w6"]
+resource_name = "FadeIn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, -4.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iefyk"]
 _data = {
+"FadeIn": SubResource("Animation_wd2w6"),
 "FadeOut": SubResource("Animation_xrnxx")
+}
+
+[sub_resource type="Animation" id="Animation_luw34"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-4.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6aqxq"]
+_data = {
+"FadeOut": SubResource("Animation_luw34")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrtvh"]
@@ -3799,7 +3871,7 @@ volume_db = -10.0
 max_polyphony = 2
 
 [node name="Camera2D" type="Camera2D" parent="CubeController"]
-position = Vector2(-128, 0)
+position = Vector2(256, 0)
 limit_top = 0
 limit_bottom = 736
 
@@ -3827,11 +3899,6 @@ shape = SubResource("RectangleShape2D_wah76")
 position = Vector2(4617, 603)
 player = NodePath("../CubeController")
 
-[node name="PwrupDELTHISLATER" parent="." node_paths=PackedStringArray("player", "sound") instance=ExtResource("19_uv781")]
-position = Vector2(12965, 485)
-player = NodePath("../CubeController")
-sound = NodePath("../Pwrup/PwrupSound")
-
 [node name="NMEBlue" type="Area2D" parent="."]
 position = Vector2(13362, 240)
 script = ExtResource("18_e8ttg")
@@ -3856,7 +3923,6 @@ libraries = {
 autoplay = "StartUp"
 
 [node name="CutsceneThings" type="Node2D" parent="Cutscene"]
-visible = false
 
 [node name="Red" type="Sprite2D" parent="Cutscene/CutsceneThings"]
 z_index = -1
@@ -3869,7 +3935,6 @@ texture = ExtResource("16_lkxim")
 
 [node name="Blue" type="Sprite2D" parent="Cutscene/CutsceneThings"]
 position = Vector2(1903, 608)
-rotation = 0.174533
 texture = ExtResource("15_thk0f")
 
 [node name="CutsceneSounds" type="AudioStreamPlayer" parent="Cutscene"]
@@ -3895,7 +3960,7 @@ dialogueAnimator = NodePath("..")
 CutsceneAnimator = NodePath("../../Cutscene")
 CutsceneThings = NodePath("../../Cutscene/CutsceneThings")
 properCamera = NodePath("../../CubeController/Camera2D")
-NextLevel = "Level4.tscn"
+NextLevel = "level4.tscn"
 Fader = NodePath("../../Fader")
 MusicFader = NodePath("../../MusicPlayer/MusicFader")
 humanPlayer = NodePath("../../hubert")
@@ -4016,6 +4081,16 @@ bus = &"Music"
 [node name="MusicFader" type="AnimationPlayer" parent="MusicPlayer"]
 libraries = {
 "": SubResource("AnimationLibrary_iefyk")
+}
+
+[node name="RegularMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_rxacv")
+volume_db = -4.0
+autoplay = true
+
+[node name="MusicAnimationPlayer" type="AnimationPlayer" parent="RegularMusicPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_6aqxq")
 }
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("Fader", "MusicFader") instance=ExtResource("28_cuwdk")]
