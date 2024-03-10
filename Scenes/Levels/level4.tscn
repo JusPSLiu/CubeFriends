@@ -832,7 +832,9 @@ NextLevel = "../Screens/TitleScreen.tscn"
 Fader = NodePath("../../Fader")
 MusicFader = NodePath("../../MusicPlayer/MusicFader")
 humanthere = false
-dialogue = Array[String](["RI can't believe...", "RThey're actually...", "RHow did I let this...", "/s", "HRed Block, are you there?", "HRed Block do you read me?", "R.....              ", "/s", "RDAMN IT! I COULD'VE SAVED THEM!", "RI JUST LET MY GUARD DOWN FOR A SECOND,
+dialogue = Array[String](["RI can't believe...", "RThey're actually...", "RHow did I let this...", "/ALRIGHT So that's it for the game so far.
+Yes I've been speaking through the
+holograms this whole time.", "HRed Block, are you there?", "HRed Block do you read me?", "R.....              ", "/s", "RDAMN IT! I COULD'VE SAVED THEM!", "RI JUST LET MY GUARD DOWN FOR A SECOND,
 and then...", "RIf I weren't so weak, they would still be here...", "/s", "RWhat can I...", "R...", "/s", "RThey didn't deserve this. The
 way they treated me... and in
 return I just...", "RNo.           
