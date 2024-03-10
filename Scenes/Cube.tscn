@@ -17,6 +17,7 @@ collider = NodePath("CubeCollisionShape")
 
 [node name="CubeCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
+scale = Vector2(0.9, 1)
 shape = SubResource("RectangleShape2D_amibf")
 
 [node name="RayCastR" type="RayCast2D" parent="."]

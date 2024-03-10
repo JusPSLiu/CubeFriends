@@ -2049,7 +2049,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-5.962, -80.0]
+"values": [0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iefyk"]
@@ -2165,7 +2165,6 @@ position = Vector2(1377, 368)
 
 [node name="ChapterName" type="Label" parent="CutsceneCamera"]
 modulate = Color(1, 1, 1, 0)
-texture_filter = 1
 offset_left = -200.0
 offset_top = -71.0
 offset_right = 160.0
@@ -2389,7 +2388,6 @@ bus = &"Sound"
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("4_0nl54")
-volume_db = -5.962
 autoplay = true
 bus = &"Music"
 

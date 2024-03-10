@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://6fpwnntnclub"]
+[gd_scene load_steps=19 format=3 uid="uid://6fpwnntnclub"]
 
 [ext_resource type="Texture2D" uid="uid://dqx4spbj1cawh" path="res://Art/Cubes/pixelaxplosion.png" id="1_whxlj"]
 [ext_resource type="Script" path="res://Scripts/boom_sprite.gd" id="2_skxr2"]
+[ext_resource type="Texture2D" uid="uid://caoor8tovd0c" path="res://Art/Cubes/light.png" id="3_wd3yc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0slch"]
 atlas = ExtResource("1_whxlj")
@@ -119,3 +120,8 @@ sprite_frames = SubResource("SpriteFrames_qkhet")
 autoplay = "default"
 frame = 13
 frame_progress = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(3, 3)
+color = Color(0, 0.733333, 0.952941, 1)
+texture = ExtResource("3_wd3yc")

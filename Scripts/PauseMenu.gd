@@ -8,10 +8,13 @@ extends CanvasLayer
 @export var Fader : AnimationPlayer
 @export var MusicFader : AnimationPlayer
 @export var esc_to_pause : bool = true
+@export var skipper : CheckButton
 var disablePausing : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#set tickbox to whether or not active
+	skipper.set_pressed_no_signal(Singleton.enabledTextSkip)
 	#make music and sound variables
 	var musicVolume : float = AudioServer.get_bus_volume_db(2)
 	var soundVolume : float = AudioServer.get_bus_volume_db(1)
@@ -56,3 +59,9 @@ func _on_exit_pressed():
 	disablePausing = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Screens/TitleScreen.tscn")
+
+
+func _on_texkip_button_toggled(toggled_on):
+	buttonSoundPlayer.play()
+	Singleton.enabledTextSkip = toggled_on
+	Singleton.give_free_cookies()

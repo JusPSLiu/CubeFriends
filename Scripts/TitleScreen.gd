@@ -6,7 +6,7 @@ extends ColorRect
 @export var buttonSound : AudioStreamPlayer
 @export var ChapterButtons : Array[Button]
 @export var BackToTitle : Button
-@export var maxLvl : int = 3
+@export var maxLvl : int = 5
 
 var waiting : bool = false
 
@@ -49,6 +49,7 @@ func _on_chapter_pressed(arg):
 		musicFader.play("fadeMusicOut")
 		Fader.play("FadeOut")
 		await Fader.animation_finished
+		Singleton.currentLevel = arg
 		get_tree().change_scene_to_file("res://Scenes/Levels/level"+str(arg)+".tscn")
 
 

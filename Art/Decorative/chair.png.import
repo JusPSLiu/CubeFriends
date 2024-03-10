@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwsnmo8d70vou"
-path="res://.godot/imported/slidBarHov.png-db37e9fba23545f6d77608072a57a041.ctex"
+uid="uid://cs7wbdcmktsve"
+path="res://.godot/imported/chair.png-4e6bc129302bf71c5a1969d684982f13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/Pause/slidBarHov.png"
-dest_files=["res://.godot/imported/slidBarHov.png-db37e9fba23545f6d77608072a57a041.ctex"]
+source_file="res://Art/Decorative/chair.png"
+dest_files=["res://.godot/imported/chair.png-4e6bc129302bf71c5a1969d684982f13.ctex"]
 
 [params]
 

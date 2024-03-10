@@ -1825,7 +1825,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-80.0, -5.962]
+"values": [-80.0, -1.0]
 }
 
 [sub_resource type="Animation" id="Animation_a5dlr"]
@@ -1840,7 +1840,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, -80.0]
+"values": [-1.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x4jxw"]
@@ -2145,7 +2145,7 @@ bus = &"Sound"
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("17_0npas")
-volume_db = -80.0
+volume_db = -48.0
 autoplay = true
 bus = &"Music"
 

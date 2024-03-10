@@ -7,9 +7,14 @@ const SPEED = 300.0
 @export var camDistPx : int = 0
 @export var cubeDist : int = 96
 @export var jumpPlayer : AudioStreamPlayer
+@export var pwrPlayer : AudioStreamPlayer
+@export var aberration = false
+@export var superUpgrade = false
 
-var PowerCube = preload("res://Scenes/PowerCube.tscn")
+var PowerCube = preload("res://Scenes/AberratedPowerCube.tscn")
 var PowerBoom = preload("res://Scenes/boom_sprite.tscn")
+var powerUpSnd = preload("res://Sounds/pwrup.wav")
+var powerDwnSnd = preload("res://Sounds/pop.ogg")
 
 var timeBtwnSounds : float = 0.0
 var leftBlockArray : Array[int]
@@ -56,6 +61,9 @@ func _ready():
 		cube.connect("jumpsound", jump_sound)
 	set_cube_array_controls()
 	reposition(0)
+	#no super upgrade means no aberration
+	if (!superUpgrade):
+		PowerCube = preload("res://Scenes/PowerCube.tscn")
 
 func _physics_process(delta):
 	if (timeBtwnSounds > 0):
@@ -161,6 +169,8 @@ func set_cube_array_controls():
 
 
 func power_up():
+	pwrPlayer.set_stream(powerUpSnd)
+	pwrPlayer.play()
 	var newCube = PowerCube.instantiate()
 	#reposition everything
 	newCube.position = cubes[0].position
@@ -174,11 +184,46 @@ func power_up():
 	#add it to the cubes
 	call_deferred("add_child", newCube)
 	cubes.insert(0,newCube)
+	
+	##super upgrade gives 10
+	if (superUpgrade):
+		while (cubes.size() < 10):
+			newCube = PowerCube.instantiate()
+			#reposition everything
+			newCube.position = cubes[0].position
+			newCube.position.x += cubeDist
+			camDistPx -= cubeDist
+			#connect it
+			newCube.connect("help_stuck", child_stuck)
+			newCube.connect("unstuck", child_unstuck)
+			newCube.connect("jumpsound", jump_sound)
+			newCube.connect("depower", depower)
+			#add it to the cubes
+			call_deferred("add_child", newCube)
+			cubes.insert(0,newCube)
+	else:
+		#right before getting super upgrade theres the foreshadowing
+		while (cubes.size() < 4):
+			newCube = PowerCube.instantiate()
+			#reposition everything
+			newCube.position = cubes[0].position
+			newCube.position.x += cubeDist
+			camDistPx -= cubeDist
+			#connect it
+			newCube.connect("help_stuck", child_stuck)
+			newCube.connect("unstuck", child_unstuck)
+			newCube.connect("jumpsound", jump_sound)
+			newCube.connect("depower", depower)
+			#add it to the cubes
+			call_deferred("add_child", newCube)
+			cubes.insert(0,newCube)
 	#reset the physics things
 	reposition(0)
 	set_cube_array_controls()
 
 func depower(index:int):
+	pwrPlayer.set_stream(powerDwnSnd)
+	pwrPlayer.play()
 	#failsafe
 	if (index >= 0 && index < cubes.size()):
 		#check if stucc
@@ -201,7 +246,7 @@ func depower(index:int):
 		#reset the physics things
 		set_cube_array_controls()
 
-func back_up(direction : int):
+func back_up():
 	var lastcube : int = cubes.size()-1
 	if (!cubes[lastcube].leftSideColliding()):
 		moving_back_for_cutscene = true

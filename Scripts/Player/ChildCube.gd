@@ -5,11 +5,9 @@ extends CharacterBody2D
 @export var casteL : RayCast2D
 @export var casteL2 : RayCast2D
 @export var collider : CollisionShape2D
-@export var BoomSprite : AnimatedSprite2D
 signal help_stuck
 signal unstuck
 signal jumpsound
-signal depower
 
 var thisJumpLetter = 'p'
 var id = 0
@@ -108,9 +106,6 @@ func leftSideColliding() -> bool:
 
 func checkIfStuck() -> int:
 	return i_am_stuck
-
-func hit_nme():
-	emit_signal("depower", id)
 
 func force_jump():
 	if (is_on_floor()):

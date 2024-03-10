@@ -1,21 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://byk3req437rbo"]
+[gd_scene load_steps=10 format=3 uid="uid://btcrng206fwa5"]
 
-[ext_resource type="Script" path="res://Scripts/Player/PowerCube.gd" id="1_vaj0o"]
-[ext_resource type="Texture2D" uid="uid://css01gj5wel4" path="res://Art/Cubes/HoloCube1.png" id="2_xov5q"]
-[ext_resource type="Texture2D" uid="uid://dy08l4jc3y15m" path="res://Art/Cubes/HoloCube2.png" id="3_yvtha"]
-[ext_resource type="Texture2D" uid="uid://ha8qpq2jop1a" path="res://Art/Cubes/HoloAbber.png" id="4_d2j0e"]
-[ext_resource type="Texture2D" uid="uid://caoor8tovd0c" path="res://Art/Cubes/light.png" id="4_wv07p"]
+[ext_resource type="Script" path="res://Scripts/Player/PowerCube.gd" id="1_jdl4c"]
+[ext_resource type="Texture2D" uid="uid://ha8qpq2jop1a" path="res://Art/Cubes/HoloAbber.png" id="2_vod6e"]
+[ext_resource type="Texture2D" uid="uid://css01gj5wel4" path="res://Art/Cubes/HoloCube1.png" id="3_okskt"]
+[ext_resource type="Texture2D" uid="uid://dy08l4jc3y15m" path="res://Art/Cubes/HoloCube2.png" id="4_bic6b"]
+[ext_resource type="Texture2D" uid="uid://caoor8tovd0c" path="res://Art/Cubes/light.png" id="5_hjomp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amibf"]
 custom_solver_bias = 1.0
 size = Vector2(60, 62)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcq4f"]
-atlas = ExtResource("4_d2j0e")
+atlas = ExtResource("2_vod6e")
 region = Rect2(0, 0, 72, 68)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phtho"]
-atlas = ExtResource("4_d2j0e")
+atlas = ExtResource("2_vod6e")
 region = Rect2(72, 0, 72, 68)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dikba"]
@@ -33,10 +33,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xov5q")
+"texture": ExtResource("3_okskt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_yvtha")
+"texture": ExtResource("4_bic6b")
 }],
 "loop": true,
 "name": &"default",
@@ -44,8 +44,9 @@ animations = [{
 }]
 
 [node name="HoloCube" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "casteR", "casteR2", "casteL", "casteL2", "collider") groups=["holocube", "player"]]
+scale = Vector2(0.9, 1)
 collision_mask = 2
-script = ExtResource("1_vaj0o")
+script = ExtResource("1_jdl4c")
 sprite = NodePath("AnimatedSprite2D")
 casteR = NodePath("RayCastR")
 casteR2 = NodePath("RayCastRTop")
@@ -55,7 +56,6 @@ collider = NodePath("CubeCollisionShape")
 
 [node name="CubeCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-scale = Vector2(0.9, 1)
 shape = SubResource("RectangleShape2D_amibf")
 
 [node name="RayCastR" type="RayCast2D" parent="."]
@@ -84,9 +84,10 @@ hit_from_inside = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dikba")
-autoplay = "default"
+animation = &"Abber"
+autoplay = "Abber"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(2.29329, 2.47986)
 color = Color(0, 0.819608, 0.972549, 1)
-texture = ExtResource("4_wv07p")
+texture = ExtResource("5_hjomp")

@@ -14,6 +14,8 @@ extends CanvasLayer
 @export var NextLevel : String
 @export var Fader : AnimationPlayer
 @export var MusicFader : AnimationPlayer
+@export var humanPlayer : AnimatedSprite2D
+@export var humanthere : bool = true
 
 @export_multiline var dialogue : Array[String]
 
@@ -21,6 +23,9 @@ var textCurrentlyDisplayed : float
 var loadingIn : bool
 var speaking : bool = false
 
+var currCubeFont = true
+var cubeFont : Font = load("res://Art/Fonts/born2bsporty-fs.regular.otf")
+var humanFont : Font = load("res://Art/Fonts/hasting-dee-quickest.regular.otf")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,30 +41,79 @@ func _process(delta):
 		if (text.visible_characters >= text.get_total_character_count()):
 			loadingIn = false
 
+func toCubeFont():
+	currCubeFont = true
+	text.add_theme_font_override("font", cubeFont)
+	text.add_theme_font_size_override("font_size", 48)
+	text.add_theme_constant_override("line_spacing", -4)
+	text.position.y = -21
+	if (humanthere && humanPlayer.is_playing() && humanPlayer.animation == "talking"):
+		humanPlayer.play("stopTalking")
+
+func toHumanFont():
+	currCubeFont = false
+	text.remove_theme_font_size_override("bigger")
+	text.add_theme_font_override("font", humanFont)
+	text.add_theme_font_size_override("font_size", 34)
+	text.add_theme_constant_override("line_spacing", 20)
+	text.position.y = -6
+
 func setSpeaker(speaker):
 	match(speaker.to_lower()):
 		'r':
+			if (!currCubeFont):
+				toCubeFont()
 			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/RedCube.png")
 			dialogueSounds.set_stream(load("res://Sounds/UI/red.wav"))
 			dialogueSounds.play()
 		'g':
+			if (!currCubeFont):
+				toCubeFont()
 			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/GreenCube.png")
 			dialogueSounds.set_stream(load("res://Sounds/UI/Green.wav"))
 			dialogueSounds.play()
 		'b':
+			if (!currCubeFont):
+				toCubeFont()
 			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/BlueCube.png")
 			dialogueSounds.set_stream(load("res://Sounds/UI/Blue.wav"))
 			dialogueSounds.play()
+		'i':
+			if (!currCubeFont):
+				toCubeFont()
+			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/BlueCube.png")
+			dialogueSounds.set_stream(load("res://Sounds/UI/impostorBlue.wav"))
+			dialogueSounds.play()
 		'n':
+			if (!currCubeFont):
+				toCubeFont()
 			SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/NMECube.png")
 			dialogueSounds.set_stream(load("res://Sounds/UI/impostorBlue.wav"))
 			dialogueSounds.play()
+		't','h','u','m','s','e':
+			if (currCubeFont):
+				toHumanFont()
+			if (humanthere && speaker != speaker.to_lower()):
+				humanPlayer.play("talking")
+			match(speaker.to_lower()):
+				't':SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/huthinky.png")
+				'h':SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/husurp.png")
+				'u':SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/husad.png")
+				'm':SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/humad.png")
+				's':SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/huserious.png")
+				'e':SpeakerImage.texture = load("res://Art/Cubes/dialogueImages/huhapp.png")
+			#the 7 human emotions: thinky, humanFirstAppearance(surprised), upset, mad, serious, ecstatuc
+			dialogueSounds.set_stream(load("res://Sounds/UI/human.wav"))
+			dialogueSounds.play()
 		_:
+			if (!currCubeFont):
+				toCubeFont()
 			SpeakerImage.texture = load("res://Art/Cubes/HoloCube1.png")
 	if (speaker == speaker.to_lower()):
 		if (currentDialogue > 61):
 			CutsceneAnimator.play(str(currentDialogue))
 		else:
+			print_debug(str(currentDialogue)+": "+String.chr(currentDialogue+65))
 			#I thought this system was clever until i ran out of chars lol
 			CutsceneAnimator.play(String.chr(currentDialogue+65))
 
@@ -131,3 +185,10 @@ func toNextLevel():
 		MusicFader.play("FadeOut")
 		await Fader.animation_finished
 		get_tree().change_scene_to_file("res://Scenes/Levels/"+NextLevel)
+
+
+func _on_cutscene_area_entered(body):
+	if (!speaking):
+		if (body.is_in_group("player")):
+			player.disable_children()
+			CutsceneAnimator.play("Bossy")
