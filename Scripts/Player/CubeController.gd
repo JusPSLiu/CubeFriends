@@ -21,9 +21,13 @@ var leftBlockArray : Array[int]
 var rightBlockArray : Array[int]
 var moving_back_for_cutscene : bool = false
 var stuck = 0
-var disabled = false
+var disabled : bool = false
+var mouseDown : bool = false
+var prevMousePosX : int = -1280
+var minX = 0
 
 func reposition(id:int):
+	minX = -1*cubes.size()*cubeDist+16
 	var currloc = cubes[id].position.x
 	var curid = 0
 	var offset = (id*-1*cubeDist) - (currloc)
@@ -252,4 +256,65 @@ func back_up():
 		moving_back_for_cutscene = true
 
 func force_jump(index:int):
-	cubes[index].force_jump()
+	if (index >= 0 and index < cubes.size()):
+		cubes[index].force_jump()
+
+
+
+
+# MOUSE CONTROLS
+# for if you have a painful clicky keyboard
+func _input(event : InputEvent):
+	if (!disabled and event is InputEventMouseButton):
+		if (event.is_action_pressed("clicky")):
+			mouseDown = true
+			prevMousePosX = -1280
+		else:
+			mouseDown = false
+
+func _process(_delta):
+	if (mouseDown and !disabled):
+		var mousePosX = get_local_mouse_position().x
+		if (prevMousePosX > -1280):
+			if (mousePosX>48):
+				if (prevMousePosX > 0):
+					# for (int i=0; i<prevMousePosX+1; i++)
+					for i in range(prevMousePosX+1):
+						if (cubes[i].is_on_floor):
+							force_jump(i)
+				prevMousePosX = 0
+			elif (mousePosX < minX):
+				if (prevMousePosX < cubes.size()-1):
+					print_debug("yesyesyes")
+					# for (int i=prevMousePosX; i<size()-1; i++)
+					for i in range(cubes.size()-prevMousePosX):
+						if (cubes[i+prevMousePosX].is_on_floor):
+							force_jump(i+prevMousePosX)
+				prevMousePosX = cubes.size()-1
+			else:
+				mousePosX = min(int(cubes.size()-1 - (mousePosX + (cubeDist*cubes.size()/2))/cubeDist), cubes.size()-1)
+				# from last index to current index
+				# WHY DO GDSCRIPT AND PYTHON MAKE FOR LOOPS SO HARD TO USE
+				if (prevMousePosX >= mousePosX):
+					# for (int i=mousePosX; i<prevMousePosX+1; i++)
+					for i in range(prevMousePosX+1-mousePosX):
+						if (cubes[i+mousePosX].is_on_floor):
+							force_jump(i+mousePosX)
+				else:
+					# for (int i=prevMousePosX; i<mousePosX+1; i++)
+					for i in range(mousePosX+1-prevMousePosX):
+						if (cubes[i+prevMousePosX].is_on_floor):
+							force_jump(i+prevMousePosX)
+				prevMousePosX = mousePosX
+		else:
+			# THIS IS IF THERE WAS NO LAST POSITION
+			# IF THE MOUSE WAS JUST CLICKED NOW OR SOMETHING
+			if (mousePosX > 48):
+				prevMousePosX = 0
+			elif (mousePosX < minX):
+				prevMousePosX = cubes.size()-1
+			else:
+				mousePosX = min(int(cubes.size()-1 - (mousePosX + (cubeDist*cubes.size()/2))/cubeDist), cubes.size()-1)
+				if (cubes[mousePosX].is_on_floor):
+					force_jump(mousePosX)
+				prevMousePosX = mousePosX

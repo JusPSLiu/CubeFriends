@@ -24,5 +24,6 @@ texture = ExtResource("2_4lrhy")
 
 [node name="CoinSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_8lvu0")
+bus = &"Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

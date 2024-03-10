@@ -2336,7 +2336,7 @@ NextLevel = "GrinderScene.tscn"
 Fader = NodePath("../../Fader")
 MusicFader = NodePath("../../MusicPlayer/MusicFader")
 dialogue = Array[String](["rHey! Green Cube! Guess what?!", "gHey! I'm kind of busy getting water for the
-village right now. Could we chat later?", "rThe invitation came!
+village right now. Could we chat later?", "rThe Invitation came!
 We can go see Brown Cube!", "gWHAT?!        ", "GWE GOTTA TELL BLUE CUBE!", "bTell me what?        ", "BI just left to get water for the village.
 What did I miss?", "rWe can go visit Brown Cube now.", "bWHAT?!?!?      ", "BWE GOT THE INVITATION?!?!?", "rYep. After all this time.", "gThe village can wait. We can finally go
 see Brown Cube again!", "gI wonder what that guy's been up to

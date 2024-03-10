@@ -1932,6 +1932,7 @@ bus = &"Sound"
 stream = ExtResource("12_whovg")
 volume_db = -10.0
 max_polyphony = 2
+bus = &"Sound"
 
 [node name="Camera2D" type="Camera2D" parent="CubeController"]
 position = Vector2(-64, 0)
