@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://cw2aslb4ppb1n"]
+
+[ext_resource type="Shader" path="res://Scripts/boost_rail.gdshader" id="1_r4fo6"]
+[ext_resource type="Texture2D" uid="uid://caoor8tovd0c" path="res://Art/Cubes/light.png" id="2_3l8ra"]
+[ext_resource type="Script" path="res://Scripts/RailScript.gd" id="3_bijqg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bxh4i"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pei38"]
+noise = SubResource("FastNoiseLite_bxh4i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qv8cj"]
+shader = ExtResource("1_r4fo6")
+shader_parameter/direction = Vector2(-1, 1)
+shader_parameter/transparency = Vector4(1, 1, 1, 1)
+shader_parameter/texture = SubResource("NoiseTexture2D_pei38")
+
+[sub_resource type="Gradient" id="Gradient_62xmw"]
+offsets = PackedFloat32Array(0.14978, 0.488987, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0.972549, 0.972549, 0.972549, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0841u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bpqai"]
+height = 8
+color_ramp = SubResource("Gradient_62xmw")
+noise = SubResource("FastNoiseLite_0841u")
+
+[sub_resource type="Gradient" id="Gradient_nevsm"]
+offsets = PackedFloat32Array(0, 0.546256, 1)
+colors = PackedColorArray(0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hnbud"]
+gradient = SubResource("Gradient_nevsm")
+width = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8b6dh"]
+size = Vector2(1129, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkhco"]
+size = Vector2(1129, 11)
+
+[node name="Booster" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="glowEnd2" type="TextureRect" parent="."]
+modulate = Color(0, 1, 1, 1)
+offset_left = 1113.0
+offset_top = -10.0
+offset_right = 1127.0
+offset_bottom = 10.0
+texture = ExtResource("2_3l8ra")
+expand_mode = 1
+
+[node name="glowEnd" type="TextureRect" parent="."]
+modulate = Color(0, 1, 1, 1)
+offset_left = -7.0
+offset_top = -10.0
+offset_right = 7.0
+offset_bottom = 10.0
+texture = ExtResource("2_3l8ra")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_qv8cj")
+offset_top = -6.0
+offset_right = 1119.0
+offset_bottom = 6.0
+texture = SubResource("NoiseTexture2D_bpqai")
+stretch_mode = 1
+
+[node name="centerOfBoosty" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 25.0
+offset_bottom = 1138.0
+rotation = -1.5708
+texture = SubResource("GradientTexture1D_hnbud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(561.5, 0)
+shape = SubResource("RectangleShape2D_8b6dh")
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_bijqg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(561.5, -1.5)
+shape = SubResource("RectangleShape2D_hkhco")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

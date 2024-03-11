@@ -6,14 +6,16 @@
 custom_solver_bias = 1.0
 size = Vector2(60, 62)
 
-[node name="Cube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteR2", "casteL", "casteL2", "collider") groups=["player"]]
-collision_mask = 2
+[node name="Cube" type="CharacterBody2D" node_paths=PackedStringArray("casteR", "casteR2", "casteL", "casteL2", "collider", "nonrailcollider", "nonrailcollider2") groups=["player"]]
+collision_mask = 22
 script = ExtResource("1_q1wqg")
 casteR = NodePath("RayCastR")
 casteR2 = NodePath("RayCastRTop")
 casteL = NodePath("RayCastL")
 casteL2 = NodePath("RayCastLTop")
 collider = NodePath("CubeCollisionShape")
+nonrailcollider = NodePath("RayCastBL")
+nonrailcollider2 = NodePath("RayCastBR")
 
 [node name="CubeCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -23,23 +25,35 @@ shape = SubResource("RectangleShape2D_amibf")
 [node name="RayCastR" type="RayCast2D" parent="."]
 position = Vector2(16, 30)
 target_position = Vector2(17, 0)
-collision_mask = 2
+collision_mask = 6
 hit_from_inside = true
 
 [node name="RayCastRTop" type="RayCast2D" parent="."]
 position = Vector2(18, -28)
 target_position = Vector2(17, 0)
-collision_mask = 2
+collision_mask = 6
 hit_from_inside = true
 
 [node name="RayCastL" type="RayCast2D" parent="."]
 position = Vector2(-17, 30)
 target_position = Vector2(-17, 0)
-collision_mask = 2
+collision_mask = 6
 hit_from_inside = true
 
 [node name="RayCastLTop" type="RayCast2D" parent="."]
 position = Vector2(-17, -28)
 target_position = Vector2(-17, 0)
-collision_mask = 2
+collision_mask = 6
+hit_from_inside = true
+
+[node name="RayCastBL" type="RayCast2D" parent="."]
+position = Vector2(-27, 30)
+target_position = Vector2(0, 3)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="RayCastBR" type="RayCast2D" parent="."]
+position = Vector2(27, 30)
+target_position = Vector2(0, 3)
+collision_mask = 6
 hit_from_inside = true

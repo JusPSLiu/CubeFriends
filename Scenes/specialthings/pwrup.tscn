@@ -44,5 +44,6 @@ frame_progress = 0.494556
 
 [node name="PwrupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_bfqf3")
+bus = &"Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

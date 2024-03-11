@@ -2104,6 +2104,16 @@ theme_override_fonts/font = ExtResource("7_wuxlj")
 theme_override_font_sizes/font_size = 34
 text = "Use Left/Right Arrow Keys to move"
 
+[node name="Label2" type="Label" parent="TutorialPrompts/AnimatedSprite2D"]
+offset_left = -211.0
+offset_top = 64.0
+offset_right = 221.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_wuxlj")
+theme_override_font_sizes/font_size = 24
+text = "(or A and D if prefer secondary control scheme)"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialPrompts"]
 root_node = NodePath("../PressToJump")
 libraries = {
@@ -2121,6 +2131,16 @@ theme_override_fonts/font = ExtResource("7_wuxlj")
 theme_override_font_sizes/font_size = 43
 text = "Press       to jump"
 
+[node name="PressToJump2" type="Label" parent="TutorialPrompts"]
+offset_left = 1080.0
+offset_top = 431.0
+offset_right = 1442.0
+offset_bottom = 457.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_wuxlj")
+theme_override_font_sizes/font_size = 18
+text = "(or click down with the mouse in the column of the cube)"
+
 [node name="Letter" type="Label" parent="TutorialPrompts"]
 offset_left = 1232.0
 offset_top = 357.0
@@ -2129,16 +2149,15 @@ offset_bottom = 444.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_wuxlj")
 theme_override_font_sizes/font_size = 76
-text = "I"
+text = "P"
 horizontal_alignment = 1
 
 [node name="KeyPrompt" type="Sprite2D" parent="TutorialPrompts"]
 position = Vector2(1261, 328)
-texture = ExtResource("3_048kh")
+texture = ExtResource("4_ix3xi")
 
 [node name="HandPrompt" type="Sprite2D" parent="TutorialPrompts/KeyPrompt"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(49, 9)
+position = Vector2(59, 24)
 texture = ExtResource("7_5cwu8")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2325,7 +2344,7 @@ visible = false
 script = ExtResource("11_81sep")
 dialogueSounds = NodePath("DialogueSounds")
 text = NodePath("SpeakerImage/Label")
-lettersPerSecond = 40.0
+lettersPerSecond = 50.0
 SpeakerImage = NodePath("SpeakerImage")
 player = NodePath("../../CubeController")
 dialogueAnimator = NodePath("..")
@@ -2340,8 +2359,8 @@ village right now. Could we chat later?", "rThe Invitation came!
 We can go see Brown Cube!", "gWHAT?!        ", "GWE GOTTA TELL BLUE CUBE!", "bTell me what?        ", "BI just left to get water for the village.
 What did I miss?", "rWe can go visit Brown Cube now.", "bWHAT?!?!?      ", "BWE GOT THE INVITATION?!?!?", "rYep. After all this time.", "gThe village can wait. We can finally go
 see Brown Cube again!", "gI wonder what that guy's been up to
-out there...
-OUCH!                     ", "rWoah. Are you alright Green Cube?", "GYeah....
+out there...       
+OUCH!", "rWoah. Are you alright Green Cube?", "GYeah....
 But I can't seem to remember how we got here.", "BNo worries. I remember the way...", "BWait no I don't want Brown Cube to think...", "GBrown Cube?", "BRed Cube, on second thought, you lead the
 way!", "RAlright. Looks like I'm in front again.", "RAnyway, Green Cube, the important thing is
 we're all here together.", "REven if anything goes wrong again, as long as

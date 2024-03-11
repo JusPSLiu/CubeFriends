@@ -44,8 +44,8 @@ func _process(delta):
 func toCubeFont():
 	currCubeFont = true
 	text.add_theme_font_override("font", cubeFont)
-	text.add_theme_font_size_override("font_size", 48)
-	text.add_theme_constant_override("line_spacing", -4)
+	text.add_theme_font_size_override("font_size", 60)
+	text.add_theme_constant_override("line_spacing", -5)
 	text.position.y = -21
 	if (humanthere && humanPlayer.is_playing() && humanPlayer.animation == "talking"):
 		humanPlayer.play("stopTalking")
@@ -54,8 +54,8 @@ func toHumanFont():
 	currCubeFont = false
 	text.remove_theme_font_size_override("bigger")
 	text.add_theme_font_override("font", humanFont)
-	text.add_theme_font_size_override("font_size", 34)
-	text.add_theme_constant_override("line_spacing", 20)
+	text.add_theme_font_size_override("font_size", 42.5)
+	text.add_theme_constant_override("line_spacing", 25)
 	text.position.y = -6
 
 func setSpeaker(speaker):

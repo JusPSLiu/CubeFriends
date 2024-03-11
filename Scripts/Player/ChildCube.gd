@@ -5,14 +5,20 @@ extends CharacterBody2D
 @export var casteL : RayCast2D
 @export var casteL2 : RayCast2D
 @export var collider : CollisionShape2D
+@export var nonrailcollider : RayCast2D
+@export var nonrailcollider2 : RayCast2D
 signal help_stuck
 signal unstuck
 signal jumpsound
+signal railmode
 
 var thisJumpLetter = 'p'
 var id = 0
 var coyoteTime : float = 0.1
 var disabled = false
+var isHoloCube = false
+var rail_mode = false
+var derail_soon = false
 
 const JUMP_VELOCITY = -800.0
 
@@ -24,6 +30,11 @@ func _physics_process(delta):
 	# Add the gravity.
 	if is_on_floor():
 		coyoteTime = 0.1
+		if (derail_soon):
+			rail_mode = false
+			derail_soon = false
+			emit_signal("derailed")
+			print_debug("DERAILED")
 	else:
 		velocity.y += gravity * delta
 		if (coyoteTime > 0):
@@ -107,7 +118,22 @@ func leftSideColliding() -> bool:
 func checkIfStuck() -> int:
 	return i_am_stuck
 
+func floor_is_not_rail() -> bool:
+	return nonrailcollider.is_colliding or nonrailcollider2.is_colliding
+
 func force_jump():
 	if (is_on_floor()):
 		velocity.y = JUMP_VELOCITY
 		emit_signal("jumpsound")
+
+func enter_rail_mode():
+	print_debug("EMITTING")
+	if (!isHoloCube && !rail_mode):
+		emit_signal("railmode", position.y)
+		rail_mode = true
+		derail_soon = false
+
+func soon_exit_rail_mode():
+	print_debug("DERAIL SOON")
+	if (!isHoloCube):
+		derail_soon = true

@@ -63,6 +63,8 @@ func _ready():
 		cube.connect("help_stuck", child_stuck)
 		cube.connect("unstuck", child_unstuck)
 		cube.connect("jumpsound", jump_sound)
+		cube.connect("railmode", rail_mode)
+		cube.connect("derailed", off_rail)
 	set_cube_array_controls()
 	reposition(0)
 	#no super upgrade means no aberration
@@ -157,6 +159,7 @@ func disable_children():
 	stuck = 3
 	velocity.x = move_toward(velocity.x, 0, SPEED)
 	disabled = true
+	mouseDown = false
 	move_and_slide()
 
 func enable_children():
@@ -173,23 +176,23 @@ func set_cube_array_controls():
 
 
 func power_up():
-	pwrPlayer.set_stream(powerUpSnd)
-	pwrPlayer.play()
-	var newCube = PowerCube.instantiate()
-	#reposition everything
-	newCube.position = cubes[0].position
-	newCube.position.x += cubeDist
-	camDistPx -= cubeDist
-	#connect it
-	newCube.connect("help_stuck", child_stuck)
-	newCube.connect("unstuck", child_unstuck)
-	newCube.connect("jumpsound", jump_sound)
-	newCube.connect("depower", depower)
-	#add it to the cubes
-	call_deferred("add_child", newCube)
-	cubes.insert(0,newCube)
-	
-	##super upgrade gives 10
+	#pwrPlayer.set_stream(powerUpSnd)
+	#pwrPlayer.play()
+	var newCube
+	##reposition everything
+	#newCube.position = cubes[0].position
+	#newCube.position.x += cubeDist
+	#camDistPx -= cubeDist
+	##connect it
+	#newCube.connect("help_stuck", child_stuck)
+	#newCube.connect("unstuck", child_unstuck)
+	#newCube.connect("jumpsound", jump_sound)
+	#newCube.connect("depower", depower)
+	##add it to the cubes
+	#call_deferred("add_child", newCube)
+	#cubes.insert(0,newCube)
+	#
+	###super upgrade gives 10
 	if (superUpgrade):
 		while (cubes.size() < 10):
 			newCube = PowerCube.instantiate()
@@ -246,7 +249,7 @@ func depower(index:int):
 		remove_child(cubes[index])
 		cubes.remove_at(index)
 		camDistPx += cubeDist
-		reposition(0)
+		reposition(cubes.size()-1)
 		#reset the physics things
 		set_cube_array_controls()
 
@@ -275,35 +278,35 @@ func _input(event : InputEvent):
 func _process(_delta):
 	if (mouseDown and !disabled):
 		var mousePosX = get_local_mouse_position().x
+		#print(int((mousePosX)/cubeDist-.5)*-1)
 		if (prevMousePosX > -1280):
 			if (mousePosX>48):
 				if (prevMousePosX > 0):
 					# for (int i=0; i<prevMousePosX+1; i++)
 					for i in range(prevMousePosX+1):
-						if (cubes[i].is_on_floor):
+						if (cubes[i].coyoteTime > 0):
 							force_jump(i)
 				prevMousePosX = 0
 			elif (mousePosX < minX):
 				if (prevMousePosX < cubes.size()-1):
-					print_debug("yesyesyes")
 					# for (int i=prevMousePosX; i<size()-1; i++)
 					for i in range(cubes.size()-prevMousePosX):
-						if (cubes[i+prevMousePosX].is_on_floor):
+						if (cubes[i+prevMousePosX].coyoteTime > 0):
 							force_jump(i+prevMousePosX)
 				prevMousePosX = cubes.size()-1
 			else:
-				mousePosX = min(int(cubes.size()-1 - (mousePosX + (cubeDist*cubes.size()/2))/cubeDist), cubes.size()-1)
+				mousePosX = min(int((mousePosX)/cubeDist-.5)*-1, cubes.size()-1)
 				# from last index to current index
 				# WHY DO GDSCRIPT AND PYTHON MAKE FOR LOOPS SO HARD TO USE
 				if (prevMousePosX >= mousePosX):
 					# for (int i=mousePosX; i<prevMousePosX+1; i++)
 					for i in range(prevMousePosX+1-mousePosX):
-						if (cubes[i+mousePosX].is_on_floor):
+						if (cubes[i+mousePosX].coyoteTime > 0):
 							force_jump(i+mousePosX)
 				else:
 					# for (int i=prevMousePosX; i<mousePosX+1; i++)
 					for i in range(mousePosX+1-prevMousePosX):
-						if (cubes[i+prevMousePosX].is_on_floor):
+						if (cubes[i+prevMousePosX].coyoteTime > 0):
 							force_jump(i+prevMousePosX)
 				prevMousePosX = mousePosX
 		else:
@@ -314,7 +317,19 @@ func _process(_delta):
 			elif (mousePosX < minX):
 				prevMousePosX = cubes.size()-1
 			else:
-				mousePosX = min(int(cubes.size()-1 - (mousePosX + (cubeDist*cubes.size()/2))/cubeDist), cubes.size()-1)
-				if (cubes[mousePosX].is_on_floor):
+				mousePosX = min(int((mousePosX)/cubeDist-.5)*-1, cubes.size()-1)
+				if (cubes[mousePosX].coyoteTime > 0):
 					force_jump(mousePosX)
 				prevMousePosX = mousePosX
+
+
+func rail_mode(y:int):
+	print_debug("RAILING NOW")
+	for cube in cubes:
+		if (cube.isHoloCube):
+			cube.relocate(y)
+
+func off_rail():
+	for cube in cubes:
+		if (cube.isHoloCube):
+			cube.delocate()

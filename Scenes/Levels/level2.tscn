@@ -662,7 +662,7 @@ tracks/0/path = NodePath("../CutsceneCamera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 1.95, 2.15),
+"times": PackedFloat32Array(0, 0.3, 0.6, 1.7, 1.9),
 "transitions": PackedFloat32Array(2, 0.5, 1, 1, 1),
 "update": 0,
 "values": [Vector2(619, -792), Vector2(613.5, -502), Vector2(608, -212), Vector2(608, -212), Vector2(605, 368)]
@@ -674,7 +674,7 @@ tracks/1/path = NodePath("../Background/motionlines:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.15),
+"times": PackedFloat32Array(0, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -686,7 +686,7 @@ tracks/2/path = NodePath("../Background/motionlines:material:shader_parameter/tr
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.65, 2.15),
+"times": PackedFloat32Array(1.4, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector4(1, 1, 1, 0.2), Vector4(1, 1, 1, 0)]
@@ -698,7 +698,7 @@ tracks/3/path = NodePath("../Cutscene/CutsceneThings/Red:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.85, 1.95, 2.225, 2.25, 2.3, 2.35),
+"times": PackedFloat32Array(0, 1.6, 1.7, 1.975, 2, 2.05, 2.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 2, 0.4, 1),
 "update": 0,
 "values": [Vector2(702, -666), Vector2(702, -666), Vector2(605, -655), Vector2(605, 544), Vector2(605, 549), Vector2(605, 546.5), Vector2(605, 544)]
@@ -710,7 +710,7 @@ tracks/4/path = NodePath("../Cutscene/CutsceneThings/Green:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.85, 1.95, 2.25, 2.275, 2.325, 2.375),
+"times": PackedFloat32Array(0, 1.6, 1.7, 2, 2.025, 2.075, 2.125),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 2, 0.4, 1),
 "update": 0,
 "values": [Vector2(572, -789), Vector2(572, -789), Vector2(477, -789), Vector2(477, 544), Vector2(477, 549), Vector2(477, 546.5), Vector2(477, 544)]
@@ -722,7 +722,7 @@ tracks/5/path = NodePath("../Cutscene/CutsceneThings/Blue:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.95, 2.15, 2.175, 2.225, 2.275),
+"times": PackedFloat32Array(1.7, 1.9, 1.925, 1.975, 2.025),
 "transitions": PackedFloat32Array(1, 1, 2, 0.4, 1),
 "update": 0,
 "values": [Vector2(733, -320), Vector2(733, 544), Vector2(733, 549), Vector2(733, 546.5), Vector2(733, 544)]
@@ -734,7 +734,7 @@ tracks/6/path = NodePath("../Cutscene/CutsceneThings/Blue:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(2.15, 2.175, 2.225, 2.275),
+"times": PackedFloat32Array(1.9, 1.925, 1.975, 2.025),
 "transitions": PackedFloat32Array(0.2, 2, 0.4, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 0.85), Vector2(1.05, 0.925), Vector2(1, 1)]
@@ -746,7 +746,7 @@ tracks/7/path = NodePath("../Cutscene/CutsceneThings/Red:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2.225, 2.25, 2.3, 2.35),
+"times": PackedFloat32Array(1.975, 2, 2.05, 2.1),
 "transitions": PackedFloat32Array(1, 2, 0.4, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 0.85), Vector2(1.05, 0.925), Vector2(1, 1)]
@@ -758,7 +758,7 @@ tracks/8/path = NodePath("../Cutscene/CutsceneThings/Green:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(2.25, 2.275, 2.325, 2.375),
+"times": PackedFloat32Array(2, 2.025, 2.075, 2.125),
 "transitions": PackedFloat32Array(1, 2, 0.4, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 0.85), Vector2(1.05, 0.925), Vector2(1, 1)]
@@ -1351,7 +1351,6 @@ offset_right = 52.0
 offset_bottom = 52.0
 
 [node name="motionlines" type="TextureRect" parent="Background"]
-visible = false
 modulate = Color(1, 1, 1, 0.207843)
 material = SubResource("ShaderMaterial_x5m0r")
 offset_right = 1280.0
@@ -1489,7 +1488,7 @@ autoplay = "StartUp"
 [node name="CutsceneThings" type="Node2D" parent="Cutscene"]
 
 [node name="Red" type="Sprite2D" parent="Cutscene/CutsceneThings"]
-position = Vector2(702, -665)
+position = Vector2(702, -666)
 texture = ExtResource("12_erseu")
 
 [node name="Green" type="Sprite2D" parent="Cutscene/CutsceneThings"]
@@ -1516,7 +1515,7 @@ script = ExtResource("16_w1s7d")
 LevelNumber = 2
 dialogueSounds = NodePath("DialogueSounds")
 text = NodePath("SpeakerImage/Label")
-lettersPerSecond = 40.0
+lettersPerSecond = 50.0
 SpeakerImage = NodePath("SpeakerImage")
 player = NodePath("../../CubeController")
 dialogueAnimator = NodePath("..")
