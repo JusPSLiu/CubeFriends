@@ -34,11 +34,9 @@ func _physics_process(delta):
 		coyoteTime = 0.1
 		if (change_rail_mode_soon):
 			if (rail_mode and floor_is_not_rail()):
-				print_debug(floor_is_not_rail())
 				rail_mode = false
 				change_rail_mode_soon = false
 				emit_signal("derailed")
-				print_debug("DERAILED")
 			elif (!rail_mode and !floor_is_not_rail()):
 				emit_signal("railmode", position.y)
 				rail_mode = true
@@ -142,7 +140,6 @@ func enter_rail_mode():
 			change_rail_mode_soon = false
 
 func soon_exit_rail_mode():
-	print_debug("DERAIL SOON")
 	if (recently_derailed):
 		recently_derailed = false
 		set_collision_mask_value(5, true)

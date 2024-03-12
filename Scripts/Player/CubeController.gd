@@ -355,6 +355,7 @@ func readjust_cam_dist(newCamDist:int):
 
 func enable_aberr_cubes():
 	superUpgrade = true
+	PowerCube = preload("res://Scenes/AberratedPowerCube.tscn")
 
 func shrink_dist_to(newCubeDist:int):
 	camDistPx += cubes.size()*(cubeDist-newCubeDist)
