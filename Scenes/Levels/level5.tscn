@@ -1377,7 +1377,6 @@ camDistPx = 128
 cubeDist = 32
 jumpPlayer = NodePath("jumpPlayer")
 pwrPlayer = NodePath("PwrPlayer")
-aberration = true
 superUpgrade = true
 
 [node name="jumpPlayer" type="AudioStreamPlayer" parent="CubeController"]
@@ -1574,6 +1573,7 @@ offset_left = 153.0
 offset_top = -21.0
 offset_right = 854.0
 offset_bottom = 127.0
+scale = Vector2(0.8, 0.8)
 theme_override_constants/line_spacing = -4
 theme_override_fonts/font = ExtResource("14_3afkm")
 theme_override_font_sizes/font_size = 48

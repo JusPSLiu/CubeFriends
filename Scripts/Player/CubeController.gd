@@ -8,7 +8,6 @@ const SPEED = 300.0
 @export var cubeDist : int = 96
 @export var jumpPlayer : AudioStreamPlayer
 @export var pwrPlayer : AudioStreamPlayer
-@export var aberration = false
 @export var superUpgrade = false
 
 var PowerCube = preload("res://Scenes/AberratedPowerCube.tscn")
@@ -22,9 +21,11 @@ var rightBlockArray : Array[int]
 var moving_back_for_cutscene : bool = false
 var stuck = 0
 var disabled : bool = false
+var disabledButRepositioning : bool = false
 var mouseDown : bool = false
 var prevMousePosX : int = -1280
 var minX = 0
+var railMode = false
 
 func reposition(id:int):
 	minX = -1*cubes.size()*cubeDist+16
@@ -33,7 +34,8 @@ func reposition(id:int):
 	var offset = (id*-1*cubeDist) - (currloc)
 	position.x -= offset
 	cubes[id].position.x += offset
-	if (!disabled):
+	if (!disabled or disabledButRepositioning):
+		disabledButRepositioning = false
 		for cube in cubes:
 			if (curid != id):
 				cube.position.x = currloc+((id-curid)*cubeDist)+offset
@@ -75,7 +77,9 @@ func _physics_process(delta):
 	if (timeBtwnSounds > 0):
 		timeBtwnSounds-=delta
 	var direction = Input.get_axis("ui_left", "ui_right")
-	if (stuck == 0):
+	if (railMode):
+		velocity.x = 400
+	elif (stuck == 0):
 		#not stuck; regular motion
 		if direction:
 			velocity.x = direction * SPEED
@@ -99,6 +103,8 @@ func _physics_process(delta):
 
 func child_stuck(type, id):
 	reposition(id)
+	if (railMode):
+		off_rail()
 	if (stuck == 0):
 		stuck = type
 	else:
@@ -205,6 +211,8 @@ func power_up():
 			newCube.connect("unstuck", child_unstuck)
 			newCube.connect("jumpsound", jump_sound)
 			newCube.connect("depower", depower)
+			#identifier that this is in fact a holocube
+			newCube.isHoloCube = true
 			#add it to the cubes
 			call_deferred("add_child", newCube)
 			cubes.insert(0,newCube)
@@ -221,6 +229,8 @@ func power_up():
 			newCube.connect("unstuck", child_unstuck)
 			newCube.connect("jumpsound", jump_sound)
 			newCube.connect("depower", depower)
+			#identifier that this is in fact a holoCube
+			newCube.isHoloCube = true
 			#add it to the cubes
 			call_deferred("add_child", newCube)
 			cubes.insert(0,newCube)
@@ -295,14 +305,15 @@ func _process(_delta):
 							force_jump(i+prevMousePosX)
 				prevMousePosX = cubes.size()-1
 			else:
-				mousePosX = min(int((mousePosX)/cubeDist-.5)*-1, cubes.size()-1)
+				mousePosX = max(min(int((mousePosX)/cubeDist-.5)*-1, cubes.size()-1), 0)
 				# from last index to current index
 				# WHY DO GDSCRIPT AND PYTHON MAKE FOR LOOPS SO HARD TO USE
 				if (prevMousePosX >= mousePosX):
 					# for (int i=mousePosX; i<prevMousePosX+1; i++)
 					for i in range(prevMousePosX+1-mousePosX):
-						if (cubes[i+mousePosX].coyoteTime > 0):
+						if (i < cubes.size() and cubes[i+mousePosX].coyoteTime > 0):
 							force_jump(i+mousePosX)
+							#apparently this one can be triggered while killing an nme cube so uh... yeah
 				else:
 					# for (int i=prevMousePosX; i<mousePosX+1; i++)
 					for i in range(mousePosX+1-prevMousePosX):
@@ -317,19 +328,35 @@ func _process(_delta):
 			elif (mousePosX < minX):
 				prevMousePosX = cubes.size()-1
 			else:
-				mousePosX = min(int((mousePosX)/cubeDist-.5)*-1, cubes.size()-1)
+				mousePosX = max(min(int((mousePosX)/cubeDist-.5)*-1, cubes.size()-1), 0)
 				if (cubes[mousePosX].coyoteTime > 0):
 					force_jump(mousePosX)
 				prevMousePosX = mousePosX
 
 
 func rail_mode(y:int):
-	print_debug("RAILING NOW")
+	pwrPlayer.set_stream(powerUpSnd)
+	pwrPlayer.play()
+	railMode = true
 	for cube in cubes:
 		if (cube.isHoloCube):
 			cube.relocate(y)
 
 func off_rail():
+	railMode = false
 	for cube in cubes:
 		if (cube.isHoloCube):
 			cube.delocate()
+		elif (cube.rail_mode):
+			cube.force_derail()
+
+func readjust_cam_dist(newCamDist:int):
+	camDistPx = newCamDist
+
+func enable_aberr_cubes():
+	superUpgrade = true
+
+func shrink_dist_to(newCubeDist:int):
+	camDistPx += cubes.size()*(cubeDist-newCubeDist)
+	cubeDist = newCubeDist
+	disabledButRepositioning = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://dobmp70jo7lwj"]
+[gd_scene load_steps=138 format=3 uid="uid://dobmp70jo7lwj"]
 
 [ext_resource type="Texture2D" uid="uid://dcjat8v2bhujy" path="res://Art/Backgrounds/Pit.png" id="1_kp8y6"]
 [ext_resource type="Texture2D" uid="uid://p2sxntb1ufiv" path="res://Art/Tilesets/woodonTiles.png" id="1_tny3l"]
@@ -600,221 +600,6 @@ sources/0 = SubResource("TileSetAtlasSource_uc0xe")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wah76"]
 size = Vector2(236, 518)
 
-[sub_resource type="Animation" id="Animation_6f4rt"]
-resource_name = "72"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CutsceneCamera:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(1754, 368), Vector2(1717.5, 368), Vector2(1681, 368)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Cutscene/CutsceneThings/Red:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.9),
-"transitions": PackedFloat32Array(0.8, 1),
-"update": 0,
-"values": [Vector2(1519, 608), Vector2(1617, 608)]
-}
-
-[sub_resource type="Animation" id="Animation_ks3e4"]
-resource_name = "74"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CubeController/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(64, 0), Vector2(160, 0), Vector2(256, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_4vvj7"]
-resource_name = "79"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CubeController/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(256, 0), Vector2(160, 0), Vector2(64, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_asjbk"]
-resource_name = "89"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CubeController/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(-128, 0), Vector2(256, 0), Vector2(640, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Cutscene/CutsceneThings/Blue:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(13996, 476)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Cutscene/CutsceneThings:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "animation"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../RegularMusicPlayer/MusicAnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": PackedStringArray("FadeOut"),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_k55cy"]
-resource_name = "90"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CubeController/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(640, 0), Vector2(384, 0), Vector2(128, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../RegularMusicPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_opdb5"]
-resource_name = "91"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CubeController/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(128, 0), Vector2(384, 0), Vector2(640, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Cutscene/CutsceneThings/Blue:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.6, 2),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Vector2(13996, 476), Vector2(14636, 476)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Cutscene/CutsceneThings/Blue:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 1.8),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [0.0, 0.174533]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Cutscene/CutsceneThings:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_3piwa"]
-resource_name = "92"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CubeController/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(640, 0), Vector2(256, 0), Vector2(-128, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Cutscene/CutsceneThings:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_08mki"]
 resource_name = "Bossy"
 length = 18.0
@@ -957,10 +742,10 @@ tracks/0/path = NodePath("../CutsceneCamera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
+"times": PackedFloat32Array(0, 1.2, 2.6),
 "transitions": PackedFloat32Array(2, 0.5, 1),
 "update": 0,
-"values": [Vector2(320, 368), Vector2(475.5, 368), Vector2(631, 368)]
+"values": [Vector2(320, 368), Vector2(631, 368), Vector2(1143, 368)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -981,7 +766,7 @@ tracks/2/path = NodePath("../Cutscene/CutsceneThings/Red:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.3, 1.6, 1.9, 2.2, 2.5),
+"times": PackedFloat32Array(0, 0.7, 1, 1.3, 1.6, 1.9),
 "transitions": PackedFloat32Array(1, 0.5, 2, 0.5, 2, 1),
 "update": 0,
 "values": [608.0, 608.0, 476.0, 608.0, 476.0, 608.0]
@@ -1002,62 +787,9 @@ tracks/3/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("11_7ylkq")
 }],
-"times": PackedFloat32Array(1.3, 1.9)
+"times": PackedFloat32Array(0.7, 1.3)
 }
 tracks/3/use_blend = true
-
-[sub_resource type="Animation" id="Animation_horrc"]
-resource_name = "J"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CutsceneCamera:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(631, 368), Vector2(887, 368), Vector2(1143, 368)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Cutscene/CutsceneThings/Red:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [708.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Cutscene/CutsceneThings/Red:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [608.0]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../hubert")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"talking", 1.0, false],
-"method": &"play"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_tpi5c"]
 resource_name = "M"
@@ -1476,7 +1208,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_aebj5"]
 resource_name = "q"
-length = 3.0
+length = 2.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1484,10 +1216,10 @@ tracks/0/path = NodePath("../CutsceneCamera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1, 2.1),
+"times": PackedFloat32Array(0, 1.4, 2.6),
 "transitions": PackedFloat32Array(2, 0.5, 1),
 "update": 0,
-"values": [Vector2(3191, 191), Vector2(2773.52, 283.714), Vector2(2394, 368)]
+"values": [Vector2(3191, 191), Vector2(2560.68, 280.775), Vector2(1864, 380)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1537,6 +1269,83 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../hubert:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../hubert:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1373, 415.8)]
+}
+
+[sub_resource type="Animation" id="Animation_qmls8"]
+resource_name = "I"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CutsceneCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1143, 368)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cutscene/CutsceneThings/Red:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [708.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Cutscene/CutsceneThings/Red:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [608.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../hubert")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"sitToTranslate", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_b612v"]
 resource_name = "v"
@@ -1548,10 +1357,10 @@ tracks/0/path = NodePath("../CutsceneCamera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(2, 0.5, 1),
 "update": 0,
-"values": [Vector2(2394, 368)]
+"values": [Vector2(1864, 380), Vector2(2129, 374), Vector2(2394, 368)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1589,21 +1398,194 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1967, 608)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Invitation:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+
+[sub_resource type="Animation" id="Animation_3piwa"]
+resource_name = "92"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(640, 0), Vector2(256, 0), Vector2(-128, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cutscene/CutsceneThings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_opdb5"]
+resource_name = "91"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(128, 0), Vector2(384, 0), Vector2(640, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cutscene/CutsceneThings/Blue:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(13996, 476), Vector2(14636, 476)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Cutscene/CutsceneThings/Blue:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.8),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.0, 0.174533]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Cutscene/CutsceneThings:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_k55cy"]
+resource_name = "90"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(640, 0), Vector2(384, 0), Vector2(128, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RegularMusicPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_asjbk"]
+resource_name = "89"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(-128, 0), Vector2(256, 0), Vector2(640, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cutscene/CutsceneThings/Blue:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13996, 476)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Cutscene/CutsceneThings:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../RegularMusicPlayer/MusicAnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("FadeOut"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_6f4rt"]
+resource_name = "88"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CutsceneCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1754, 368), Vector2(1717.5, 368), Vector2(1681, 368)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cutscene/CutsceneThings/Red:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(0.8, 1),
+"update": 0,
+"values": [Vector2(1519, 608), Vector2(1617, 608)]
 }
 
 [sub_resource type="Animation" id="Animation_mqyn7"]
-resource_name = "z"
+resource_name = "73"
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1691,7 +1673,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_w4pw1"]
-resource_name = "{"
+resource_name = "74"
 length = 1.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1718,18 +1700,51 @@ tracks/1/keys = {
 "values": [Vector2(1967, 608), Vector2(1519, 608)]
 }
 
+[sub_resource type="Animation" id="Animation_ks3e4"]
+resource_name = "90"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(64, 0), Vector2(160, 0), Vector2(256, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4vvj7"]
+resource_name = "95"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(256, 0), Vector2(160, 0), Vector2(64, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fp2dv"]
 _data = {
-"72": SubResource("Animation_6f4rt"),
-"74": SubResource("Animation_ks3e4"),
-"79": SubResource("Animation_4vvj7"),
-"89": SubResource("Animation_asjbk"),
-"91": SubResource("Animation_k55cy"),
-"92": SubResource("Animation_opdb5"),
-"93": SubResource("Animation_3piwa"),
+"105": SubResource("Animation_asjbk"),
+"107": SubResource("Animation_k55cy"),
+"108": SubResource("Animation_opdb5"),
+"109": SubResource("Animation_3piwa"),
+"69": SubResource("Animation_b612v"),
+"73": SubResource("Animation_mqyn7"),
+"74": SubResource("Animation_w4pw1"),
+"88": SubResource("Animation_6f4rt"),
+"90": SubResource("Animation_ks3e4"),
+"95": SubResource("Animation_4vvj7"),
 "Bossy": SubResource("Animation_08mki"),
 "H": SubResource("Animation_tdgek"),
-"J": SubResource("Animation_horrc"),
+"I": SubResource("Animation_qmls8"),
 "M": SubResource("Animation_tpi5c"),
 "N": SubResource("Animation_1tgxs"),
 "RESET": SubResource("Animation_rd1mk"),
@@ -1737,10 +1752,7 @@ _data = {
 "X": SubResource("Animation_qf1gn"),
 "Y": SubResource("Animation_smbfu"),
 "o": SubResource("Animation_qtntw"),
-"q": SubResource("Animation_aebj5"),
-"v": SubResource("Animation_b612v"),
-"z": SubResource("Animation_mqyn7"),
-"{": SubResource("Animation_w4pw1")
+"q": SubResource("Animation_aebj5")
 }
 
 [sub_resource type="Animation" id="Animation_4yy6i"]
@@ -2001,6 +2013,58 @@ region = Rect2(261, 604, 261, 302)
 atlas = ExtResource("31_21g80")
 region = Rect2(0, 0, 261, 302)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxkoy"]
+atlas = ExtResource("31_21g80")
+region = Rect2(0, 0, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpef1"]
+atlas = ExtResource("31_21g80")
+region = Rect2(261, 0, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlb1c"]
+atlas = ExtResource("31_21g80")
+region = Rect2(522, 0, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u30pk"]
+atlas = ExtResource("31_21g80")
+region = Rect2(783, 0, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uftk4"]
+atlas = ExtResource("31_21g80")
+region = Rect2(1044, 0, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwpj4"]
+atlas = ExtResource("31_21g80")
+region = Rect2(0, 302, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tykho"]
+atlas = ExtResource("31_21g80")
+region = Rect2(261, 302, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jslxy"]
+atlas = ExtResource("31_21g80")
+region = Rect2(522, 302, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4128"]
+atlas = ExtResource("31_21g80")
+region = Rect2(783, 302, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kigyx"]
+atlas = ExtResource("31_21g80")
+region = Rect2(0, 906, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oudw"]
+atlas = ExtResource("31_21g80")
+region = Rect2(261, 906, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsqes"]
+atlas = ExtResource("31_21g80")
+region = Rect2(522, 906, 261, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t1x1"]
+atlas = ExtResource("31_21g80")
+region = Rect2(783, 906, 261, 302)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1nrv5"]
 atlas = ExtResource("31_21g80")
 region = Rect2(783, 906, 261, 302)
@@ -2092,6 +2156,50 @@ animations = [{
 "loop": false,
 "name": &"StartAnimation",
 "speed": 0.1
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxkoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpef1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlb1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u30pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uftk4")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_mwpj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tykho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jslxy")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_h4128")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kigyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oudw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsqes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t1x1")
+}],
+"loop": false,
+"name": &"sitToTranslate",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3883,7 +3991,7 @@ max_polyphony = 2
 bus = &"Sound"
 
 [node name="Camera2D" type="Camera2D" parent="CubeController"]
-position = Vector2(-128, 0)
+position = Vector2(128, 0)
 limit_top = 0
 limit_bottom = 736
 
@@ -3976,8 +4084,8 @@ NextLevel = "level4.tscn"
 Fader = NodePath("../../Fader")
 MusicFader = NodePath("../../MusicPlayer/MusicFader")
 humanPlayer = NodePath("../../hubert")
-dialogue = Array[String](["R...", "B...", "G...", "T...", "RSo, we're not going home...", "RSorry, what was the name again?", "BHubert", "rHubert!", "HHuh? Oh! Yes, yes. Let me get the translator
-back out.", "uWhat did you say?", "RSince we're not going home, we might as
+dialogue = Array[String](["R...", "B...", "G...", "T...", "RSo, we're not going home...", "RSorry, what was the name again?", "BHubert", "rHubert!", "hHuh? Oh! Yes, yes. Let me get the translator
+back out.", "UWhat did you say?", "RSince we're not going home, we might as
 well finish what we were doing before. Do
 you know which way it is to the temple?", "HTh-                  
 The temple?!?!?", "gYeah, we came here to look for our friend
@@ -4021,7 +4129,20 @@ reach since I first holed up in here.", "GCoin?! Red Cube we gotta get this!", "
 own. Nothing's happened since we got here,
 and that, NME, has left.", "RNo need to go on with that. I get it.               
 You can go.", "GRed Cube?!", "RYou can go, too. I'll grab that coin for you,
-Green Cube.", "GTh- Thanks!", "bAlright, Green Cube, let's head out.", "GNo offense, but I think Red Cube says it better.", "BHa!", "GHaha!", "sHey, Red Guy. Since you're staying maybe
+Green Cube.", "GTh- Thanks!", "BMaybe we'll find some more of the local
+Cubes like that purple one we saw earlier", "GBlue Cube! We had an agreement!", "BYou mean you two did.
+I, for the record, didn't.", "HDid you just say... purple cube?", "BYeah, we met one earlier. It wouldn't move,
+or respond to us, or anything
+really. Almost looked hollow inside.", "UThose Cubes aren't... really... sentient.", "SThey're NME Cubes. Extensions of the NME.
+Now that I've met you, I can see that they
+must have been previous victims,", "Sreduced to nothing more than an empty husk.
+A shell. Only the body remains, as nothing
+more than a decaying puppet.", "R...", "G...", "UBut I suppose this is the NME's domain. And
+we're all mere intruders in this land.
+Our very presence is an intrusion.", "GSo you're not from around here?", "SNo, I'm not. I was a researcher analyzing the
+fissures in the spacetime continuum when,
+uh... Some accidents took place...", "R...", "G...", "B...                     
+Well that's a bummer.", "bAlright, Green Cube, let's head outta here.", "GNo offense, but I think Red Cube says it better.", "BHa!", "GHaha!", "sHey, Red Guy. Since you're staying maybe
 you can help me with something, too.
 Come over here.", "rSure. What is it?", "EHa! So that's how you do it!", "RHuh?", "EI didn't actually say that aloud. That's how
 you can hear me. You're telepathic!", "R...?", "EThere are some devices around here.
@@ -4070,12 +4191,12 @@ texture = ExtResource("14_wwbpc")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="DialogueController/Dialogue/SpeakerImage"]
-texture_filter = 1
 layout_mode = 0
 offset_left = 153.0
 offset_top = -21.0
 offset_right = 854.0
 offset_bottom = 127.0
+scale = Vector2(0.8, 0.8)
 theme_override_constants/line_spacing = -4
 theme_override_fonts/font = ExtResource("25_tlse7")
 theme_override_font_sizes/font_size = 48
@@ -4123,11 +4244,12 @@ position = Vector2(1352.48, 462.3)
 texture = ExtResource("30_srewh")
 
 [node name="hubert" type="AnimatedSprite2D" parent="."]
-position = Vector2(1329.98, 415.8)
+position = Vector2(1373, 415.8)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_8jkfd")
 animation = &"StartAnimation"
 autoplay = "StartAnimation"
+flip_h = true
 
 [node name="Desk" type="Sprite2D" parent="."]
 position = Vector2(1348.48, 576.3)
@@ -4236,12 +4358,12 @@ collision_mask = 1
 [node name="Blockbox" parent="NME Cube" index="1"]
 collision_mask = 1
 
-[connection signal="body_entered" from="Coin" to="DialogueController/Dialogue" method="_on_area_entered" binds= [86]]
+[connection signal="body_entered" from="Coin" to="DialogueController/Dialogue" method="_on_area_entered" binds= [102]]
 [connection signal="body_entered" from="Ah" to="Ah" method="_on_body_entered"]
-[connection signal="body_entered" from="Ah" to="DialogueController/Dialogue" method="_on_area_entered" binds= [74]]
-[connection signal="body_entered" from="Pwrup" to="DialogueController/Dialogue" method="_on_area_entered" flags=6 binds= [81]]
+[connection signal="body_entered" from="Ah" to="DialogueController/Dialogue" method="_on_area_entered" binds= [90]]
+[connection signal="body_entered" from="Pwrup" to="DialogueController/Dialogue" method="_on_area_entered" flags=6 binds= [97]]
 [connection signal="body_entered" from="NMEBlue" to="NMEBlue" method="_on_body_entered"]
-[connection signal="body_entered" from="NMEBlue" to="DialogueController/Dialogue" method="_on_area_entered" binds= [89]]
+[connection signal="body_entered" from="NMEBlue" to="DialogueController/Dialogue" method="_on_area_entered" binds= [105]]
 [connection signal="body_entered" from="NMEBlue2" to="NMEBlue2" method="_on_body_entered"]
 [connection signal="body_entered" from="NMEBlue2" to="DialogueController/Dialogue" method="_on_cutscene_area_entered"]
 

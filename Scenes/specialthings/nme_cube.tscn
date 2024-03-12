@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dpiq4la4nlhei" path="res://Sounds/pwrup.wav" id="3_mgrpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd8k7"]
-size = Vector2(80, 64)
+size = Vector2(80, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75jop"]
 size = Vector2(64, 64)

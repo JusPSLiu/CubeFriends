@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://btcrng206fwa5"]
+[gd_scene load_steps=12 format=3 uid="uid://d1nie5grd8mfp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PowerCube.gd" id="1_jdl4c"]
 [ext_resource type="Texture2D" uid="uid://ha8qpq2jop1a" path="res://Art/Cubes/HoloAbber.png" id="2_vod6e"]
@@ -43,11 +43,45 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="HoloCube" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "casteR", "casteR2", "casteL", "casteL2", "collider") groups=["holocube", "player"]]
-scale = Vector2(0.9, 1)
+[sub_resource type="Animation" id="Animation_wxptq"]
+resource_name = "Appear"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(2, 2, 2, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.3, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dsfxv"]
+_data = {
+"Appear": SubResource("Animation_wxptq")
+}
+
+[node name="HoloCube" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animator", "casteR", "casteR2", "casteL", "casteL2", "collider") groups=["holocube", "player"]]
 collision_mask = 2
 script = ExtResource("1_jdl4c")
 sprite = NodePath("AnimatedSprite2D")
+animator = NodePath("AppearAnimation")
 casteR = NodePath("RayCastR")
 casteR2 = NodePath("RayCastRTop")
 casteL = NodePath("RayCastL")
@@ -56,6 +90,7 @@ collider = NodePath("CubeCollisionShape")
 
 [node name="CubeCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
+scale = Vector2(0.9, 1)
 shape = SubResource("RectangleShape2D_amibf")
 
 [node name="RayCastR" type="RayCast2D" parent="."]
@@ -91,3 +126,10 @@ autoplay = "Abber"
 scale = Vector2(2.29329, 2.47986)
 color = Color(0, 0.819608, 0.972549, 1)
 texture = ExtResource("5_hjomp")
+
+[node name="AppearAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_dsfxv")
+}
+autoplay = "Appear"

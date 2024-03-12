@@ -29,7 +29,9 @@ var humanFont : Font = load("res://Art/Fonts/hasting-dee-quickest.regular.otf")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	text.add_theme_font_override("font", cubeFont)
+	text.add_theme_font_size_override("font_size", 60)
+	text.add_theme_constant_override("line_spacing", -5)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

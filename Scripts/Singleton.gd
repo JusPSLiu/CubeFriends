@@ -5,7 +5,7 @@ var currentLevel : int = 1
 var unlockedLevel : int = 1
 var enabledTextSkip : bool = false
 var numLevels : int = 5
-var coinsCollected : Array = [false,false,false,false,false]
+var coinsCollected : Array = [false,false,false,false,false,false]
 
 func _ready():
 	var save_file = FileAccess.open("user://cube_fren.save", FileAccess.READ)
@@ -31,7 +31,9 @@ func hasCoin(index:int) -> bool:
 	return coinsCollected[index]
 
 func getCoin(index:int):
-	if (coinsCollected[index] == false):
+	if (coinsCollected.size() == index):
+		coinsCollected.push_back(true)
+	elif (coinsCollected[index] == false):
 		coinsCollected[index] = true
 		give_free_cookies()
 

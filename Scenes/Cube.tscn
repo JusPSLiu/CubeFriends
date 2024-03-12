@@ -47,7 +47,7 @@ collision_mask = 6
 hit_from_inside = true
 
 [node name="RayCastBL" type="RayCast2D" parent="."]
-position = Vector2(-27, 30)
+position = Vector2(-27, 38)
 target_position = Vector2(0, 3)
 collision_mask = 6
 hit_from_inside = true

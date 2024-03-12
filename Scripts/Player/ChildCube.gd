@@ -11,6 +11,7 @@ signal help_stuck
 signal unstuck
 signal jumpsound
 signal railmode
+signal derailed
 
 var thisJumpLetter = 'p'
 var id = 0
@@ -18,7 +19,8 @@ var coyoteTime : float = 0.1
 var disabled = false
 var isHoloCube = false
 var rail_mode = false
-var derail_soon = false
+var change_rail_mode_soon = false
+var recently_derailed = false
 
 const JUMP_VELOCITY = -800.0
 
@@ -30,11 +32,16 @@ func _physics_process(delta):
 	# Add the gravity.
 	if is_on_floor():
 		coyoteTime = 0.1
-		if (derail_soon):
-			rail_mode = false
-			derail_soon = false
-			emit_signal("derailed")
-			print_debug("DERAILED")
+		if (change_rail_mode_soon):
+			if (rail_mode and floor_is_not_rail()):
+				print_debug(floor_is_not_rail())
+				rail_mode = false
+				change_rail_mode_soon = false
+				emit_signal("derailed")
+				print_debug("DERAILED")
+			elif (!rail_mode and !floor_is_not_rail()):
+				emit_signal("railmode", position.y)
+				rail_mode = true
 	else:
 		velocity.y += gravity * delta
 		if (coyoteTime > 0):
@@ -119,7 +126,7 @@ func checkIfStuck() -> int:
 	return i_am_stuck
 
 func floor_is_not_rail() -> bool:
-	return nonrailcollider.is_colliding or nonrailcollider2.is_colliding
+	return nonrailcollider.is_colliding() or nonrailcollider2.is_colliding()
 
 func force_jump():
 	if (is_on_floor()):
@@ -127,13 +134,24 @@ func force_jump():
 		emit_signal("jumpsound")
 
 func enter_rail_mode():
-	print_debug("EMITTING")
-	if (!isHoloCube && !rail_mode):
-		emit_signal("railmode", position.y)
-		rail_mode = true
-		derail_soon = false
+	if (!isHoloCube):
+		#call if not curr in rail mode, or if ur abt to drop rail mode
+		if (!rail_mode):
+			change_rail_mode_soon = true
+		elif (change_rail_mode_soon):
+			change_rail_mode_soon = false
 
 func soon_exit_rail_mode():
 	print_debug("DERAIL SOON")
-	if (!isHoloCube):
-		derail_soon = true
+	if (recently_derailed):
+		recently_derailed = false
+		set_collision_mask_value(5, true)
+	elif (!isHoloCube and rail_mode):
+		change_rail_mode_soon = true
+
+#failsafe in case get stuck. i dont want ppl to softlock
+func force_derail():
+	set_collision_mask_value(5, false)
+	change_rail_mode_soon = false
+	rail_mode = false
+	recently_derailed = true

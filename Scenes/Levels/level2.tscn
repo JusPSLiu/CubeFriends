@@ -29,6 +29,7 @@
 shader = ExtResource("1_i2qhq")
 shader_parameter/direction = Vector2(0, 0.1)
 shader_parameter/transparency = Vector4(0, 0, 0, 0.1)
+shader_parameter/skewAmt = 0.0
 shader_parameter/texture = ExtResource("2_tn8qe")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlcfs"]
@@ -1564,12 +1565,12 @@ offset_bottom = 160.0
 texture = ExtResource("12_erseu")
 
 [node name="Label" type="Label" parent="DialogueController/Dialogue/SpeakerImage"]
-texture_filter = 2
 layout_mode = 0
 offset_left = 153.0
 offset_top = -21.0
 offset_right = 854.0
 offset_bottom = 127.0
+scale = Vector2(0.8, 0.8)
 theme_override_constants/line_spacing = -4
 theme_override_fonts/font = ExtResource("17_5vupd")
 theme_override_font_sizes/font_size = 48

@@ -2190,12 +2190,12 @@ texture = ExtResource("11_oqfpo")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="DialogueController/Dialogue/SpeakerImage"]
-texture_filter = 1
 layout_mode = 0
 offset_left = 153.0
 offset_top = -21.0
 offset_right = 854.0
 offset_bottom = 127.0
+scale = Vector2(0.8, 0.8)
 theme_override_constants/line_spacing = -4
 theme_override_fonts/font = ExtResource("15_h6qxu")
 theme_override_font_sizes/font_size = 48

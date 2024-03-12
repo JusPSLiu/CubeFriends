@@ -1,33 +1,48 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw2aslb4ppb1n"]
+[gd_scene load_steps=16 format=3 uid="uid://cw2aslb4ppb1n"]
 
 [ext_resource type="Shader" path="res://Scripts/boost_rail.gdshader" id="1_r4fo6"]
 [ext_resource type="Texture2D" uid="uid://caoor8tovd0c" path="res://Art/Cubes/light.png" id="2_3l8ra"]
 [ext_resource type="Script" path="res://Scripts/RailScript.gd" id="3_bijqg"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bxh4i"]
+[sub_resource type="Gradient" id="Gradient_hs3j0"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pei38"]
-noise = SubResource("FastNoiseLite_bxh4i")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mjecd"]
+gradient = SubResource("Gradient_hs3j0")
+height = 5
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_aau81"]
+colors = PackedColorArray(1, 1, 1, 0.054902, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qylwl"]
+gradient = SubResource("Gradient_aau81")
+width = 32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qv8cj"]
 shader = ExtResource("1_r4fo6")
 shader_parameter/direction = Vector2(-1, 1)
+shader_parameter/direction2 = Vector2(-1, -1)
+shader_parameter/speedyrection = Vector2(-2, 0)
 shader_parameter/transparency = Vector4(1, 1, 1, 1)
-shader_parameter/texture = SubResource("NoiseTexture2D_pei38")
+shader_parameter/texturey = SubResource("GradientTexture1D_qylwl")
+shader_parameter/edgefuzz = SubResource("GradientTexture2D_mjecd")
 
 [sub_resource type="Gradient" id="Gradient_62xmw"]
 offsets = PackedFloat32Array(0.14978, 0.488987, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0.972549, 0.972549, 0.972549, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0841u"]
+noise_type = 2
+frequency = 0.0318
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bpqai"]
-height = 8
+height = 32
+seamless = true
 color_ramp = SubResource("Gradient_62xmw")
 noise = SubResource("FastNoiseLite_0841u")
 
 [sub_resource type="Gradient" id="Gradient_nevsm"]
-offsets = PackedFloat32Array(0, 0.546256, 1)
+offsets = PackedFloat32Array(0.154717, 0.50566, 0.830189)
 colors = PackedColorArray(0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hnbud"]
@@ -35,10 +50,10 @@ gradient = SubResource("Gradient_nevsm")
 width = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b6dh"]
-size = Vector2(1129, 12)
+size = Vector2(1119, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkhco"]
-size = Vector2(1129, 11)
+size = Vector2(1119, 11)
 
 [node name="Booster" type="StaticBody2D"]
 collision_layer = 16
@@ -61,19 +76,20 @@ offset_bottom = 10.0
 texture = ExtResource("2_3l8ra")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="awesome_shader" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_qv8cj")
 offset_top = -6.0
 offset_right = 1119.0
 offset_bottom = 6.0
 texture = SubResource("NoiseTexture2D_bpqai")
+expand_mode = 1
 stretch_mode = 1
 
-[node name="centerOfBoosty" type="TextureRect" parent="TextureRect"]
+[node name="centerOfBoosty" type="TextureRect" parent="awesome_shader"]
 layout_mode = 0
-offset_top = 18.0
-offset_right = 25.0
-offset_bottom = 1138.0
+offset_top = 19.0
+offset_right = 27.0
+offset_bottom = 1139.0
 rotation = -1.5708
 texture = SubResource("GradientTexture1D_hnbud")
 
@@ -83,6 +99,7 @@ shape = SubResource("RectangleShape2D_8b6dh")
 one_way_collision = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
 script = ExtResource("3_bijqg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
