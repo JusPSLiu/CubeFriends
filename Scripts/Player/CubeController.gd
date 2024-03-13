@@ -28,7 +28,7 @@ var minX = 0
 var railMode = false
 
 func reposition(id:int):
-	minX = -1*cubes.size()*cubeDist+16
+	minX = -1*(cubes.size()-1)*cubeDist-32
 	var currloc = cubes[id].position.x
 	var curid = 0
 	var offset = (id*-1*cubeDist) - (currloc)
@@ -78,7 +78,7 @@ func _physics_process(delta):
 		timeBtwnSounds-=delta
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if (railMode):
-		velocity.x = 400
+		velocity.x = 500
 	elif (stuck == 0):
 		#not stuck; regular motion
 		if direction:
@@ -182,22 +182,9 @@ func set_cube_array_controls():
 
 
 func power_up():
-	#pwrPlayer.set_stream(powerUpSnd)
-	#pwrPlayer.play()
+	pwrPlayer.set_stream(powerUpSnd)
+	pwrPlayer.play()
 	var newCube
-	##reposition everything
-	#newCube.position = cubes[0].position
-	#newCube.position.x += cubeDist
-	#camDistPx -= cubeDist
-	##connect it
-	#newCube.connect("help_stuck", child_stuck)
-	#newCube.connect("unstuck", child_unstuck)
-	#newCube.connect("jumpsound", jump_sound)
-	#newCube.connect("depower", depower)
-	##add it to the cubes
-	#call_deferred("add_child", newCube)
-	#cubes.insert(0,newCube)
-	#
 	###super upgrade gives 10
 	if (superUpgrade):
 		while (cubes.size() < 10):
@@ -244,12 +231,19 @@ func depower(index:int):
 	#failsafe
 	if (index >= 0 && index < cubes.size()):
 		#check if stucc
+		#indices abt to change so sub 1 from nums greater than index, and 
 		if (leftBlockArray.has(index)):
 			leftBlockArray.erase(index)
 			resetLeftArray()
 		if (rightBlockArray.has(index)):
 			rightBlockArray.erase(index)
 			resetRightArray()
+		for num in leftBlockArray:
+			if (num > index):
+				num -= 1
+		for num in rightBlockArray:
+			if (num > index):
+				num -= 1
 		#put bomb in place
 		var boom = PowerBoom.instantiate()
 		boom.position = cubes[index].position + position
@@ -290,7 +284,7 @@ func _process(_delta):
 		var mousePosX = get_local_mouse_position().x
 		#print(int((mousePosX)/cubeDist-.5)*-1)
 		if (prevMousePosX > -1280):
-			if (mousePosX>48):
+			if (mousePosX>32):
 				if (prevMousePosX > 0):
 					# for (int i=0; i<prevMousePosX+1; i++)
 					for i in range(prevMousePosX+1):
@@ -311,7 +305,7 @@ func _process(_delta):
 				if (prevMousePosX >= mousePosX):
 					# for (int i=mousePosX; i<prevMousePosX+1; i++)
 					for i in range(prevMousePosX+1-mousePosX):
-						if (i < cubes.size() and cubes[i+mousePosX].coyoteTime > 0):
+						if (i+mousePosX < cubes.size() and cubes[i+mousePosX].coyoteTime > 0):
 							force_jump(i+mousePosX)
 							#apparently this one can be triggered while killing an nme cube so uh... yeah
 				else:

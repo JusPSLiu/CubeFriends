@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dipxbdwg7bjd7"]
+[gd_scene load_steps=63 format=3 uid="uid://dipxbdwg7bjd7"]
 
 [ext_resource type="Texture2D" uid="uid://fyr6hut4x2de" path="res://Art/Backgrounds/bossclouds.png" id="1_2yosn"]
 [ext_resource type="Texture2D" uid="uid://yects5t4ya4e" path="res://Art/Tilesets/dirtTiles.png" id="1_17wd6"]
@@ -1292,6 +1292,13 @@ _data = {
 "FadeOut": SubResource("Animation_xrnxx")
 }
 
+[sub_resource type="Gradient" id="Gradient_shb16"]
+colors = PackedColorArray(1, 0.564706, 0.423529, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2cx18"]
+gradient = SubResource("Gradient_shb16")
+width = 5
+
 [node name="Level" type="Node2D"]
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -1368,7 +1375,6 @@ text = "The Destructor"
 
 [node name="CubeController" type="CharacterBody2D" parent="." node_paths=PackedStringArray("cubes", "camera", "jumpPlayer", "pwrPlayer")]
 process_mode = 4
-visible = false
 position = Vector2(191, 368)
 script = ExtResource("7_86rrd")
 cubes = [NodePath("RedCube")]
@@ -1391,7 +1397,8 @@ volume_db = -10.0
 max_polyphony = 2
 
 [node name="Camera2D" type="Camera2D" parent="CubeController"]
-limit_top = 0
+zoom = Vector2(0.8, 0.8)
+limit_top = -560
 limit_bottom = 736
 
 [node name="RedCube" parent="CubeController" instance=ExtResource("9_v225p")]
@@ -1539,10 +1546,7 @@ properCamera = NodePath("../../CubeController/Camera2D")
 NextLevel = "../Screens/TitleScreen.tscn"
 Fader = NodePath("../../Fader")
 MusicFader = NodePath("../../MusicPlayer/MusicFader")
-dialogue = Array[String](["RHere we go.", "aYou're not supposed to be here. As a matter
-of fact, you're not. Get back where you
-belong, and forget about all this.", " Until we meet, again...", "aAlso yes this is Jus,  the developer of the
-game speaking, to be clear.", "/"])
+dialogue = Array[String](["RHere we go.", "/", "/"])
 
 [node name="DialogueBox" type="ColorRect" parent="DialogueController/Dialogue"]
 offset_top = -289.0
@@ -1597,6 +1601,57 @@ libraries = {
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("Fader", "MusicFader") instance=ExtResource("17_nj5k5")]
 Fader = NodePath("../Fader")
 MusicFader = NodePath("../MusicPlayer/MusicFader")
+
+[node name="MotleyBossBar" type="ColorRect" parent="PauseMenu"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -325.0
+offset_top = 69.0
+offset_right = 325.0
+offset_bottom = 89.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="PauseMenu/MotleyBossBar"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = -62.0
+offset_right = 883.0
+offset_bottom = 81.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("14_3afkm")
+theme_override_font_sizes/font_size = 76
+text = "THE DESTRUCTOR"
+
+[node name="Label2" type="Label" parent="PauseMenu/MotleyBossBar/Label"]
+layout_mode = 0
+offset_left = 53.75
+offset_top = -10.0
+offset_right = 792.75
+offset_bottom = 133.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("14_3afkm")
+theme_override_font_sizes/font_size = 36
+text = "THE INCORPOREAL ENEMY"
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu/MotleyBossBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 648.0
+offset_bottom = 18.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/MotleyBossBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 18.0
+offset_right = 18.0
+offset_bottom = 37.0
+rotation = -1.5708
+scale = Vector2(1, 34)
+texture = SubResource("GradientTexture1D_2cx18")
 
 [node name="Fader" parent="." instance=ExtResource("18_eg3h3")]
 
