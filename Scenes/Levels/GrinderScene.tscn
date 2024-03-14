@@ -794,6 +794,123 @@ tracks/1/keys = {
 "values": [0, -1280]
 }
 
+[sub_resource type="Animation" id="Animation_rd1mk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Cutscene/CutsceneThings/Red:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1062, 544)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CutsceneCamera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1377, 368)]
+}
+
+[sub_resource type="Animation" id="Animation_v3wso"]
+resource_name = "StartUp"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CutsceneCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector2(-322, 262)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cutscene/CutsceneThings/Red:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-285.0, -36.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Cutscene/CutsceneThings/Red:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [352.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../DialogueController/Dialogue")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_dialogue"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CutsceneCamera:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutsceneThings/Green:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-288, 352), Vector2(-127, 352)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CutsceneThings/Blue:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-287, 352), Vector2(-224, 352)]
+}
+
 [sub_resource type="Animation" id="Animation_y4vru"]
 resource_name = "O"
 length = 6.5
@@ -1273,132 +1390,15 @@ tracks/20/keys = {
 "values": [&"bluedead", &"reddead", &"greendeath"]
 }
 
-[sub_resource type="Animation" id="Animation_rd1mk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Cutscene/CutsceneThings/Red:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1062, 544)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../CutsceneCamera:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1377, 368)]
-}
-
-[sub_resource type="Animation" id="Animation_v3wso"]
-resource_name = "StartUp"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CutsceneCamera:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(2),
-"update": 0,
-"values": [Vector2(-322, 262)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Cutscene/CutsceneThings/Red:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-285.0, -36.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Cutscene/CutsceneThings/Red:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [352.0]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../DialogueController/Dialogue")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start_dialogue"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../CutsceneCamera:enabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CutsceneThings/Green:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.7, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-288, 352), Vector2(-127, 352)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CutsceneThings/Blue:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-287, 352), Vector2(-224, 352)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fp2dv"]
 _data = {
 "B": SubResource("Animation_u50ai"),
 "H": SubResource("Animation_4bob7"),
 "I": SubResource("Animation_xfp3u"),
 "M": SubResource("Animation_krtyj"),
-"O": SubResource("Animation_y4vru"),
-"R": SubResource("Animation_twxai"),
+"P": SubResource("Animation_y4vru"),
 "RESET": SubResource("Animation_rd1mk"),
+"S": SubResource("Animation_twxai"),
 "StartUp": SubResource("Animation_v3wso")
 }
 
@@ -1957,7 +1957,7 @@ max_polyphony = 2
 bus = &"Sound"
 
 [node name="Camera2D" type="Camera2D" parent="CubeController"]
-position = Vector2(665, 498)
+position = Vector2(-96, 0)
 limit_top = 0
 limit_bottom = 736
 
@@ -2014,7 +2014,7 @@ initial_velocity_min = 700.0
 initial_velocity_max = 700.0
 scale_amount_min = 10.0
 scale_amount_max = 20.0
-color = Color(1, 0, 0.0392157, 1)
+color = Color(0.121569, 0, 1, 1)
 
 [node name="Particontroller" type="AnimationPlayer" parent="Cutscene/CutsceneThings"]
 root_node = NodePath("../Blue")
@@ -2056,25 +2056,21 @@ bus = &"Sound"
 [node name="SpinnyBlade" type="AnimatedSprite2D" parent="."]
 position = Vector2(9500, 707)
 sprite_frames = SubResource("SpriteFrames_l3q0g")
-animation = &"bluedead"
 autoplay = "default"
 
 [node name="SpinnyBlade4" type="AnimatedSprite2D" parent="SpinnyBlade"]
 position = Vector2(-155, -1)
 sprite_frames = SubResource("SpriteFrames_l3q0g")
-animation = &"bluedead"
 autoplay = "default"
 
 [node name="SpinnyBlade2" type="AnimatedSprite2D" parent="SpinnyBlade"]
 position = Vector2(-112, 32)
 sprite_frames = SubResource("SpriteFrames_l3q0g")
-animation = &"bluedead"
 autoplay = "default"
 
 [node name="SpinnyBlade3" type="AnimatedSprite2D" parent="SpinnyBlade"]
 position = Vector2(-240, 3)
 sprite_frames = SubResource("SpriteFrames_l3q0g")
-animation = &"bluedead"
 autoplay = "default"
 
 [node name="DialogueController" type="AnimationPlayer" parent="."]
@@ -2102,7 +2098,7 @@ MusicFader = NodePath("../../MusicPlayer/AmbienceFader")
 dialogue = Array[String](["REverybody, stay calm.                    ", "rIf we're careful, we can make it through
 without any incident.", "BRed Cube. Buddy. Nothing's gonna happen.", "GI wouldn't be too sure of that.", "BCome on! That was only one time!", "RWe've only BEEN here one time!", "/", "rGuys, be very, very careful.
 Do not fall in the bottomless pit.", "bRed Cube. It's in the wall.", "RThat didn't stop Harold.", "BFair enough.", "/", "rOkay, we've made it to the end.", "RSo, how did they tell us to do go through
-again?", "bRed Cube! Check this out!                                                            ", "ROh. Yeah that was it.", "RWell, are you ready, Green Cube?", "rHere we go!                          ", "/"])
+again?", "BYou're taking too long!", "bRed Cube! Check this out!                                                            ", "ROh. Yeah that was it.", "RWell, are you ready, Green Cube?", "rHere we go!                          ", "/"])
 
 [node name="DialogueBox" type="ColorRect" parent="DialogueController/Dialogue"]
 offset_top = -289.0

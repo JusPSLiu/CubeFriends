@@ -122,7 +122,6 @@ stream = ExtResource("2_pkwwa")
 bus = &"Sound"
 
 [node name="PauseButton" type="TextureButton" parent="."]
-texture_filter = 1
 offset_left = 1164.0
 offset_top = 20.0
 offset_right = 1260.0
@@ -140,6 +139,7 @@ visible = false
 layout_mode = 0
 offset_right = 96.0
 offset_bottom = 96.0
+scale = Vector2(0.8, 0.8)
 focus_mode = 0
 toggle_mode = true
 texture_normal = ExtResource("6_k6ail")

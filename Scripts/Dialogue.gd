@@ -16,6 +16,7 @@ extends CanvasLayer
 @export var MusicFader : AnimationPlayer
 @export var humanPlayer : AnimatedSprite2D
 @export var humanthere : bool = true
+@export var boss : Node2D
 
 @export_multiline var dialogue : Array[String]
 
@@ -119,7 +120,7 @@ func setSpeaker(speaker):
 			CutsceneAnimator.play(String.chr(currentDialogue+65))
 
 func changeCurrentDialogue(index):
-	if (index < dialogue.size() and dialogue[index] != "/" and dialogue[index] != "//~"):
+	if (index < dialogue.size() and dialogue[index] != "/" and dialogue[index] != "/-"):
 		#tell process that it's loading in
 		loadingIn = true
 		#reset the visibility
@@ -128,17 +129,21 @@ func changeCurrentDialogue(index):
 		text.text = dialogue[index].substr(1)
 		setSpeaker(dialogue[index].substr(0,1))
 	else:
-		if (index == dialogue.size()-1 and dialogue[index] == "/") or (index < dialogue.size() and dialogue[index] == "//~"):
+		print_debug("Ended Dialogue")
+		if (index == dialogue.size()-1) and (dialogue[index] == "/"):
 			toNextLevel()
+		elif (index < dialogue.size() and dialogue[index] == "/-"):
+			boss.StartBoss()
 		speaking = false
 		SpeakerImage.hide()
 		dialogueAnimator.play("CloseDialogue")
 		await dialogueAnimator.animation_finished
-		player.process_mode = Node.PROCESS_MODE_INHERIT
-		player.enable_children()
-		properCamera.make_current()
-		player.visible = true
-		CutsceneThings.visible = false
+		if (player != null):
+			player.process_mode = Node.PROCESS_MODE_INHERIT
+			player.enable_children()
+			properCamera.make_current()
+			player.visible = true
+			CutsceneThings.visible = false
 
 
 func _input(event : InputEvent):
@@ -171,6 +176,7 @@ func _on_end_area_entered(area):
 func _on_area_entered(area, index):
 	if (!speaking):
 		if (area.is_in_group("player")):
+			speaking = true
 			player.disable_children()
 			show()
 			currentDialogue = index
@@ -183,8 +189,9 @@ func toNextLevel():
 			Singleton.give_free_cookies()
 		Singleton.currentLevel = LevelNumber+1
 		Fader.play("FadeOut")
-		MusicFader.play("FadeOut")
-		await Fader.animation_finished
+		if (MusicFader != null):
+			MusicFader.play("FadeOut")
+			await Fader.animation_finished
 		get_tree().change_scene_to_file("res://Scenes/Levels/"+NextLevel)
 
 

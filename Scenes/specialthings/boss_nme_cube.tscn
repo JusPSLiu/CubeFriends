@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c1ycltq5i13iv" path="res://Art/Cubes/NMECube.png" id="2_bl1o4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd8k7"]
-size = Vector2(38, 64)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75jop"]
-size = Vector2(64, 64)
+size = Vector2(24, 24)
 
 [node name="NME Cube" type="Area2D"]
 position = Vector2(16121, 672)

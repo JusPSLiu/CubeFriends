@@ -1,18 +1,20 @@
-extends Area2D
+extends RigidBody2D
 
-@export var player : CharacterBody2D
-@export var active : bool = true
 @export var sound : AudioStreamPlayer2D
 
 func _on_body_entered(body):
 	if (visible):
-		if (active and body.is_in_group("player")):
-			print_debug("TRIGGERED")
-			player.power_up()
+		if (body.is_in_group("player")):
+			body.get_parent().power_up()
 			visible = false
-			active = false
 			sound.play()
 			await sound.finished
 			for child in get_children():
 				child.queue_free()
 			queue_free()
+
+func kms():
+	visible = false
+	for child in get_children():
+		child.queue_free()
+	queue_free()

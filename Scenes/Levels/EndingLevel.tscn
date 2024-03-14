@@ -1,0 +1,197 @@
+[gd_scene load_steps=14 format=3 uid="uid://g1qlwnlacesu"]
+
+[ext_resource type="Texture2D" uid="uid://1p3376112nki" path="res://Art/Cubes/RedCube.png" id="10_mgiju"]
+[ext_resource type="Script" path="res://Scripts/Dialogue.gd" id="13_s8doo"]
+[ext_resource type="FontFile" uid="uid://blvljxujr15rm" path="res://Art/Fonts/born2bsporty-fs.regular.otf" id="14_ecabd"]
+[ext_resource type="AudioStream" uid="uid://dnd5ue2jwhfw4" path="res://Sounds/UI/red.wav" id="15_gywum"]
+[ext_resource type="PackedScene" uid="uid://bm67c4ebptsl8" path="res://Scenes/ScreenFx/Fader.tscn" id="18_3gqj0"]
+
+[sub_resource type="Animation" id="Animation_rd1mk"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_v3wso"]
+resource_name = "StartUp"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueController/Dialogue")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_dialogue"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fp2dv"]
+_data = {
+"RESET": SubResource("Animation_rd1mk"),
+"StartUp": SubResource("Animation_v3wso")
+}
+
+[sub_resource type="Animation" id="Animation_4yy6i"]
+resource_name = "CloseDialogue"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueController/Dialogue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueController/Dialogue/DialogueBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -289)]
+}
+
+[sub_resource type="Animation" id="Animation_xmrim"]
+resource_name = "LoadDialogue"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DialogueController/Dialogue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueController/Dialogue/DialogueBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(0, -289), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0vjmx"]
+_data = {
+"CloseDialogue": SubResource("Animation_4yy6i"),
+"LoadDialogue": SubResource("Animation_xmrim")
+}
+
+[sub_resource type="Gradient" id="Gradient_5pxse"]
+colors = PackedColorArray(0, 0, 0, 0.705882, 0.262745, 0.254902, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6717o"]
+gradient = SubResource("Gradient_5pxse")
+width = 16
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_fp2dv")
+}
+autoplay = "StartUp"
+
+[node name="DialogueController" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Cutscene")
+libraries = {
+"": SubResource("AnimationLibrary_0vjmx")
+}
+
+[node name="Dialogue" type="CanvasLayer" parent="DialogueController" node_paths=PackedStringArray("dialogueSounds", "text", "SpeakerImage", "dialogueAnimator", "CutsceneAnimator", "Fader")]
+script = ExtResource("13_s8doo")
+dialogueSounds = NodePath("DialogueSounds")
+text = NodePath("SpeakerImage/Label")
+lettersPerSecond = 40.0
+SpeakerImage = NodePath("SpeakerImage")
+dialogueAnimator = NodePath("..")
+CutsceneAnimator = NodePath("../../Cutscene")
+NextLevel = "../Screens/Credits.tscn"
+Fader = NodePath("../../Fader")
+humanthere = false
+dialogue = Array[String](["RIt's done...", "RI hope Green Cube and Blue Cube can rest
+now...", "HYou did it. You really, actually did it.", "HYou've saved countless lives. Countless
+worlds. All of the possible future victims of
+the NME. I cannot thank you enough.", "R...           
+But I guess we're still stuck here, though.", "UThis pocket dimension isn't too bad. I told
+you about the farm, right? You can live with
+me around there if you'd like.", "RYeah. I'd like that.", "R...", "U...               
+Is anything wrong?", "RIt just feels... like something's incomplete.            
+Green Cube...           
+Blue Cube....", "RThey're still gone.         
+Everything just seems so... empty without them.", "SOh, I see. You know, there's a custom
+among my people.", "SAn engraved stone, as a memorial of those
+who are no longer with us.", "UPerhaps we could do something like that?", "RYeah.", "EExcellent. As for the location, I've got the
+perfect place in mind.", "RAnd thanks.", "HFor what?", "RFor everything. For helping me get this far.", "EYou're welcome. And thank you...        
+for so much more.", "/"])
+
+[node name="DialogueBox" type="ColorRect" parent="DialogueController/Dialogue"]
+offset_top = -289.0
+offset_right = 1280.0
+offset_bottom = -97.0
+color = Color(0, 0, 0, 0.705882)
+
+[node name="DialogueFade" type="TextureRect" parent="DialogueController/Dialogue/DialogueBox"]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 192.0
+offset_right = 1376.0
+offset_bottom = 1472.0
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_6717o")
+
+[node name="SpeakerImage" type="TextureRect" parent="DialogueController/Dialogue"]
+visible = false
+offset_left = 181.0
+offset_top = 32.0
+offset_right = 309.0
+offset_bottom = 160.0
+texture = ExtResource("10_mgiju")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="DialogueController/Dialogue/SpeakerImage"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = -21.0
+offset_right = 854.0
+offset_bottom = 127.0
+scale = Vector2(0.8, 0.8)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("14_ecabd")
+theme_override_font_sizes/font_size = 48
+
+[node name="DialogueSounds" type="AudioStreamPlayer" parent="DialogueController/Dialogue"]
+stream = ExtResource("15_gywum")
+bus = &"Sound"
+
+[node name="Fader" parent="." instance=ExtResource("18_3gqj0")]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2vblv5byxh23"]
+
+[ext_resource type="Script" path="res://Scripts/nme_drop.gd" id="1_nvpxk"]
+[ext_resource type="Texture2D" uid="uid://b8ibvraybbe4w" path="res://Art/Cubes/dialogueImages/NMECube.png" id="2_1hicc"]
+[ext_resource type="Texture2D" uid="uid://dqsa48ip4xiew" path="res://Art/Cubes/NormalCube.png" id="3_wrxt6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd8k7"]
+size = Vector2(88, 78)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bqurq"]
+diffuse_texture = ExtResource("2_1hicc")
+normal_texture = ExtResource("3_wrxt6")
+
+[node name="NMEDrop" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.5
+script = ExtResource("1_nvpxk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_kd8k7")
+
+[node name="RedCube" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_bqurq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_dont_die_but_entered"]

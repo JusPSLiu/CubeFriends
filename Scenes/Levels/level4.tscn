@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dfdfhrtx7wrbt"]
+[gd_scene load_steps=89 format=3 uid="uid://dfdfhrtx7wrbt"]
 
 [ext_resource type="Texture2D" uid="uid://b0kjbn325tigc" path="res://Art/Tilesets/leafTiles.png" id="1_3vppc"]
 [ext_resource type="Texture2D" uid="uid://p2sxntb1ufiv" path="res://Art/Tilesets/woodonTiles.png" id="1_7gy0c"]
@@ -31,6 +31,23 @@
 [ext_resource type="PackedScene" uid="uid://cw2aslb4ppb1n" path="res://Scenes/booster_platform.tscn" id="22_hrxro"]
 [ext_resource type="Texture2D" uid="uid://5hs7mtn8crqx" path="res://Art/Backgrounds/motionlines.png" id="22_su5id"]
 [ext_resource type="PackedScene" uid="uid://xfyac0a1bu6x" path="res://Scenes/specialthings/nme_cube.tscn" id="24_j24fx"]
+[ext_resource type="Script" path="res://Scripts/Pwrup.gd" id="32_v5bou"]
+[ext_resource type="Texture2D" uid="uid://d4c0sf8aia4yo" path="res://Art/pwrup.png" id="33_td1r3"]
+[ext_resource type="AudioStream" uid="uid://dpiq4la4nlhei" path="res://Sounds/pwrup.wav" id="34_w0tvp"]
+
+[sub_resource type="Gradient" id="Gradient_yl01h"]
+offsets = PackedFloat32Array(0.35124, 0.702479)
+colors = PackedColorArray(0.63648, 0.63648, 0.63648, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lyoe0"]
+noise_type = 4
+frequency = 0.1244
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rapy6"]
+width = 65
+height = 65
+color_ramp = SubResource("Gradient_yl01h")
+noise = SubResource("FastNoiseLite_lyoe0")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8bq4e"]
 diffuse_texture = ExtResource("1_7gy0c")
@@ -399,6 +416,126 @@ polygon = PackedVector2Array(-32, 32, 32, -32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wah76"]
 size = Vector2(236, 402)
 
+[sub_resource type="Animation" id="Animation_c6vak"]
+resource_name = "101"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [32],
+"method": &"shrink_dist_to"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CubeController")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"readjust_cam_dist"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CubeController/Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(-256, 0), Vector2(-128, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PauseMenu/rain:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CubeController/Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.82, 0.82), Vector2(0.7, 0.7)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CubeController/Camera2D:limit_top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(2, 0.6, 1),
+"update": 0,
+"values": [0, -128, -256]
+}
+
+[sub_resource type="Animation" id="Animation_6npk4"]
+resource_name = "102"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CubeController/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CubeController/Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 0.7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CubeController/Camera2D:limit_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-256]
+}
+
 [sub_resource type="Animation" id="Animation_pmu8t"]
 resource_name = "104"
 length = 2.5
@@ -445,22 +582,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../BOOSTERS WOOOO:modulate")
+tracks/1/path = NodePath("../BOOSTERS WOOOO:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../BOOSTERS WOOOO:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -959,126 +1084,6 @@ tracks/0/keys = {
 "values": [0.0, -80.0]
 }
 
-[sub_resource type="Animation" id="Animation_c6vak"]
-resource_name = "101"
-length = 0.5
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CubeController")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [32],
-"method": &"shrink_dist_to"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../CubeController")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0],
-"method": &"readjust_cam_dist"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CubeController/Camera2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(-256, 0), Vector2(-128, 0), Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenu/rain:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../CubeController/Camera2D:zoom")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.82, 0.82), Vector2(0.7, 0.7)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../CubeController/Camera2D:limit_top")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5),
-"transitions": PackedFloat32Array(2, 0.6, 1),
-"update": 0,
-"values": [0, -128, -256]
-}
-
-[sub_resource type="Animation" id="Animation_6npk4"]
-resource_name = "102"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CubeController/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../CubeController/Camera2D:zoom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.7, 0.7)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CubeController/Camera2D:limit_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-256]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fp2dv"]
 _data = {
 "101": SubResource("Animation_c6vak"),
@@ -1211,6 +1216,31 @@ size = Vector2(2470, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nraxb"]
 size = Vector2(2470, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urrq"]
+size = Vector2(67.5, 70.375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w58m"]
+atlas = ExtResource("33_td1r3")
+region = Rect2(0, 0, 37, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q56k"]
+atlas = ExtResource("33_td1r3")
+region = Rect2(37, 0, 37, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdjgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w58m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q56k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2w2d"]
 size = Vector2(6708, 12)
 
@@ -1228,12 +1258,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_85i01")
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="ColorRect" type="TextureRect" parent="Background"]
+modulate = Color(0.313726, 0.313726, 0.313726, 0.368627)
 offset_left = 90.0
 offset_top = 34.0
-offset_right = 161.0
+offset_right = 155.0
 offset_bottom = 99.0
-color = Color(0.313726, 0.313726, 0.313726, 0.368627)
+texture = SubResource("NoiseTexture2D_rapy6")
 
 [node name="BrokenRoof" type="TileMap" parent="."]
 modulate = Color(0.466667, 0.466667, 0.466667, 1)
@@ -1293,6 +1324,7 @@ horizontal_alignment = 1
 
 [node name="CubeController" type="CharacterBody2D" parent="." node_paths=PackedStringArray("cubes", "camera", "jumpPlayer", "pwrPlayer")]
 process_mode = 4
+visible = false
 position = Vector2(1062, 368)
 script = ExtResource("7_ro643")
 cubes = [NodePath("RedCube")]
@@ -1314,8 +1346,8 @@ max_polyphony = 2
 bus = &"Sound"
 
 [node name="Camera2D" type="Camera2D" parent="CubeController"]
-position = Vector2(-256, 0)
-limit_top = 0
+zoom = Vector2(0.7, 0.7)
+limit_top = -256
 limit_bottom = 736
 
 [node name="RedCube" parent="CubeController" instance=ExtResource("9_iet3q")]
@@ -1573,7 +1605,6 @@ Fader = NodePath("../Fader")
 MusicFader = NodePath("../MusicPlayer/MusicFader")
 
 [node name="rain" type="TextureRect" parent="PauseMenu"]
-visible = false
 z_index = -3
 material = SubResource("ShaderMaterial_8ptc5")
 offset_right = 40.0
@@ -1594,9 +1625,7 @@ shadow_filter = 1
 shadow_filter_smooth = 14.6
 
 [node name="BOOSTERS WOOOO" type="Node2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
-position = Vector2(85, 0)
+position = Vector2(85, 152)
 rotation = -1.5708
 
 [node name="Booster" parent="BOOSTERS WOOOO" instance=ExtResource("22_hrxro")]
@@ -1688,9 +1717,24 @@ position = Vector2(-12513, 672)
 [node name="NME Cube3" parent="." instance=ExtResource("24_j24fx")]
 position = Vector2(-16545, 608)
 
-[node name="Pwrup2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_0rcyp")]
+[node name="Pwrup2" type="Area2D" parent="." node_paths=PackedStringArray("player", "sound")]
 position = Vector2(3899, 403)
+collision_mask = 3
+script = ExtResource("32_v5bou")
 player = NodePath("../CubeController")
+sound = NodePath("PwrupSound")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pwrup2"]
+shape = SubResource("RectangleShape2D_0urrq")
+
+[node name="PwrupSprite" type="AnimatedSprite2D" parent="Pwrup2"]
+sprite_frames = SubResource("SpriteFrames_qdjgp")
+autoplay = "default"
+frame_progress = 0.494556
+
+[node name="PwrupSound" type="AudioStreamPlayer2D" parent="Pwrup2"]
+stream = ExtResource("34_w0tvp")
+bus = &"Sound"
 
 [node name="Booster6" parent="." instance=ExtResource("22_hrxro")]
 position = Vector2(6142, 165)
@@ -1847,7 +1891,8 @@ shape = SubResource("RectangleShape2D_rm5au")
 [connection signal="body_entered" from="woomadeit" to="woomadeit" method="_on_body_entered"]
 [connection signal="body_entered" from="woomadeit" to="DialogueController/Dialogue" method="_on_area_entered" binds= [104]]
 [connection signal="body_entered" from="Coin" to="DialogueController/Dialogue" method="_on_area_entered" binds= [21]]
-[connection signal="body_entered" from="Pwrup2" to="DialogueController/Dialogue" method="_on_area_entered" flags=6 binds= [93]]
+[connection signal="body_entered" from="Pwrup2" to="Pwrup2" method="_on_body_entered"]
+[connection signal="body_entered" from="Pwrup2" to="DialogueController/Dialogue" method="_on_area_entered" binds= [93]]
 
 [editable path="BOOSTERS WOOOO/Booster"]
 [editable path="BOOSTERS WOOOO/Booster2"]

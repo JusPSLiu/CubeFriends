@@ -238,12 +238,12 @@ func depower(index:int):
 		if (rightBlockArray.has(index)):
 			rightBlockArray.erase(index)
 			resetRightArray()
-		for num in leftBlockArray:
-			if (num > index):
-				num -= 1
-		for num in rightBlockArray:
-			if (num > index):
-				num -= 1
+		for num in range(leftBlockArray.size()-1, -1, -1):
+			if (leftBlockArray[num] > index):
+				leftBlockArray[num] -= 1
+		for num in range(rightBlockArray.size()-1, -1, -1):
+			if (rightBlockArray[num] > index):
+				rightBlockArray[num] -= 1
 		#put bomb in place
 		var boom = PowerBoom.instantiate()
 		boom.position = cubes[index].position + position

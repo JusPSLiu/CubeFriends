@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://dobmp70jo7lwj"]
+[gd_scene load_steps=145 format=3 uid="uid://dobmp70jo7lwj"]
 
 [ext_resource type="Texture2D" uid="uid://dcjat8v2bhujy" path="res://Art/Backgrounds/Pit.png" id="1_kp8y6"]
 [ext_resource type="Texture2D" uid="uid://p2sxntb1ufiv" path="res://Art/Tilesets/woodonTiles.png" id="1_tny3l"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://b1kr1xssobdoa" path="res://Sounds/pop.ogg" id="12_7v681"]
 [ext_resource type="PackedScene" uid="uid://coraifaj74muf" path="res://Scenes/Cube.tscn" id="13_oqn0a"]
 [ext_resource type="Texture2D" uid="uid://1p3376112nki" path="res://Art/Cubes/RedCube.png" id="14_wwbpc"]
+[ext_resource type="Texture2D" uid="uid://dqsa48ip4xiew" path="res://Art/Cubes/NormalCube.png" id="15_n2ont"]
 [ext_resource type="Texture2D" uid="uid://ikwv2uwe6h8l" path="res://Art/Cubes/BlueCube.png" id="15_thk0f"]
 [ext_resource type="Texture2D" uid="uid://cyiid8f2l1ujp" path="res://Art/Cubes/GreenCube.png" id="16_lkxim"]
 [ext_resource type="PackedScene" uid="uid://cx3ucg2p0uikk" path="res://Scenes/specialthings/coin.tscn" id="17_f4a6v"]
@@ -597,6 +598,10 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_uc0xe")
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_yellw"]
+diffuse_texture = ExtResource("14_wwbpc")
+normal_texture = ExtResource("15_n2ont")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wah76"]
 size = Vector2(236, 518)
 
@@ -863,34 +868,22 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Invitation:visible")
+tracks/4/path = NodePath("../hubert:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../hubert:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../hubert:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../hubert:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1173,6 +1166,20 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.7, 1.3)
 }
 tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../hubert")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"StartAnimation", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_qmls8"]
 resource_name = "I"
@@ -1754,6 +1761,18 @@ _data = {
 "o": SubResource("Animation_qtntw"),
 "q": SubResource("Animation_aebj5")
 }
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_exx0s"]
+diffuse_texture = ExtResource("14_wwbpc")
+normal_texture = ExtResource("15_n2ont")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_08wo5"]
+diffuse_texture = ExtResource("16_lkxim")
+normal_texture = ExtResource("15_n2ont")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8wrf1"]
+diffuse_texture = ExtResource("15_thk0f")
+normal_texture = ExtResource("15_n2ont")
 
 [sub_resource type="Animation" id="Animation_4yy6i"]
 resource_name = "CloseDialogue"
@@ -3910,6 +3929,14 @@ _data = {
 "stand_in_place": SubResource("Animation_kjsob")
 }
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_gye0v"]
+diffuse_texture = ExtResource("16_lkxim")
+normal_texture = ExtResource("15_n2ont")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_afebf"]
+diffuse_texture = ExtResource("15_thk0f")
+normal_texture = ExtResource("15_n2ont")
+
 [node name="Level" type="Node2D"]
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -3991,7 +4018,7 @@ max_polyphony = 2
 bus = &"Sound"
 
 [node name="Camera2D" type="Camera2D" parent="CubeController"]
-position = Vector2(128, 0)
+position = Vector2(-128, 0)
 limit_top = 0
 limit_bottom = 736
 
@@ -4002,7 +4029,7 @@ platform_on_leave = 2
 platform_floor_layers = 4294967294
 
 [node name="RedSprite" type="Sprite2D" parent="CubeController/RedCube"]
-texture = ExtResource("14_wwbpc")
+texture = SubResource("CanvasTexture_yellw")
 
 [node name="Coin" parent="." instance=ExtResource("17_f4a6v")]
 position = Vector2(3773, 78)
@@ -4047,15 +4074,15 @@ autoplay = "StartUp"
 [node name="Red" type="Sprite2D" parent="Cutscene/CutsceneThings"]
 z_index = -1
 position = Vector2(1519, 608)
-texture = ExtResource("14_wwbpc")
+texture = SubResource("CanvasTexture_exx0s")
 
 [node name="Green" type="Sprite2D" parent="Cutscene/CutsceneThings"]
 position = Vector2(249, 608)
-texture = ExtResource("16_lkxim")
+texture = SubResource("CanvasTexture_08wo5")
 
 [node name="Blue" type="Sprite2D" parent="Cutscene/CutsceneThings"]
 position = Vector2(1903, 608)
-texture = ExtResource("15_thk0f")
+texture = SubResource("CanvasTexture_8wrf1")
 
 [node name="CutsceneSounds" type="AudioStreamPlayer" parent="Cutscene"]
 volume_db = -10.0
@@ -4339,7 +4366,7 @@ texture = ExtResource("38_0j0en")
 [node name="Green" type="Sprite2D" parent="FinalBoss"]
 position = Vector2(1657.5, 505)
 rotation = -0.5
-texture = ExtResource("16_lkxim")
+texture = SubResource("CanvasTexture_gye0v")
 
 [node name="Triby" type="Sprite2D" parent="FinalBoss"]
 position = Vector2(1548.75, 498.75)
@@ -4350,7 +4377,7 @@ texture = ExtResource("39_mxfdv")
 [node name="Blue" type="Sprite2D" parent="FinalBoss"]
 position = Vector2(425, 520)
 rotation = -37.7
-texture = ExtResource("15_thk0f")
+texture = SubResource("CanvasTexture_afebf")
 
 [node name="NME Cube" parent="." instance=ExtResource("42_mjcfo")]
 collision_mask = 1

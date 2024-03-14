@@ -1,5 +1,7 @@
 extends ColorRect
 
+
+@export var background : TextureRect
 @export var musicFader : AnimationPlayer
 @export var Fader : AnimationPlayer
 @export var TitleAnimator : AnimationPlayer
@@ -15,6 +17,12 @@ func _ready():
 	for i in range(ChapterButtons.size()):
 		if (i > Singleton.unlockedLevel-1):
 			ChapterButtons[i].hide()
+	var hasCoin : bool = true
+	for i in range(6):
+		if (!Singleton.hasCoin(i)):
+			hasCoin = false
+	if (hasCoin):
+		background.texture = load("res://Art/Backgrounds/TitleBackgroundCOIN.png")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
